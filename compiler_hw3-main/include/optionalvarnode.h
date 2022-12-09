@@ -8,7 +8,7 @@ typedef struct optionalvarnode{
     
 } OptionalVarNode;
 
-void* OptionalVarNode_visit(void*);
+int OptionalVarNode_visit(void*);
 
 Node* newOptionalVarNode( int, int );
 

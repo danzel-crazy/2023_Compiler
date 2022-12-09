@@ -1,7 +1,7 @@
 #include "optionalvarnode.h"
 #include <stdlib.h>
 
-void* OptionalVarNode_visit(void* node){
+int OptionalVarNode_visit(void* node){
     
     return 0;
 }

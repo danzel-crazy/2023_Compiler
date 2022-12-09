@@ -14,7 +14,7 @@ Node* newMulNode( int firstLine, int firstColumn, int type, int lastLine, int la
     return temp;
 }
 
-void* MulNode_visit(void* node){
+int MulNode_visit(void* node){
 
     return 0;
 }

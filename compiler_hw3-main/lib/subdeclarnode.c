@@ -28,7 +28,7 @@ int checkExist(StatementNode* curr, char* id){
     return 0;
 }
 
-Node* newSubDeclarNode( int firstLine, int firstColumn, SubHeadNode* subheadnode, DeclarNode* declarnode, SubDeclarSNode* subdeclarsnode, CompoundStatementNode* compoundstatementnode, int lastLine, int lastColumn ){
+SubDeclarNode* newSubDeclarNode( int firstLine, int firstColumn, SubHeadNode* subheadnode, DeclarNode* declarnode, SubDeclarSNode* subdeclarsnode, CompoundStatementNode* compoundstatementnode, int lastLine, int lastColumn ){
     SubDeclarNode* temp = (SubDeclarNode*) malloc ( sizeof(SubDeclarNode) );
     temp->head = subheadnode;
     temp->declarnode = declarnode;
@@ -44,7 +44,7 @@ Node* newSubDeclarNode( int firstLine, int firstColumn, SubHeadNode* subheadnode
     return temp;
 };
 
-void* SubDeclarNode_visit(void* node){
+int SubDeclarNode_visit(void* node){
     SubDeclarNode* temp = (SubDeclarNode*) node;
 
     if (temp->head != NULL){

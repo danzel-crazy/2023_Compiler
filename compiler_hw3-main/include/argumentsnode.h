@@ -10,8 +10,8 @@ typedef struct argumentsnode{
 
 } ArgumentsNode;
 
-Node* newArgumentsNode( int, int, ParameterListNode*, int, int );
+ArgumentsNode* newArgumentsNode( int, int, ParameterListNode*, int, int );
 
-void* ArgumentsNode_visit(void*);
+int ArgumentsNode_visit(void*);
 
 #endif

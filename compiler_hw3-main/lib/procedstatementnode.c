@@ -41,7 +41,7 @@ Node* newProcedStatementNode( int firstLine, int firstColumn, char* id, ExpListN
     return temp;
 }
 
-void* ProcedStatementNode_visit(void* node){
+int ProcedStatementNode_visit(void* node){
     ProcedStatementNode* temp = (ProcedStatementNode*) node;
 
     // debug

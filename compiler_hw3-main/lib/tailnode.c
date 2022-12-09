@@ -17,7 +17,7 @@ Node* newTailNode( int firstLine, int firstColumn, ExpNode* expnode, TailNode* t
     return temp;
 }
 
-void* TailNode_visit(void* node){
+int TailNode_visit(void* node){
     TailNode* temp = (TailNode*) node;
 
     // debug

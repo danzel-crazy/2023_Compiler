@@ -18,7 +18,7 @@ Node* newBoolExpNode( int firstLine, int firstColumn, SimpleExpNode* first, Relo
     return temp;
 }
 
-void* BoolExpNode_visit(void* node){
+int BoolExpNode_visit(void* node){
     BoolExpNode* temp = (BoolExpNode*) node;
     
     long temp1, temp2;

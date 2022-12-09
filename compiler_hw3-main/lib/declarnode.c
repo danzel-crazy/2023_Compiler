@@ -5,7 +5,7 @@
 extern list* listRoot;
 extern int scope;
 
-Node* newDeclarNode( int firstLine, int firstColumn, DeclarNode* declarnode, IdentListNode* identlist, TypeNode* type, int lastLine, int lastColumn ){
+DeclarNode* newDeclarNode( int firstLine, int firstColumn, DeclarNode* declarnode, IdentListNode* identlist, TypeNode* type, int lastLine, int lastColumn ){
     DeclarNode* temp = (DeclarNode*) malloc ( sizeof(DeclarNode) );
     temp->NextNode = declarnode;
     temp->identlistnode = identlist;
@@ -20,7 +20,7 @@ Node* newDeclarNode( int firstLine, int firstColumn, DeclarNode* declarnode, Ide
     return temp;
 }
 
-void* DeclarNode_visit(void* node){
+int DeclarNode_visit(void* node){
     DeclarNode* temp = (DeclarNode*)node;
 
     // go to leftmost declarations

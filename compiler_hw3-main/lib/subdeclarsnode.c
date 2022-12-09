@@ -2,7 +2,7 @@
 
 #include "subdeclarnode.h"
 
-Node* newSubDeclarSNode( int firstLine, int firstColumn, SubDeclarSNode* prevnode, SubDeclarNode* nextnode, int lastLine, int lastColumn ){
+SubDeclarSNode* newSubDeclarSNode( int firstLine, int firstColumn, SubDeclarSNode* prevnode, SubDeclarNode* nextnode, int lastLine, int lastColumn ){
     SubDeclarSNode* temp = (SubDeclarSNode*) malloc ( sizeof(SubDeclarSNode) );
     temp->PrevNode = prevnode;
     temp->NextNode = nextnode;
@@ -16,7 +16,7 @@ Node* newSubDeclarSNode( int firstLine, int firstColumn, SubDeclarSNode* prevnod
     return temp;
 }
 
-void* SubDeclarSNode_visit(void* node){
+int SubDeclarSNode_visit(void* node){
     SubDeclarSNode* temp = (SubDeclarSNode*) node;
     
     if(temp->PrevNode != NULL){

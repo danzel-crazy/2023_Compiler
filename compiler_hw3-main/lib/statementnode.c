@@ -25,7 +25,7 @@ Node* newStatementNode( int firstLine, int firstColumn, int type, VarNode* varno
     return temp;
 }
 
-void* StatementNode_visit(void* node){
+int StatementNode_visit(void* node){
     StatementNode* temp = (StatementNode*) node;
 
     // debug

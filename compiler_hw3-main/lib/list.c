@@ -144,7 +144,7 @@ void list_printTable(list* root){
                     tempPassInType = tempPassInType->next;
                     counter++;
                 }
-
+                
                 // check return data type
                 strcpy( dataCurr, dataTemp );
                 switch (temp->type)

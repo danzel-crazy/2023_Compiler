@@ -24,13 +24,13 @@ typedef struct subdeclarnode{
 
 } SubDeclarNode;
 
-Node* newSubDeclarNode( int, int, SubHeadNode*, DeclarNode*, SubDeclarSNode*, CompoundStatementNode*, int, int );
+SubDeclarNode* newSubDeclarNode( int, int, SubHeadNode*, DeclarNode*, SubDeclarSNode*, CompoundStatementNode*, int, int );
 
-void* SubDeclarNode_visit(void*);
+int SubDeclarNode_visit(void*);
 
-void* SubDeclarSNode_visit(void*);
+int SubDeclarSNode_visit(void*);
 
-Node* newSubDeclarSNode( int, int, SubDeclarSNode*, SubDeclarNode*, int, int );
+SubDeclarSNode* newSubDeclarSNode( int, int, SubDeclarSNode*, SubDeclarNode*, int, int );
 
 int checkExist( StatementNode*, char* );
 

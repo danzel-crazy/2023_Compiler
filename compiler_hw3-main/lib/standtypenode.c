@@ -2,7 +2,7 @@
 #include "standtypenode.h"
 #include <stdlib.h>
 
-Node* newStandTypeNode( int firstLine, int firstColumn, int type, int lastLine, int lastColumn ){
+StandTypeNode* newStandTypeNode( int firstLine, int firstColumn, int type, int lastLine, int lastColumn ){
     StandTypeNode* temp = (StandTypeNode*) malloc ( sizeof(StandTypeNode) );
     temp->type = type;  // 0: integer, 1: real, 2: string
     temp->node.type = _StandTypeNode;
@@ -15,7 +15,7 @@ Node* newStandTypeNode( int firstLine, int firstColumn, int type, int lastLine, 
     return temp;
 }
 
-void* StandTypeNode_visit(void* node){
+int StandTypeNode_visit(void* node){
 
     return 0;
 }

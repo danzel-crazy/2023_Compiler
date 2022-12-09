@@ -3,7 +3,7 @@
 #include "identlistnode.h"
 
 
-Node* newIdentListNode( int firstLine, int firstColumn, char* id, IdentListNode* identlistnode, int lastLine, int lastColumn ){
+IdentListNode* newIdentListNode( int firstLine, int firstColumn, char* id, IdentListNode* identlistnode, int lastLine, int lastColumn ){
     IdentListNode* temp = (IdentListNode*) malloc ( sizeof(IdentListNode) );
     temp->id = id;
     temp->PrevNode = identlistnode;
@@ -18,7 +18,7 @@ Node* newIdentListNode( int firstLine, int firstColumn, char* id, IdentListNode*
 }
 
 
-void* IdentListNode_visit(void* node){
+int IdentListNode_visit(void* node){
 
     return 0;
 }

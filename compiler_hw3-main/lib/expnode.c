@@ -17,7 +17,7 @@ Node* newExpNode( int firstLine, int firstColumn, ExpNode* first, int op, ExpNod
     return temp;
 }
 
-void* ExpNode_visit(void* node){
+int ExpNode_visit(void* node){
     ExpNode* temp = (ExpNode*) node;
     
     // debug

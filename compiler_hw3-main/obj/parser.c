@@ -264,7 +264,7 @@ union YYSTYPE
     int val;
     char* text;
     double dval;
-    Node* node;
+    ProgNode* node;
     IdentListNode* identlist;
     DeclarNode* declar;
     SubDeclarSNode* subdeclar;
@@ -1675,7 +1675,7 @@ yyreduce:
         /*
         yylval.val, yylval.text, yylval.dval to get the data (type defined in %union) you assigned by scanner.
         */
-        // printf("program node is @ line: %d, column: %d\n", @1.first_line, @1.first_column);
+        // printf("program node is @ line: %d, column: %d\n", @10.first_line, @10.first_column);
         root = newProgNode( (yylsp[-9]).first_line, (yylsp[-9]).first_column, (yyvsp[-8].text), (yyvsp[-6].identlist), (yyvsp[-3].declar), (yyvsp[-2].subdeclar), (yyvsp[-1].compoundstatement), (yylsp[0]).first_line, (yylsp[0]).first_column );
     }
 #line 1682 "obj/parser.c"

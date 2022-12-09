@@ -10,8 +10,8 @@ typedef struct identlistnode{
 
 } IdentListNode;
 
-Node* newIdentListNode( int, int, char*, IdentListNode*, int, int );
+IdentListNode* newIdentListNode( int, int, char*, IdentListNode*, int, int );
 
-void* IdentListNode_visit(void*);
+int IdentListNode_visit(void*);
 
 #endif

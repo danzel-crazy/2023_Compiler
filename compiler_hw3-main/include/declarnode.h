@@ -13,8 +13,8 @@ typedef struct declarnode{
 
 } DeclarNode;
 
-Node* newDeclarNode( int, int, DeclarNode*, IdentListNode*, TypeNode*, int, int );
+DeclarNode* newDeclarNode( int, int, DeclarNode*, IdentListNode*, TypeNode*, int, int );
 
-void* DeclarNode_visit(void*);
+int DeclarNode_visit(void*);
 
 #endif

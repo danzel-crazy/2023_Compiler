@@ -17,7 +17,7 @@ Node* newParameterListNode( int firstLine, int firsColumn, OptionalVarNode* opti
     return temp;
 }
 
-void* ParameterListNode_visit(void* node){
+int ParameterListNode_visit(void* node){
 
     return 0;
 }

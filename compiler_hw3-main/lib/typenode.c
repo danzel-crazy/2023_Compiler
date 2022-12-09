@@ -1,12 +1,12 @@
 #include "typenode.h"
 #include <stdlib.h>
 
-void* TypeNode_visit(void* node){
+int TypeNode_visit(void* node){
 
     return 0;
 }
 
-Node* newTypeNode( int firstLine, int firstColumn, StandTypeNode* standtypenode, int array_start, int array_end, TypeNode* type, int lastLine, int lastColumn ){
+TypeNode* newTypeNode( int firstLine, int firstColumn, StandTypeNode* standtypenode, int array_start, int array_end, TypeNode* type, int lastLine, int lastColumn ){
     TypeNode* temp = (TypeNode*) malloc ( sizeof(TypeNode) );
     temp->standtypenode = standtypenode;
     temp->array_start = array_start;

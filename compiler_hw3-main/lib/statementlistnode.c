@@ -15,7 +15,7 @@ Node* newStatementListNode( int firstLine, int firstColumn, StatementListNode* s
     return temp;
 }
 
-void* StatementListNode_visit(void* node){
+int StatementListNode_visit(void* node){
     StatementListNode* temp = (StatementListNode*) node;
     // printf("%d: %d StatementListNode\n", temp->node.loc.first_line, temp->node.loc.first_column);
     if (temp->nextList != 0){

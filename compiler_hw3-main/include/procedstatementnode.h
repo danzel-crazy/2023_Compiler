@@ -13,6 +13,6 @@ typedef struct procedstatementnode{
 
 Node* newProcedStatementNode( int, int, char*, ExpListNode*, int, int );
 
-void* ProcedStatementNode_visit(void*);
+int ProcedStatementNode_visit(void*);
 
 #endif

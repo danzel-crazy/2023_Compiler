@@ -26,7 +26,7 @@ ProgNode* newProgNode( int firstLine, int firstColumn, char* id, IdentListNode* 
     return temp;
 };
 
-void* ProgNode_visit(void* node){
+int ProgNode_visit(void* node){
     // I don't know what to do
     ProgNode* temp = (ProgNode*)node;
 

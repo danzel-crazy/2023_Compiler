@@ -4,7 +4,7 @@
 extern int scope;
 extern list* listRoot;
 
-Node* newSubHeadNode( int firstLine, int firstColumn, int type, char* id, StandTypeNode* standard_type, ArgumentsNode* arguments, int lastLine, int lastColumn ){
+SubHeadNode* newSubHeadNode( int firstLine, int firstColumn, int type, char* id, StandTypeNode* standard_type, ArgumentsNode* arguments, int lastLine, int lastColumn ){
     SubHeadNode* temp = (SubHeadNode*) malloc ( sizeof(SubHeadNode) );
     temp->type = type;
     temp->id = id;
@@ -20,7 +20,7 @@ Node* newSubHeadNode( int firstLine, int firstColumn, int type, char* id, StandT
     return temp;
 }
 
-void* SubHeadNode_visit(void* node){
+int SubHeadNode_visit(void* node){
 
     return 0;
 }

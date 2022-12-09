@@ -20,6 +20,6 @@ typedef struct simpleexpnode{
 
 Node* newSimpleExpNode( int, int, SimpleExpNode*, AddNode*, TermNode*, int, int );
 
-void* SimpleExpNode_visit(void*);
+int SimpleExpNode_visit(void*);
 
 #endif

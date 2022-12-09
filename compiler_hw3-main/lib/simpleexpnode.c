@@ -18,18 +18,18 @@ Node* newSimpleExpNode( int firstLine, int firstColumn, SimpleExpNode* simpleexp
     return temp;
 }
 
-void* SimpleExpNode_visit(void* node){
+int SimpleExpNode_visit(void* node){
     SimpleExpNode* temp = (SimpleExpNode*) node;
 
     // debug
     // fprintf(stderr, "%d: %d has an Node\n", temp->node.loc.first_line, temp->node.loc.first_column);
-    int* temp1, *temp2; 
+    int temp1, temp2; 
     int datatype = -1;
 
     if ( temp->addnode != 0 ){
-        temp1 = temp->simpleexpnode->node.visit(temp->simpleexpnode);
+        temp1 = (int)temp->simpleexpnode->node.visit(temp->simpleexpnode);
         temp->addnode->node.visit(temp->addnode);
-        temp2 = temp->termnode->node.visit(temp->termnode);
+        temp2 = (int)temp->termnode->node.visit(temp->termnode);
         
         // debug
         // fprintf(stderr, "test: %d %d\n", (int)temp1, (int)temp2);

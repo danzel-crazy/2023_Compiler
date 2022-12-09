@@ -18,19 +18,19 @@ Node* newTermNode( int firstLine, int firstColumn, TermNode* termnode, MulNode* 
     return temp;
 }
 
-void* TermNode_visit(void* node){
+int TermNode_visit(void* node){
     TermNode* temp = (TermNode*) node;
 
     // debug
     // fprintf(stderr, "%d: %d has an Node\n", temp->node.loc.first_line, temp->node.loc.first_column);
 
-    int *temp1, *temp2;
+    long int temp1, temp2;
     int datatype = -1;
 
     if (temp->mulnode != 0){
-        temp1 = temp->termnode->node.visit(temp->termnode);
+        temp1 = (long)temp->termnode->node.visit(temp->termnode);
         temp->mulnode->node.visit(temp->mulnode);
-        temp2 = temp->factornode->node.visit(temp->factornode);
+        temp2 = (long)temp->factornode->node.visit(temp->factornode);
 
         if ( ((int)temp1 >= 0) && ((int)temp2 >= 0) && ((int)temp1 != (int)temp2) ){
             if (temp->mulnode->type)

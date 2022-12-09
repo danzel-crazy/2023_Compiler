@@ -20,7 +20,7 @@ Node* newNumNode( int firstLine, int firstColumn, int type, double num, char* st
     return temp;
 };
 
-void* NumNode_visit(void* node){
+int NumNode_visit(void* node){
     NumNode* temp = (NumNode*) node;
 
     switch (temp->type)

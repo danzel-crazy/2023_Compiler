@@ -8,7 +8,7 @@
 #include "compoundstatementnode.h"
 
 
-void* ProgNode_visit();
+int ProgNode_visit();
 
 typedef struct prognode{
     Node node;

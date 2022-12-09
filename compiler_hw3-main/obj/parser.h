@@ -142,7 +142,7 @@ union YYSTYPE
     int val;
     char* text;
     double dval;
-    Node* node;
+    ProgNode* node;
     IdentListNode* identlist;
     DeclarNode* declar;
     SubDeclarSNode* subdeclar;

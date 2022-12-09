@@ -1,7 +1,7 @@
 #include "argumentsnode.h"
 #include <stdlib.h>
 
-Node* newArgumentsNode( int firstLine, int firstColumn, ParameterListNode* parameterlist, int lastLine, int lastColumn ){
+ArgumentsNode* newArgumentsNode( int firstLine, int firstColumn, ParameterListNode* parameterlist, int lastLine, int lastColumn ){
     ArgumentsNode* temp = (ArgumentsNode*) malloc ( sizeof(ArgumentsNode) );
     temp->parameterlist = parameterlist;
     temp->node.type = _ArgumentsNode;
@@ -14,7 +14,7 @@ Node* newArgumentsNode( int firstLine, int firstColumn, ParameterListNode* param
     return temp;
 }
 
-void* ArgumentsNode_visit(void* node){
+int ArgumentsNode_visit(void* node){
 
     return 0;
 }
