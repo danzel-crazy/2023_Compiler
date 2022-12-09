@@ -43,9 +43,7 @@ void printTree(struct nodeType *node, int ident) {
     
     switch(node->nodeType) {
         /********* modified **********/
-        
         case NODE_ADDOP:
-        
             printf("%s/+\n", blank);
             break;
         case NODE_SUBOP:

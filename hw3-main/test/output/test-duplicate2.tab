@@ -67,7 +67,7 @@
                                                 /boolexpression
                                                         /simple_expressiong
                                                                 /term
-48                                                                        /factor
+                                                                        /factor
                                                                                 /num
                                                                                         1
                 /END

@@ -55,12 +55,12 @@
                                                                         /simple_expressiong
                                                                                 /simple_expressiong
                                                                                         /term
-48                                                                                                /factor
+                                                                                                /factor
                                                                                                         /num
                                                                                                                 3
                                                                                 /addop
                                                                                 /term
-41                                                                                        /factor
+                                                                                        /factor
                                                                                                 tt
                                                                                                 /tail
                                         /;
@@ -75,7 +75,7 @@
                                                                                         /boolexpression
                                                                                                 /simple_expressiong
                                                                                                         /term
-41                                                                                                                /factor
+                                                                                                                /factor
                                                                                                                         a
                                                                                                                         /tail
                                                                         /,
@@ -83,7 +83,7 @@
                                                                                 /boolexpression
                                                                                         /simple_expressiong
                                                                                                 /term
-41                                                                                                        /factor
+                                                                                                        /factor
                                                                                                                 tt
                                                                                                                 /tail
                                                                 /,
@@ -91,7 +91,7 @@
                                                                         /boolexpression
                                                                                 /simple_expressiong
                                                                                         /term
-48                                                                                                /factor
+                                                                                                /factor
                                                                                                         /num
                                                                                                                 0.500000
                                                         /)
@@ -106,7 +106,7 @@
                                                                         /boolexpression
                                                                                 /simple_expressiong
                                                                                         /term
-41                                                                                                /factor
+                                                                                                /factor
                                                                                                         tt
                                                                                                         /tail
                                                         /,
@@ -114,7 +114,7 @@
                                                                 /boolexpression
                                                                         /simple_expressiong
                                                                                 /term
-41                                                                                        /factor
+                                                                                        /factor
                                                                                                 tt
                                                                                                 /tail
                                                 /)

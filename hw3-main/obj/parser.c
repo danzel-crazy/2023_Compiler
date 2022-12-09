@@ -609,8 +609,8 @@ static const yytype_int16 yyrline[] =
      233,   245,   251,   256,   265,   271,   276,   281,   290,   297,
      302,   307,   317,   326,   331,   339,   348,   353,   358,   368,
      373,   382,   387,   394,   403,   408,   417,   422,   431,   436,
-     445,   451,   459,   464,   469,   476,   482,   490,   496,   504,
-     509,   516,   521,   526,   531,   536,   541,   548,   553,   558
+     445,   451,   459,   464,   469,   476,   482,   490,   495,   502,
+     507,   514,   519,   524,   529,   534,   539,   546,   551,   556
 };
 #endif
 
@@ -2163,123 +2163,121 @@ yyreduce:
 #line 491 "parser.y"
         {
             (yyval.node)=newNode(NODE_addop);
-            // printf("add");
             addChild((yyval.node),newNode(NODE_ADDOP));
         }
-#line 2170 "obj/parser.c"
+#line 2169 "obj/parser.c"
     break;
 
   case 58:
-#line 497 "parser.y"
+#line 496 "parser.y"
         {
             (yyval.node)=newNode(NODE_addop);
-            // printf("sub");
             addChild((yyval.node),newNode(NODE_SUBOP));
         }
-#line 2180 "obj/parser.c"
+#line 2178 "obj/parser.c"
     break;
 
   case 59:
-#line 505 "parser.y"
+#line 503 "parser.y"
         {
             (yyval.node)=newNode(NODE_mulop);
             addChild((yyval.node),newNode(NODE_MULOP));
         }
-#line 2189 "obj/parser.c"
+#line 2187 "obj/parser.c"
     break;
 
   case 60:
-#line 510 "parser.y"
+#line 508 "parser.y"
         {
             (yyval.node)=newNode(NODE_mulop);
             addChild((yyval.node),newNode(NODE_DIVOP));
         }
-#line 2198 "obj/parser.c"
+#line 2196 "obj/parser.c"
     break;
 
   case 61:
-#line 517 "parser.y"
+#line 515 "parser.y"
         {
             (yyval.node)=newNode(NODE_relop);
             addChild((yyval.node),newNode(NODE_LTOP));
         }
-#line 2207 "obj/parser.c"
+#line 2205 "obj/parser.c"
     break;
 
   case 62:
-#line 522 "parser.y"
+#line 520 "parser.y"
         {
             (yyval.node)=newNode(NODE_relop);
             addChild((yyval.node),newNode(NODE_GTOP));
         }
-#line 2216 "obj/parser.c"
+#line 2214 "obj/parser.c"
     break;
 
   case 63:
-#line 527 "parser.y"
+#line 525 "parser.y"
         {
             (yyval.node)=newNode(NODE_relop);
             addChild((yyval.node),newNode(NODE_EQOP));
         }
-#line 2225 "obj/parser.c"
+#line 2223 "obj/parser.c"
     break;
 
   case 64:
-#line 532 "parser.y"
+#line 530 "parser.y"
         {
             (yyval.node)=newNode(NODE_relop);
             addChild((yyval.node),newNode(NODE_LETOP));
         }
-#line 2234 "obj/parser.c"
+#line 2232 "obj/parser.c"
     break;
 
   case 65:
-#line 537 "parser.y"
+#line 535 "parser.y"
         {
             (yyval.node)=newNode(NODE_relop);
             addChild((yyval.node),newNode(NODE_GETOP));
         }
-#line 2243 "obj/parser.c"
+#line 2241 "obj/parser.c"
     break;
 
   case 66:
-#line 542 "parser.y"
+#line 540 "parser.y"
         {
             (yyval.node)=newNode(NODE_relop);
             addChild((yyval.node),newNode(NODE_NEQOP));
         }
-#line 2252 "obj/parser.c"
+#line 2250 "obj/parser.c"
     break;
 
   case 67:
-#line 549 "parser.y"
+#line 547 "parser.y"
         {
             (yyval.node)=newNode(NODE_num);
             addChild((yyval.node),(yyvsp[0].node));
         }
-#line 2261 "obj/parser.c"
+#line 2259 "obj/parser.c"
     break;
 
   case 68:
-#line 554 "parser.y"
+#line 552 "parser.y"
         {
             (yyval.node)=newNode(NODE_num);
             addChild((yyval.node),(yyvsp[0].node));
         }
-#line 2270 "obj/parser.c"
+#line 2268 "obj/parser.c"
     break;
 
   case 69:
-#line 559 "parser.y"
+#line 557 "parser.y"
         {
             (yyval.node)=newNode(NODE_num);
             addChild((yyval.node),(yyvsp[0].node));
         }
-#line 2279 "obj/parser.c"
+#line 2277 "obj/parser.c"
     break;
 
 
-#line 2283 "obj/parser.c"
+#line 2281 "obj/parser.c"
 
       default: break;
     }
@@ -2517,7 +2515,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 565 "parser.y"
+#line 563 "parser.y"
 
 
 void yyerror(const char *msg) {

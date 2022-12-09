@@ -51,14 +51,14 @@
                                                                         /simple_expressiong
                                                                                 /simple_expressiong
                                                                                         /term
-31                                                                                                /factor
+                                                                                                /factor
                                                                                                         /-
-48                                                                                                        /factor
+                                                                                                        /factor
                                                                                                                 /num
                                                                                                                         3
                                                                                 /addop
                                                                                 /term
-48                                                                                        /factor
+                                                                                        /factor
                                                                                                 /num
                                                                                                         4
                                         /;
@@ -71,13 +71,13 @@
                                                         /boolexpression
                                                                 /simple_expressiong
                                                                         /term
-31                                                                                /factor
+                                                                                /factor
                                                                                         /-
-31                                                                                        /factor
+                                                                                        /factor
                                                                                                 /-
-31                                                                                                /factor
+                                                                                                /factor
                                                                                                         /-
-48                                                                                                        /factor
+                                                                                                        /factor
                                                                                                                 /num
                                                                                                                         5
                                 /;
@@ -91,14 +91,14 @@
                                                         /simple_expressiong
                                                                 /simple_expressiong
                                                                         /term
-31                                                                                /factor
+                                                                                /factor
                                                                                         /-
-48                                                                                        /factor
+                                                                                        /factor
                                                                                                 /num
                                                                                                         5.000000
                                                                 /addop
                                                                 /term
-48                                                                        /factor
+                                                                        /factor
                                                                                 /num
                                                                                         6.000000
                 /END

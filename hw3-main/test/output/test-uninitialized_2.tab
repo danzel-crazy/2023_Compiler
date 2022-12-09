@@ -62,7 +62,7 @@
                                                         /boolexpression
                                                                 /simple_expressiong
                                                                         /term
-41                                                                                /factor
+                                                                                /factor
                                                                                         b
                                                                                         /tail
                                 /;
@@ -77,17 +77,17 @@
                                                                                 /simple_expressiong
                                                                                         /simple_expressiong
                                                                                                 /term
-48                                                                                                        /factor
+                                                                                                        /factor
                                                                                                                 /num
                                                                                                                         3
                                                                                         /addop
                                                                                         /term
-48                                                                                                /factor
+                                                                                                /factor
                                                                                                         /num
                                                                                                                 5
                                                                                 /addop
                                                                                 /term
-41                                                                                        /factor
+                                                                                        /factor
                                                                                                 c
                                                                                                 /tail
                                                         /]
@@ -97,7 +97,7 @@
                                                 /boolexpression
                                                         /simple_expressiong
                                                                 /term
-48                                                                        /factor
+                                                                        /factor
                                                                                 /num
                                                                                         8
                 /END

@@ -490,13 +490,11 @@ factor : IDENTIFIER tail
 addop : ADDOP 
         {
             $$=newNode(NODE_addop);
-            // printf("add");
             addChild($$,newNode(NODE_ADDOP));
         }
         | SUBOP
         {
             $$=newNode(NODE_addop);
-            // printf("sub");
             addChild($$,newNode(NODE_SUBOP));
         }
     ;

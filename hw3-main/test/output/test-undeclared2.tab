@@ -43,11 +43,11 @@
                                                         /simple_expressiong
                                                                 /term
                                                                         /term
-41                                                                                /factor
+                                                                                /factor
                                                                                         a
                                                                                         /tail
                                                                         /mulop
-48                                                                        /factor
+                                                                        /factor
                                                                                 /num
                                                                                         15
                 /END

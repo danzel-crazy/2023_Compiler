@@ -45,33 +45,33 @@
                                                                         /simple_expressiong
                                                                                 /simple_expressiong
                                                                                         /term
-41                                                                                                /factor
+                                                                                                /factor
                                                                                                         aa
                                                                                                         /tail
                                                                                 /addop
                                                                                 /term
                                                                                         /term
-48                                                                                                /factor
+                                                                                                /factor
                                                                                                         /num
                                                                                                                 3
                                                                                         /mulop
-41                                                                                        /factor
+                                                                                        /factor
                                                                                                 bb
                                                                                                 /tail
                                                                         /addop
                                                                         /term
-20                                                                                /factor
+                                                                                /factor
                                                                                         /(
                                                                                         /expression
                                                                                                 /boolexpression
                                                                                                         /simple_expressiong
                                                                                                                 /term
                                                                                                                         /term
-48                                                                                                                                /factor
+                                                                                                                                /factor
                                                                                                                                         /num
                                                                                                                                                 4
                                                                                                                         /mulop
-41                                                                                                                        /factor
+                                                                                                                        /factor
                                                                                                                                 cc
                                                                                                                                 /tail
                                                                                         /)
@@ -86,12 +86,12 @@
                                                         /simple_expressiong
                                                                 /simple_expressiong
                                                                         /term
-41                                                                                /factor
+                                                                                /factor
                                                                                         aa
                                                                                         /tail
                                                                 /addop
                                                                 /term
-41                                                                        /factor
+                                                                        /factor
                                                                                 cc
                                                                                 /tail
                 /END

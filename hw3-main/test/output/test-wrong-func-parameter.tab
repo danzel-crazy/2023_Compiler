@@ -43,7 +43,7 @@
                                                                 /boolexpression
                                                                         /simple_expressiong
                                                                                 /term
-41                                                                                        /factor
+                                                                                        /factor
                                                                                                 sum
                                                                                                 /(
                                                                                                 /expression_list
@@ -51,7 +51,7 @@
                                                                                                                 /boolexpression
                                                                                                                         /simple_expressiong
                                                                                                                                 /term
-48                                                                                                                                        /factor
+                                                                                                                                        /factor
                                                                                                                                                 /num
                                                                                                                                                         10
                                                                                                 /)
@@ -65,7 +65,7 @@
                                                         /boolexpression
                                                                 /simple_expressiong
                                                                         /term
-41                                                                                /factor
+                                                                                /factor
                                                                                         sum
                                                                                         /(
                                                                                         /expression_list
@@ -74,7 +74,7 @@
                                                                                                                 /boolexpression
                                                                                                                         /simple_expressiong
                                                                                                                                 /term
-48                                                                                                                                        /factor
+                                                                                                                                        /factor
                                                                                                                                                 /num
                                                                                                                                                         10
                                                                                                 /,
@@ -82,7 +82,7 @@
                                                                                                         /boolexpression
                                                                                                                 /simple_expressiong
                                                                                                                         /term
-48                                                                                                                                /factor
+                                                                                                                                /factor
                                                                                                                                         /num
                                                                                                                                                 20
                                                                                         /)
@@ -96,7 +96,7 @@
                                                 /boolexpression
                                                         /simple_expressiong
                                                                 /term
-41                                                                        /factor
+                                                                        /factor
                                                                                 sum
                                                                                 /(
                                                                                 /expression_list
@@ -106,9 +106,9 @@
                                                                                                                 /boolexpression
                                                                                                                         /simple_expressiong
                                                                                                                                 /term
-31                                                                                                                                        /factor
+                                                                                                                                        /factor
                                                                                                                                                 /-
-48                                                                                                                                                /factor
+                                                                                                                                                /factor
                                                                                                                                                         /num
                                                                                                                                                                 10
                                                                                                 /,
@@ -116,7 +116,7 @@
                                                                                                         /boolexpression
                                                                                                                 /simple_expressiong
                                                                                                                         /term
-48                                                                                                                                /factor
+                                                                                                                                /factor
                                                                                                                                         /num
                                                                                                                                                 4
                                                                                         /,
@@ -124,7 +124,7 @@
                                                                                                 /boolexpression
                                                                                                         /simple_expressiong
                                                                                                                 /term
-48                                                                                                                        /factor
+                                                                                                                        /factor
                                                                                                                                 /num
                                                                                                                                         7
                                                                                 /)

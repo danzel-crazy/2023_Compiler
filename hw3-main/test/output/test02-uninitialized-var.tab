@@ -166,12 +166,12 @@
                                                                 /simple_expressiong
                                                                         /simple_expressiong
                                                                                 /term
-41                                                                                        /factor
+                                                                                        /factor
                                                                                                 a
                                                                                                 /tail
                                                                         /addop
                                                                         /term
-48                                                                                /factor
+                                                                                /factor
                                                                                         /num
                                                                                                 1
                                 /;
@@ -184,7 +184,7 @@
                                                                 /boolexpression
                                                                         /simple_expressiong
                                                                                 /term
-48                                                                                        /factor
+                                                                                        /factor
                                                                                                 /num
                                                                                                         25
                                                         /]
@@ -194,7 +194,7 @@
                                                                         /boolexpression
                                                                                 /simple_expressiong
                                                                                         /term
-48                                                                                                /factor
+                                                                                                /factor
                                                                                                         /num
                                                                                                                 20
                                                                 /]
@@ -205,7 +205,7 @@
                                                         /simple_expressiong
                                                                 /simple_expressiong
                                                                         /term
-41                                                                                /factor
+                                                                                /factor
                                                                                         k
                                                                                         /tail
                                                                                                 /[
@@ -213,7 +213,7 @@
                                                                                                         /boolexpression
                                                                                                                 /simple_expressiong
                                                                                                                         /term
-48                                                                                                                                /factor
+                                                                                                                                /factor
                                                                                                                                         /num
                                                                                                                                                 25
                                                                                                 /]
@@ -223,14 +223,14 @@
                                                                                                                 /boolexpression
                                                                                                                         /simple_expressiong
                                                                                                                                 /term
-48                                                                                                                                        /factor
+                                                                                                                                        /factor
                                                                                                                                                 /num
                                                                                                                                                         20
                                                                                                         /]
                                                                                                         /tail
                                                                 /addop
                                                                 /term
-48                                                                        /factor
+                                                                        /factor
                                                                                 /num
                                                                                         3.140000
                 /END

@@ -14,9 +14,6 @@ enum ntype {
     NODE_expression_list,NODE_expression,NODE_simple_expression,NODE_term,NODE_factor,
     NODE_addop,NODE_mulop,NODE_relop,NODE_statement,NODE_boolexpression,
     NODE_NUM, NODE_String, NODE_Char, NODE_ID
-    ,NODE_SYM_REF
-    ,NODE_OP
-    ,NODE_TOKEN
 };
 
 #include "symbol.h"
