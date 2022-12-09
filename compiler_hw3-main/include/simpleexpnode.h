@@ -18,7 +18,7 @@ typedef struct simpleexpnode{
 
 } SimpleExpNode;
 
-Node* newSimpleExpNode( int, int, SimpleExpNode*, AddNode*, TermNode*, int, int );
+SimpleExpNode* newSimpleExpNode( int, int, SimpleExpNode*, AddNode*, TermNode*, int, int );
 
 int SimpleExpNode_visit(void*);
 

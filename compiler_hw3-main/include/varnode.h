@@ -11,7 +11,7 @@ typedef struct varnode{
     
 } VarNode;
 
-Node* newVarNode( int, int, char*, TailNode*, int, int );
+VarNode* newVarNode( int, int, char*, TailNode*, int, int );
 
 int VarNode_visit(void*);
 

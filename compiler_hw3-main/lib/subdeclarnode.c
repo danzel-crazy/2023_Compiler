@@ -155,7 +155,7 @@ int SubDeclarNode_visit(void* node){
                 IdentListNode* idList = curr->identlistnode;
                 ((passinobj*)((funcsymbolobj*)tempList->data)->passInType)->data = (symbolobj*) malloc ( sizeof(symbolobj) );
                 ((passinobj*)((funcsymbolobj*)tempList->data)->passInType)->data->type = typeTemp;
-                passinobjTemp = ((funcsymbolobj*)tempList->data)->passInType;
+                passinobjTemp = (passinobj*)((funcsymbolobj*)tempList->data)->passInType;
                 if ( checkList(listRoot, idList->id, scope, Data) ){
                     fprintf(stderr, REDEF_ARG, idList->node.loc.first_line, idList->node.loc.first_column, idList->id );
                 }else{
@@ -164,7 +164,7 @@ int SubDeclarNode_visit(void* node){
                 }
                 passinobjTemp->next = NULL;
                 while( idList->PrevNode != NULL ){
-                    passinobjTemp->next = (passinobj*) malloc ( sizeof(passinobj) );
+                    passinobjTemp->next = (symbolobj*) malloc ( sizeof(symbolobj) );
                     ((passinobj*)passinobjTemp->next)->data = (symbolobj*) malloc ( sizeof(symbolobj) );
                     idList = idList->PrevNode;
                     passinobjTemp = (passinobj*)(passinobjTemp->next);
@@ -187,7 +187,7 @@ int SubDeclarNode_visit(void* node){
                 ((arraysymbolobj*)((passinobj*)((funcsymbolobj*)tempList->data)->passInType)->data)->start = curr->typenode->array_start;
                 ((arraysymbolobj*)((passinobj*)((funcsymbolobj*)tempList->data)->passInType)->data)->end = curr->typenode->array_end;
 
-                passinobjTemp = ((funcsymbolobj*)tempList->data)->passInType;
+                passinobjTemp = (passinobj*)((funcsymbolobj*)tempList->data)->passInType;
                 TypeNode* currType = curr->typenode;
                 symbolobj* currArray = passinobjTemp->data;
 
@@ -314,7 +314,7 @@ int SubDeclarNode_visit(void* node){
                     }
 
                     idList = idList->PrevNode;
-                    passinobj* passinobjTemp = ((funcsymbolobj*)tempList->data)->passInType;
+                    passinobj* passinobjTemp = (passinobj*)((funcsymbolobj*)tempList->data)->passInType;
                     TypeNode* currType = curr->typenode;
                     symbolobj* currArray = passinobjTemp->data;
                     ((arraysymbolobj*)currArray)->start = currType->array_start;

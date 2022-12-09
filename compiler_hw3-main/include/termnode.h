@@ -15,7 +15,7 @@ typedef struct termnode{
 
 } TermNode;
 
-Node* newTermNode( int, int, TermNode*, MulNode*, FactorNode*, int, int );
+TermNode* newTermNode( int, int, TermNode*, MulNode*, FactorNode*, int, int );
 
 int TermNode_visit(void*);
 

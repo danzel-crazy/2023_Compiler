@@ -4,7 +4,7 @@
 extern list* listRoot;
 extern int scope;
 
-Node* newVarNode( int firstLine, int firstColumn, char* id, TailNode* tailnode, int lastLine, int lastColumn ){
+VarNode* newVarNode( int firstLine, int firstColumn, char* id, TailNode* tailnode, int lastLine, int lastColumn ){
     VarNode* temp = (VarNode*) malloc ( sizeof(VarNode) );
     temp->id = id;
     temp->tailnode = tailnode;

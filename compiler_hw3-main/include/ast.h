@@ -2,7 +2,6 @@
 #define __AST_H__
 
 #include <stdint.h>
-
 #include "loc.h"
 
 /* It's just for reference,

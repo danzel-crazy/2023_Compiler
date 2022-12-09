@@ -13,7 +13,7 @@ typedef struct explistnode{
 
 } ExpListNode;
 
-Node* newExpListNode( int, int, ExpListNode*, ExpNode*, int, int );
+ExpListNode* newExpListNode( int, int, ExpListNode*, ExpNode*, int, int );
 
 int ExpListNode_visit(void*);
 

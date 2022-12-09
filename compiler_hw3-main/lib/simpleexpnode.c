@@ -3,7 +3,7 @@
 #include "simpleexpnode.h"
 #include "list.h"
 
-Node* newSimpleExpNode( int firstLine, int firstColumn, SimpleExpNode* simpleexpnode, AddNode* addnode, TermNode* termnode, int lastLine, int lastColumn ){
+SimpleExpNode* newSimpleExpNode( int firstLine, int firstColumn, SimpleExpNode* simpleexpnode, AddNode* addnode, TermNode* termnode, int lastLine, int lastColumn ){
     SimpleExpNode* temp = (SimpleExpNode*) malloc ( sizeof(SimpleExpNode) );
     temp->termnode = termnode;
     temp->simpleexpnode = simpleexpnode;

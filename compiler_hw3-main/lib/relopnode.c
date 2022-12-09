@@ -1,7 +1,7 @@
 #include "relopnode.h"
 #include <stdlib.h>
 
-Node* newRelopNode( int firstLine, int firstColumn, int type, int lastLine, int lastColumn ){
+RelopNode* newRelopNode( int firstLine, int firstColumn, int type, int lastLine, int lastColumn ){
     RelopNode* temp = (RelopNode*) malloc ( sizeof(RelopNode) );
     temp->type = type;
     temp->node.type = _RelopNode;

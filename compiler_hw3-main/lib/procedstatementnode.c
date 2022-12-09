@@ -27,7 +27,7 @@ int checkProcedArguments(ExpListNode* listNode, symbolobj** curr, int num){
 
 }
 
-Node* newProcedStatementNode( int firstLine, int firstColumn, char* id, ExpListNode* explistnode, int lastLine, int lastColumn ){
+ProcedStatementNode* newProcedStatementNode( int firstLine, int firstColumn, char* id, ExpListNode* explistnode, int lastLine, int lastColumn ){
     ProcedStatementNode* temp = (ProcedStatementNode*) malloc ( sizeof(ProcedStatementNode) );
     temp->id = id;
     temp->explistnode = explistnode;

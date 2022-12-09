@@ -3,7 +3,7 @@
 #include "termnode.h"
 #include "list.h"
 
-Node* newTermNode( int firstLine, int firstColumn, TermNode* termnode, MulNode* mulnode, FactorNode* factornode, int lastLine, int lastColumn ){
+TermNode* newTermNode( int firstLine, int firstColumn, TermNode* termnode, MulNode* mulnode, FactorNode* factornode, int lastLine, int lastColumn ){
     TermNode* temp = (TermNode*) malloc ( sizeof(TermNode) );
     temp->termnode = termnode;
     temp->mulnode = mulnode;

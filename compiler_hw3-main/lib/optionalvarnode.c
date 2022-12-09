@@ -6,7 +6,7 @@ int OptionalVarNode_visit(void* node){
     return 0;
 }
 
-Node* newOptionalVarNode( int firstLine, int firstColumn ){
+OptionalVarNode* newOptionalVarNode( int firstLine, int firstColumn ){
     OptionalVarNode* temp = (OptionalVarNode*) malloc ( sizeof(OptionalVarNode) );
     temp->node.type = _OptionalVarNode;
     temp->node.visit = OptionalVarNode_visit;

@@ -15,6 +15,6 @@ typedef struct compoundstatementnode{
 
 int CompoundStatementNode_visit(void*);
 
-Node* newCompoundStatementNode( int, int, OptionalStatementSNode*, int, int );
+CompoundStatementNode* newCompoundStatementNode( int, int, OptionalStatementSNode*, int, int );
 
 #endif

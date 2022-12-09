@@ -3,7 +3,7 @@
 #include "boolexpnode.h"
 #include "info.h"
 
-Node* newBoolExpNode( int firstLine, int firstColumn, SimpleExpNode* first, RelopNode* relop, SimpleExpNode* least, int lastLine, int lastColumn ){
+BoolExpNode* newBoolExpNode( int firstLine, int firstColumn, SimpleExpNode* first, RelopNode* relop, SimpleExpNode* least, int lastLine, int lastColumn ){
     BoolExpNode* temp = (BoolExpNode*) malloc ( sizeof(BoolExpNode) );
     temp->first = first;
     temp->relop = relop;

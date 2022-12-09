@@ -8,6 +8,10 @@
         "ast.h": "c",
         "identlistnode.h": "c",
         "subdeclarnode.h": "c",
-        "compoundstatementnode.h": "c"
+        "compoundstatementnode.h": "c",
+        "tailnode.h": "c",
+        "relopnode.h": "c",
+        "prognode.h": "c",
+        "stdint.h": "c"
     }
 }

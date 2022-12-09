@@ -4,7 +4,7 @@
 extern list* listRoot;
 extern int scope;
 
-Node* newCompoundStatementNode( int firstLine, int firstColumn, OptionalStatementSNode* optionalstatementsnode, int lastLine, int lastColumn ){
+CompoundStatementNode* newCompoundStatementNode( int firstLine, int firstColumn, OptionalStatementSNode* optionalstatementsnode, int lastLine, int lastColumn ){
     CompoundStatementNode* temp = (CompoundStatementNode*) malloc ( sizeof(CompoundStatementNode) );
     temp->statements = optionalstatementsnode;
     temp->node.type = _CompoundStatementNode;

@@ -3,7 +3,7 @@
 #include "tailnode.h"
 #include "info.h"
 
-Node* newTailNode( int firstLine, int firstColumn, ExpNode* expnode, TailNode* tailnode, int lastLine, int lastColumn ){
+TailNode* newTailNode( int firstLine, int firstColumn, ExpNode* expnode, TailNode* tailnode, int lastLine, int lastColumn ){
     TailNode* temp = (TailNode*) malloc ( sizeof(TailNode) );
     temp->expnode = expnode;
     temp->tailnode = tailnode;

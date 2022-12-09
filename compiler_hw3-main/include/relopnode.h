@@ -9,7 +9,7 @@ typedef struct relopnode{
 
 } RelopNode;
 
-Node* newRelopNode( int, int, int, int, int );
+RelopNode* newRelopNode( int, int, int, int, int );
 
 int RelopNode_visit(void*);
 

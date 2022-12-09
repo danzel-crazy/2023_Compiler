@@ -6,7 +6,7 @@
 extern list* listRoot;
 extern int scope;
 
-Node* newStatementNode( int firstLine, int firstColumn, int type, VarNode* varnode, ExpNode* expnode, ProcedStatementNode* procedstatementnode, CompoundStatementNode* compoundstatementnode, StatementNode* statementnode1, StatementNode* statementnode2, int lastLine, int lastColumn ){
+StatementNode* newStatementNode( int firstLine, int firstColumn, int type, VarNode* varnode, ExpNode* expnode, ProcedStatementNode* procedstatementnode, CompoundStatementNode* compoundstatementnode, StatementNode* statementnode1, StatementNode* statementnode2, int lastLine, int lastColumn ){
     StatementNode* temp = (StatementNode*) malloc ( sizeof(StatementNode) );
     temp->type = type;
     temp->varnode = varnode;

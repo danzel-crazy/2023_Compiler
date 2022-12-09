@@ -9,7 +9,7 @@ typedef struct MulNode{
     
 } MulNode;
 
-Node* newMulNode( int, int, int, int, int );
+MulNode* newMulNode( int, int, int, int, int );
 
 int MulNode_visit(void*);
 

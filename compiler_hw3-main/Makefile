@@ -41,12 +41,12 @@ prepare:
 test: all
 	make test -C test/
 
-check: all
-	make check -C test/
+# check: all
+# 	make check -C test/
 
 pack:
 	make clean
-	zip -r 0516106-symtab.zip . -x ".*" -x "*.zip" -x "test/*"
+	zip -r icd22-hw3.zip . -x ".*" -x "*.zip" -x "test/*"
 
 .PHONY: clean
 

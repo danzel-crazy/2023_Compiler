@@ -1,7 +1,7 @@
 #include "explistnode.h"
 #include <stdlib.h>
 
-Node* newExpListNode( int firstLine, int firstColumn, ExpListNode* explistnode, ExpNode* expnode, int lastLine, int lastColumn ){
+ExpListNode* newExpListNode( int firstLine, int firstColumn, ExpListNode* explistnode, ExpNode* expnode, int lastLine, int lastColumn ){
     ExpListNode* temp = (ExpListNode*) malloc ( sizeof(ExpListNode) );
     temp->explistnode = explistnode;
     temp->expnode = expnode;

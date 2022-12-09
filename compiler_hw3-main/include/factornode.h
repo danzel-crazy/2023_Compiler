@@ -23,7 +23,7 @@ typedef struct factornode{
     
 } FactorNode;
 
-Node* newFactorNode( int, int, int, char*, TailNode*, ExpListNode*, NumNode*, ExpNode*, FactorNode*, int, int );
+FactorNode* newFactorNode( int, int, int, char*, TailNode*, ExpListNode*, NumNode*, ExpNode*, FactorNode*, int, int );
 
 int FactorNode_visit(void*);
 

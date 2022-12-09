@@ -11,7 +11,7 @@ typedef struct numnode{
 
 } NumNode;
 
-Node* newNumNode( int, int, int, double, char*, int, int );
+NumNode* newNumNode( int, int, int, double, char*, int, int );
 
 int NumNode_visit(void*);
 

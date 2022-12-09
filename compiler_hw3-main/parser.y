@@ -46,8 +46,10 @@ extern char buffer[MAX_LINE_LENG];
 extern FILE *yyin;        /* declared by lex */
 extern char *yytext;      /* declared by lex */
 extern int yyleng;
-
+ 
 static Node* root = NULL;
+// static ProgNode* start = NULL;
+// root->temp = start;
 int scope = 0;
 
 
@@ -122,7 +124,7 @@ static void yyerror(const char *msg);
     ProcedStatementNode* procedstatementnode;
     ExpListNode* explistnode;
     ExpNode* expnode;
-    ExpNode* first;
+    BoolExpNode* boolexpnode;
     SimpleExpNode* simpleexpeode;
     RelopNode* relop;
     MulNode* mulnode;
@@ -151,7 +153,7 @@ static void yyerror(const char *msg);
 %type <procedstatementnode> procdure_statement
 %type <explistnode> expression_list
 %type <expnode> expression
-%type <first> boolexpression
+%type <boolexpnode> boolexpression
 %type <simpleexpeode> simple_expression
 %type <relop> relop
 %type <mulnode> mulop

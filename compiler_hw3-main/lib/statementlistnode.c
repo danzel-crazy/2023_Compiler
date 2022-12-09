@@ -1,7 +1,7 @@
 #include "statementlistnode.h"
 #include <stdlib.h>
 
-Node* newStatementListNode( int firstLine, int firstColumn, StatementListNode* statementlistnode, StatementNode* statementnode, int lastLine, int lastColumn ){
+StatementListNode* newStatementListNode( int firstLine, int firstColumn, StatementListNode* statementlistnode, StatementNode* statementnode, int lastLine, int lastColumn ){
     StatementListNode* temp = (StatementListNode*) malloc ( sizeof(StatementListNode) );
     temp->nextList = statementlistnode;
     temp->statementnode = statementnode;

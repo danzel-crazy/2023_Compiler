@@ -21,7 +21,7 @@ typedef struct statementnode{
 
 } StatementNode;
 
-Node* newStatementNode( int, int, int, VarNode*, ExpNode*, ProcedStatementNode*, CompoundStatementNode*, StatementNode*, StatementNode*, int, int );
+StatementNode* newStatementNode( int, int, int, VarNode*, ExpNode*, ProcedStatementNode*, CompoundStatementNode*, StatementNode*, StatementNode*, int, int );
 
 int StatementNode_visit(void*);
 

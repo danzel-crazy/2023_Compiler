@@ -10,6 +10,6 @@ typedef struct optionalvarnode{
 
 int OptionalVarNode_visit(void*);
 
-Node* newOptionalVarNode( int, int );
+OptionalVarNode* newOptionalVarNode( int, int );
 
 #endif

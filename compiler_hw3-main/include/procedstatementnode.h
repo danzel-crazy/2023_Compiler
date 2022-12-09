@@ -11,7 +11,7 @@ typedef struct procedstatementnode{
 
 } ProcedStatementNode;
 
-Node* newProcedStatementNode( int, int, char*, ExpListNode*, int, int );
+ProcedStatementNode* newProcedStatementNode( int, int, char*, ExpListNode*, int, int );
 
 int ProcedStatementNode_visit(void*);
 

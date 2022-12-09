@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "expnode.h"
+#include "boolexpnode.h"
 
-Node* newExpNode( int firstLine, int firstColumn, ExpNode* first, int op, ExpNode* least, int lastLine, int lastColumn ){
+ExpNode* newExpNode( int firstLine, int firstColumn, BoolExpNode* first, int op, BoolExpNode* least, int lastLine, int lastColumn ){
     ExpNode* temp = (ExpNode*) malloc ( sizeof(ExpNode) );
     temp->first = first;
     temp->least = least;

@@ -1,7 +1,7 @@
 #include "optionalstatementsnode.h"
 #include <stdlib.h>
 
-Node* newOptionalStatementSNode( int firstLine, int firstColumn, StatementListNode* statementlistnode, int lastLine, int lastColumn ){
+OptionalStatementSNode* newOptionalStatementSNode( int firstLine, int firstColumn, StatementListNode* statementlistnode, int lastLine, int lastColumn ){
     OptionalStatementSNode* temp = (OptionalStatementSNode*) malloc ( sizeof(OptionalStatementSNode) );
     temp->statementlistnode = statementlistnode;
     temp->node.type = _OptionalStatementSNode;

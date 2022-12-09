@@ -13,7 +13,7 @@ typedef struct statementlistnode{
 
 } StatementListNode;
 
-Node* newStatementListNode( int, int, struct statementlistnode*, StatementNode*, int, int );
+StatementListNode* newStatementListNode( int, int, struct statementlistnode*, StatementNode*, int, int );
 
 int StatementListNode_visit(void*);
 

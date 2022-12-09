@@ -1,7 +1,7 @@
 #include "numnode.h"
 #include <stdlib.h>
 
-Node* newNumNode( int firstLine, int firstColumn, int type, double num, char* string, int lastLine, int lastColumn ){
+NumNode* newNumNode( int firstLine, int firstColumn, int type, double num, char* string, int lastLine, int lastColumn ){
     NumNode* temp = (NumNode*) malloc ( sizeof(NumNode) );
     temp->type = type;
     if (type == 2){

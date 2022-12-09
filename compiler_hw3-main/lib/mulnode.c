@@ -1,7 +1,7 @@
 #include "mulnode.h"
 #include <stdlib.h>
 
-Node* newMulNode( int firstLine, int firstColumn, int type, int lastLine, int lastColumn ){
+MulNode* newMulNode( int firstLine, int firstColumn, int type, int lastLine, int lastColumn ){
     MulNode* temp = (MulNode*) malloc ( sizeof(MulNode) );
     temp->type = type;
     temp->node.type = _MulNode;

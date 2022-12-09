@@ -1,7 +1,7 @@
 #include "parameterlistnode.h"
 #include <stdlib.h>
 
-Node* newParameterListNode( int firstLine, int firsColumn, OptionalVarNode* optionalvarnode, IdentListNode* identlistnode, TypeNode* typenode, ParameterListNode* parameterlistnode, int lastLine, int lastColumn ){
+ParameterListNode* newParameterListNode( int firstLine, int firsColumn, OptionalVarNode* optionalvarnode, IdentListNode* identlistnode, TypeNode* typenode, ParameterListNode* parameterlistnode, int lastLine, int lastColumn ){
     ParameterListNode* temp = (ParameterListNode*) malloc ( sizeof(ParameterListNode) );
     temp->optionalvarnode = optionalvarnode;
     temp->identlistnode = identlistnode;

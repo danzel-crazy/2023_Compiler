@@ -26,7 +26,7 @@ int checkArguments(ExpListNode* listNode, symbolobj** curr, int num){
     return 1;
 }
 
-Node* newFactorNode( int firstLine, int firstColumn, int type, char* id, TailNode* tailnode, ExpListNode* explistnode, NumNode* numnode, ExpNode* expnode, FactorNode* factornode, int lastLine, int lastColumn ){
+FactorNode* newFactorNode( int firstLine, int firstColumn, int type, char* id, TailNode* tailnode, ExpListNode* explistnode, NumNode* numnode, ExpNode* expnode, FactorNode* factornode, int lastLine, int lastColumn ){
     FactorNode* temp = (FactorNode*) malloc ( sizeof(FactorNode) );
     temp->type = type;
     temp->id = id;

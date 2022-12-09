@@ -9,7 +9,7 @@ typedef struct addnode{
     
 } AddNode;
 
-Node* newAddNode( int, int, int, int, int );
+AddNode* newAddNode( int, int, int, int, int );
 
 int AddNode_visit(void*);
 

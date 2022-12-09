@@ -12,7 +12,7 @@ typedef struct optionalstatementsnode{
 
 } OptionalStatementSNode;
 
-Node* newOptionalStatementSNode( int, int, StatementlistNode*, int, int );
+OptionalStatementSNode* newOptionalStatementSNode( int, int, StatementlistNode*, int, int );
 
 int OptionalStatementSNode_visit(void*);
 
