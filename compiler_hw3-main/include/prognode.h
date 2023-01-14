@@ -7,7 +7,6 @@
 #include "subdeclarnode.h"
 #include "compoundstatementnode.h"
 
-
 int ProgNode_visit();
 
 typedef struct prognode{

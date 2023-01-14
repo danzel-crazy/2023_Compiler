@@ -1,0 +1,139 @@
+For translating a miniplascal program to a Java bytecode file, follow these guidelines:
+
+
+
+
+1. There will a unique class in the bytecode. The name of the class is the name of the minipascal program.
+The superclass is the java/lang/Object.
+
+Use the following lines:
+
+	.class public test_array
+	.super java/lang/Object
+ 
+2. Add an init method for the whole class:
+
+	.method public <init>()V
+	aload_0
+	invokenonvirtual java/lang/Object/<init>()V
+	return
+	.end method
+
+3. The global variables are treated as static fields of the object.
+For the declarations:
+
+	VAR a: ARRAY[1..2] of INTEGER;
+	VAR b: INTEGER;
+	VAR c: ARRAY[1..2] of ARRAY[1..2] of INTEGER;
+
+generate the following bytecode:
+
+	.field public static a [I
+	.field public static b I
+	.field public static c [[I
+
+4. You need to allocate space for the arrays in a (static) method, as follows:
+
+	.method public static vinit()V
+	.limit locals 100
+	.limit stack 100
+	bipush 2
+	bipush 2
+	multianewarray [[I 2
+	putstatic test_array/c [[I
+	ldc 0
+	putstatic test_array/b I
+	bipush 2
+	multianewarray [I 1
+	putstatic test_array/a [I
+	return
+	.end method
+
+
+5. For every function/procedure in minipascal, such as
+
+	FUNCTION ss(rr :INTEGER) : INTEGER;
+	BEGIN
+	  ss := rr
+	END;
+
+create a static function in bytecode:
+
+	.method public static ss(I)I
+	.limit locals 100
+	.limit stack 100
+	ldc 0
+	istore 1
+	iload 0
+	istore 1
+	iload 1
+	ireturn
+	return
+	.end method
+
+Since there are no objects in minipascal, all methods in bytecode can be made "static".
+
+6. There is a main method in the bytecode, which corresponds to the main procedure in minipascal.
+In the main method, you should call the init method:
+
+	.method public static main([Ljava/lang/String;)V
+	.limit locals 100
+	.limit stack 100
+	invokestatic test_array/vinit()V	
+	......
+	return
+	.end method
+
+7. You translate each statement in the minipascal program into bytecode. For example, consider
+
+	printInt(c[2][1]);
+
+The corresponding bytecode is as follows:
+
+	getstatic java/lang/System/out Ljava/io/PrintStream;
+	getstatic test_array/c [[I
+	ldc 2
+	ldc 1
+	isub
+	aaload
+	ldc 1
+	ldc 1
+	isub
+	iaload
+	invokestatic java/lang/String/valueOf(I)Ljava/lang/String;
+	invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V
+
+8. A compiled program consists of some declarations and a list of methods. Program execution starts from the main method.
+
+	.class public test_array
+	.super java/lang/Object
+
+	.field public static a [I
+	.field public static b I
+	.field public static c [[I
+
+	.method public <init>()V
+	aload_0
+	invokenonvirtual java/lang/Object/<init>()V
+	...
+	return
+	.end method
+
+	.method public static vinit()V
+	.limit locals 100
+	.limit stack 100
+	...
+	return
+	.end method
+
+	.method public static main([Ljava/lang/String;)V
+	.limit locals 100
+	.limit stack 100
+	...
+	return
+	.end method
+
+9. For the translation of other minipascal statements, such as loop, if-then, etc., please consult my notes 211-2CODE.GENERATION.pdf.
+
+
+--

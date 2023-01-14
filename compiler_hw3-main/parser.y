@@ -182,7 +182,7 @@ prog: PROGRAM IDENTIFIER LPAREN identifier_list RPAREN SEMICOLON declarations su
         yylval.val, yylval.text, yylval.dval to get the data (type defined in %union) you assigned by scanner.
         */
         // printf("program node is @ line: %d, column: %d\n", @10.first_line, @10.first_column);
-        root = newProgNode( @1.first_line, @1.first_column, $2, $4, $7, $8, $9, @10.first_line, @10.first_column );
+        root = (Node*)newProgNode( @1.first_line, @1.first_column, $2, $4, $7, $8, $9, @10.first_line, @10.first_column );
     }
     ;
 
