@@ -38,8 +38,14 @@ char buffer[MAX_LINE_LENG];
 
 %}
 
+%x comment
+
 %option nounput
 %option noinput
+token_on "#pragma token on" 
+token_off "#pragma token off"
+list_on  "#pragma list on"
+list_off "#pragma list off"
 
 A [aA]
 B [bB]
@@ -112,14 +118,33 @@ Z [zZ]
 "!="                        {LOG(KEYWORD); return(NEQOP);      }
 
   /* define identifier here */
+([a-zA-Z]([a-zA-Z0-9"_"])*[a-zA-Z0-9]+|[a-zA-Z])  { yylval.text = strdup(yytext); LOG(IDENTIFIER); return(IDENTIFIER); }
 
   /* define INTEGERNUM, REALNUMBER, SCIENTIFIC here */
+[0-9]+                 { yylval.val = atoi(yytext); LOG(NUMBER); return(INTEGERNUM); }
+[0-9]+"."[0-9]+        { yylval.dval = atof(yytext); LOG(NUMBER); return(REALNUMBER); }
+[0-9][0-9]*"."*[0-9]*[eE]"-"*"+"*[0-9]+  { yylval.text = strdup(yytext); LOG(NUMBER); return(SCIENTIFIC); }
 
   /* define single/multiple line comment here */
+"//".*              {LIST;} 
 
+"/*"                {LIST, BEGIN(comment);}
+<comment>\n         {
+LIST;
+LIST_FLUSH;
+line_no++, col_no = 1;
+}
+<comment>[^*\n]*      {LIST;}
+<comment>"*"+[^*/\n]* {LIST;}
+<comment>"*"+"/"      {LIST, BEGIN(INITIAL);} 
   /* define string constant (LITERALSTR) here */
+\"(\\.|[^"\\])*\"                 { LOG(STRING); return(LITERALSTR); }
 
   /* define pragma here */
+  {list_off} opt_list = 0;
+	{list_on} {opt_list = 1, LIST;}
+  {token_on} {opt_list = 1, LIST;}
+  {token_off} opt_list = 0;
 
  /*
     yylval.text = strdup, strndup ... (yytext)

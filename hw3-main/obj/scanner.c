@@ -980,7 +980,7 @@ YY_RULE_SETUP
 case 10:
 YY_RULE_SETUP
 #line 92 "scanner.l"
-{yylval.node = newTokenNode(NODE_PBEGIN); return(PBEGIN);     }
+{yylval.node = newTokenNode(NODE_PBEGIN); yylval.node->lineno=line_no; return(PBEGIN);     }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP

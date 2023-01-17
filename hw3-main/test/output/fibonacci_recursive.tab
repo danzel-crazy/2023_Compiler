@@ -1,0 +1,80 @@
+ 
+ 
+
+   
+
+            1 
+          1
+              0 
+          0
+        12
+
+
+
+
+    
+    
+
+/prog
+        /PROGRAM
+        fibonacci_recursive
+        /(
+        /identifier_list
+                output
+        /)
+        /;
+        /declarations
+                /declarations
+                /VAR
+                /identifier_list
+                        a
+                /:
+                /type
+                        /standard_type
+                                /INTEGER
+                /;
+        /subprogram_declarations
+                /subprogram_declarations
+                /;
+        /compound_statement
+                /statement
+                /optional_statements
+                        /statement_list
+                                /statement_list
+                                        /statement
+                                                /variable
+                                                        a
+                                                        /tail
+                                                /:=
+                                                /expression
+                                                        /boolexpression
+                                                                /simple_expressiong
+                                                                        /term
+                                                                                /factor
+                                                                                        readlnI
+                                                                                        /tail
+                                /;
+                                /statement
+                                        /procedure_statement
+                                                writelnI
+                                                /(
+                                                /expression_list
+                                                        /expression
+                                                                /boolexpression
+                                                                        /simple_expressiong
+                                                                                /term
+                                                                                        /factor
+                                                                                                fa
+                                                                                                /(
+                                                                                                /expression_list
+                                                                                                        /expression
+                                                                                                                /boolexpression
+                                                                                                                        /simple_expressiong
+                                                                                                                                /term
+                                                                                                                                        /factor
+                                                                                                                                                a
+                                                                                                                                                /tail
+                                                                                                /)
+                                                /)
+                /END
+        /.

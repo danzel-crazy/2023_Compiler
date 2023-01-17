@@ -1,0 +1,82 @@
+   
+     
+
+      1
+      
+    
+
+/prog
+        /PROGRAM
+        ex06
+        /(
+        /identifier_list
+                /identifier_list
+                        /identifier_list
+                                input
+                        /,
+                        output
+                /,
+                error
+        /)
+        /;
+        /declarations
+                /declarations
+                /VAR
+                /identifier_list
+                        a
+                /:
+                /type
+                        /standard_type
+                                /INTEGER
+                /;
+        /subprogram_declarations
+        /compound_statement
+                /statement
+                /optional_statements
+                        /statement_list
+                                /statement_list
+                                        /statement_list
+                                                /statement_list
+                                                        /statement
+                                                                /variable
+                                                                        a
+                                                                        /tail
+                                                                /:=
+                                                                /expression
+                                                                        /boolexpression
+                                                                                /simple_expressiong
+                                                                                        /term
+                                                                                                /factor
+                                                                                                        /num
+                                                                                                                1
+                                                /;
+                                                /statement
+                                                        /variable
+                                                                a
+                                                                /tail
+                                                        /:=
+                                                        /expression
+                                                                /boolexpression
+                                                                        /simple_expressiong
+                                                                                /term
+                                                                                        /factor
+                                                                                                a
+                                                                                                /tail
+                                        /;
+                                        /statement
+                                                /procedure_statement
+                                                        writelnI
+                                                        /(
+                                                        /expression_list
+                                                                /expression
+                                                                        /boolexpression
+                                                                                /simple_expressiong
+                                                                                        /term
+                                                                                                /factor
+                                                                                                        a
+                                                                                                        /tail
+                                                        /)
+                                /;
+                                /statement
+                /END
+        /.

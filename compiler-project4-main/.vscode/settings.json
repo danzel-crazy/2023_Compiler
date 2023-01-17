@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "ast-print.h": "c",
+        "string.h": "c"
+    }
+}

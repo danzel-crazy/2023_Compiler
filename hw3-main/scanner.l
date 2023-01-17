@@ -88,7 +88,7 @@ Z [zZ]
 {S}{T}{R}{I}{N}{G}          {yylval.node = newTokenNode(NODE_STRING);yylval.node->lineno=line_no;return(STRING);     }
 {F}{U}{N}{C}{T}{I}{O}{N}    {yylval.node = newTokenNode(NODE_FUNCTION);yylval.node->lineno=line_no; return(FUNCTION);   }
 {P}{R}{O}{C}{E}{D}{U}{R}{E} {yylval.node = newTokenNode(NODE_PROCEDURE);yylval.node->lineno=line_no;return(PROCEDURE);  }
-{B}{E}{G}{I}{N}             {yylval.node = newTokenNode(NODE_PBEGIN); return(PBEGIN);     }
+{B}{E}{G}{I}{N}             {yylval.node = newTokenNode(NODE_PBEGIN); yylval.node->lineno=line_no; return(PBEGIN);     }
 {E}{N}{D}                   {yylval.node = newTokenNode(NODE_END);yylval.node->lineno=line_no; return(END);        }
 {I}{F}                      {yylval.node = newTokenNode(NODE_IF); return(IF);         }
 {T}{H}{E}{N}                {yylval.node = newTokenNode(NODE_THEN); return(THEN);       }

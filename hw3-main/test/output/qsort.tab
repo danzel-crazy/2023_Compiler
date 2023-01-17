@@ -1,0 +1,361 @@
+ 
+
+    
+
+            
+    
+
+          150  
+
+
+
+        150  
+
+      
+
+        
+
+              0
+
+              
+
+               0 
+
+            
+
+                    1
+
+                  
+
+                  
+
+            
+
+
+        
+
+
+        
+    
+             
+        
+              
+    
+             
+    
+             
+
+        
+
+              
+
+
+                1
+
+              
+
+                
+            
+        1
+            
+        
+            0
+           1 
+                
+            
+                  0
+          
+
+                   1 
+        
+                    1
+            1
+                
+            
+                0
+               1 
+                    
+                
+                      0
+              
+        
+
+        1
+            
+        
+            0
+           1 
+                
+            
+                  0
+          
+
+                   1 
+        
+                        1
+            1
+                
+            
+                0
+               1 
+                    
+                
+                      0
+              
+        
+
+                    
+        
+
+                     
+
+                      
+
+                      
+
+        
+          
+
+            
+
+             
+
+              
+
+              
+
+              
+
+        
+
+       
+
+        
+
+             
+        
+
+             
+
+        
+
+                
+            
+
+                   
+
+
+                 1
+
+                1 
+
+            
+            
+            
+            
+
+        
+
+        150  
+
+        
+
+
+            1 
+
+        
+
+
+    
+
+        
+
+
+        
+
+          1
+
+            
+
+        
+
+            
+
+              1
+
+        
+
+    
+/prog
+        /PROGRAM
+        qsort
+        /(
+        /identifier_list
+                void
+        /)
+        /;
+        /declarations
+                /declarations
+                        /declarations
+                        /VAR
+                        /identifier_list
+                                /identifier_list
+                                        /identifier_list
+                                                /identifier_list
+                                                        i
+                                                /,
+                                                j
+                                        /,
+                                        tmp
+                                /,
+                                size
+                        /:
+                        /type
+                                /standard_type
+                                        /INTEGER
+                        /;
+                /VAR
+                /identifier_list
+                        arr
+                /:
+                /type
+                        /ARRAY
+                        /[
+                        /num
+                                1
+                        /..
+                        /num
+                                50
+                        /]
+                        /OF
+                        /type
+                                /standard_type
+                                        /INTEGER
+                /;
+        /subprogram_declarations
+                /subprogram_declarations
+                        /subprogram_declarations
+                                /subprogram_declarations
+                                        /subprogram_declarations
+                                        /;
+                                /;
+                        /;
+                /;
+        /compound_statement
+                /statement
+                /optional_statements
+                        /statement_list
+                                /statement_list
+                                        /statement_list
+                                                /statement_list
+                                                        /statement
+                                                                /procedure_statement
+                                                                        readArr
+                                                                        /(
+                                                                        /expression_list
+                                                                                /expression
+                                                                                        /boolexpression
+                                                                                                /simple_expressiong
+                                                                                                        /term
+                                                                                                                /factor
+                                                                                                                        arr
+                                                                                                                        /tail
+                                                                        /)
+                                                /;
+                                                /statement
+                                                        /procedure_statement
+                                                                quicksort
+                                                                /(
+                                                                /expression_list
+                                                                        /expression
+                                                                                /boolexpression
+                                                                                        /simple_expressiong
+                                                                                                /term
+                                                                                                        /factor
+                                                                                                                arr
+                                                                                                                /tail
+                                                                /)
+                                        /;
+                                        /statement
+                                                /variable
+                                                        i
+                                                        /tail
+                                                /:=
+                                                /expression
+                                                        /boolexpression
+                                                                /simple_expressiong
+                                                                        /term
+                                                                                /factor
+                                                                                        /num
+                                                                                                1
+                                /;
+                                /statement
+                                        /WHILE
+                                        /expression
+                                                /boolexpression
+                                                        /simple_expressiong
+                                                                /term
+                                                                        /factor
+                                                                                i
+                                                                                /tail
+                                                        /relop
+                                                        /simple_expressiong
+                                                                /term
+                                                                        /factor
+                                                                                size
+                                                                                /tail
+                                        /DO
+                                        /statement
+                                                /compound_statement
+                                                        /statement
+                                                        /optional_statements
+                                                                /statement_list
+                                                                        /statement_list
+                                                                                /statement_list
+                                                                                        /statement
+                                                                                                /procedure_statement
+                                                                                                        writelnI
+                                                                                                        /(
+                                                                                                        /expression_list
+                                                                                                                /expression
+                                                                                                                        /boolexpression
+                                                                                                                                /simple_expressiong
+                                                                                                                                        /term
+                                                                                                                                                /factor
+                                                                                                                                                        arr
+                                                                                                                                                        /tail
+                                                                                                                                                                /[
+                                                                                                                                                                /expression
+                                                                                                                                                                        /boolexpression
+                                                                                                                                                                                /simple_expressiong
+                                                                                                                                                                                        /term
+                                                                                                                                                                                                /factor
+                                                                                                                                                                                                        i
+                                                                                                                                                                                                        /tail
+                                                                                                                                                                /]
+                                                                                                                                                                /tail
+                                                                                                        /)
+                                                                                /;
+                                                                                /statement
+                                                                                        /variable
+                                                                                                i
+                                                                                                /tail
+                                                                                        /:=
+                                                                                        /expression
+                                                                                                /boolexpression
+                                                                                                        /simple_expressiong
+                                                                                                                /simple_expressiong
+                                                                                                                        /term
+                                                                                                                                /factor
+                                                                                                                                        i
+                                                                                                                                        /tail
+                                                                                                                /addop
+                                                                                                                /term
+                                                                                                                        /factor
+                                                                                                                                /num
+                                                                                                                                        1
+                                                                        /;
+                                                                        /statement
+                                                        /END
+                /END
+        /.

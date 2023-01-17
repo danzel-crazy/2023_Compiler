@@ -1,0 +1,104 @@
+   
+     
+     
+     
+
+    
+    
+    
+
+/prog
+        /PROGRAM
+        ex02
+        /(
+        /identifier_list
+                /identifier_list
+                        /identifier_list
+                                input
+                        /,
+                        output
+                /,
+                error
+        /)
+        /;
+        /declarations
+                /declarations
+                        /declarations
+                                /declarations
+                                /VAR
+                                /identifier_list
+                                        a
+                                /:
+                                /type
+                                        /standard_type
+                                                /REAL
+                                /;
+                        /VAR
+                        /identifier_list
+                                b
+                        /:
+                        /type
+                                /standard_type
+                                        /INTEGER
+                        /;
+                /VAR
+                /identifier_list
+                        c
+                /:
+                /type
+                        /standard_type
+                                /STRING
+                /;
+        /subprogram_declarations
+        /compound_statement
+                /statement
+                /optional_statements
+                        /statement_list
+                                /statement_list
+                                        /statement_list
+                                                /statement_list
+                                                        /statement
+                                                                /procedure_statement
+                                                                        writelnR
+                                                                        /(
+                                                                        /expression_list
+                                                                                /expression
+                                                                                        /boolexpression
+                                                                                                /simple_expressiong
+                                                                                                        /term
+                                                                                                                /factor
+                                                                                                                        a
+                                                                                                                        /tail
+                                                                        /)
+                                                /;
+                                                /statement
+                                                        /procedure_statement
+                                                                writelnI
+                                                                /(
+                                                                /expression_list
+                                                                        /expression
+                                                                                /boolexpression
+                                                                                        /simple_expressiong
+                                                                                                /term
+                                                                                                        /factor
+                                                                                                                b
+                                                                                                                /tail
+                                                                /)
+                                        /;
+                                        /statement
+                                                /procedure_statement
+                                                        writelnS
+                                                        /(
+                                                        /expression_list
+                                                                /expression
+                                                                        /boolexpression
+                                                                                /simple_expressiong
+                                                                                        /term
+                                                                                                /factor
+                                                                                                        c
+                                                                                                        /tail
+                                                        /)
+                                /;
+                                /statement
+                /END
+        /.

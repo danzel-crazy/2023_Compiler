@@ -1,0 +1,24 @@
+   
+
+
+/prog
+        /PROGRAM
+        ex00
+        /(
+        /identifier_list
+                /identifier_list
+                        /identifier_list
+                                input
+                        /,
+                        output
+                /,
+                error
+        /)
+        /;
+        /declarations
+        /subprogram_declarations
+        /compound_statement
+                /statement
+                /optional_statements
+                /END
+        /.

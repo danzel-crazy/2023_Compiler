@@ -1,0 +1,22 @@
+#include "addnode.h"
+#include <stdlib.h>
+#include <ast_gen.h>
+
+AddNode* newAddNode( int firstLine, int firstColumn, int positive, int lastLine, int lastColumn ){
+    AddNode* temp = (AddNode*) malloc ( sizeof(AddNode) );
+    temp->positive = positive;
+    temp->node.type = _AddNode;
+    temp->node.visit = AddNode_visit;
+    temp->node.loc.first_line = firstLine;
+    temp->node.loc.first_column = firstColumn;
+    temp->node.loc.last_line = lastLine;
+    temp->node.loc.last_column = lastColumn;
+    
+    return temp;
+}
+
+int AddNode_visit(void* node){
+    AddNode* temp = (AddNode*) node;
+    return temp->positive;
+    // return 0;
+}

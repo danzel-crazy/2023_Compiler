@@ -1,0 +1,103 @@
+   
+   
+  
+
+   
+    12  
+
+  1  10    // No error since this reference is to local variable
+  1  111
+    1
+
+
+
+      3
+      4
+    
+
+/prog
+        /PROGRAM
+        test_global3
+        /(
+        /identifier_list
+                /identifier_list
+                        /identifier_list
+                                input
+                        /,
+                        output
+                /,
+                error
+        /)
+        /;
+        /declarations
+                /declarations
+                        /declarations
+                        /VAR
+                        /identifier_list
+                                /identifier_list
+                                        a
+                                /,
+                                b
+                        /:
+                        /type
+                                /standard_type
+                                        /INTEGER
+                        /;
+                /VAR
+                /identifier_list
+                        c
+                /:
+                /type
+                        /standard_type
+                                /REAL
+                /;
+        /subprogram_declarations
+                /subprogram_declarations
+                /;
+        /compound_statement
+                /statement
+                /optional_statements
+                        /statement_list
+                                /statement_list
+                                        /statement_list
+                                                /statement
+                                                        /variable
+                                                                a
+                                                                /tail
+                                                        /:=
+                                                        /expression
+                                                                /boolexpression
+                                                                        /simple_expressiong
+                                                                                /term
+                                                                                        /factor
+                                                                                                /num
+                                                                                                        3
+                                        /;
+                                        /statement
+                                                /variable
+                                                        b
+                                                        /tail
+                                                /:=
+                                                /expression
+                                                        /boolexpression
+                                                                /simple_expressiong
+                                                                        /term
+                                                                                /factor
+                                                                                        /num
+                                                                                                4
+                                /;
+                                /statement
+                                        /procedure_statement
+                                                writelnI
+                                                /(
+                                                /expression_list
+                                                        /expression
+                                                                /boolexpression
+                                                                        /simple_expressiong
+                                                                                /term
+                                                                                        /factor
+                                                                                                tt
+                                                                                                /tail
+                                                /)
+                /END
+        /.
