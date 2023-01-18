@@ -248,21 +248,23 @@ void PBEGIN_gen()
     for (int i = 0; i < array_index; i++){
         symbolobj* temp = array[i]->data;
         symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
-        
+        int size_1 = ((arraysymbolobj*)temp)->end - ((arraysymbolobj*)temp)->start + 1;
+        int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
         // fprintf(fd, "%d\n",temp->type);
         switch (array_label[i])
         {
         case 0:
             if (temp_sceond->type == Array)
             {
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->end);
+                
+                fprintf(fd, "    ldc %d\n",size_1);
+                fprintf(fd, "    ldc %d\n",size_2);
                 fprintf(fd, "    multianewarray [[I 2\n");
                 fprintf(fd, "    putstatic %s/%s [[I\n",prog,array[i]->id);
             }
             else
             {
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    ldc %d\n",size_1);
                 fprintf(fd, "    multianewarray [I 1\n");
                 fprintf(fd, "    putstatic %s/%s [I\n",prog,array[i]->id);
             }
@@ -270,14 +272,14 @@ void PBEGIN_gen()
         case 1:
             if (temp->type == Array)
             {
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->end);
+                fprintf(fd, "    ldc %d\n",size_1);
+                fprintf(fd, "    ldc %d\n",size_2);
                 fprintf(fd, "    multianewarray [[F 2\n");
                 fprintf(fd, "    putstatic %s/%s [[F\n",prog,array[i]->id);
             }
             else
             {
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    ldc %d\n",size_1);
                 fprintf(fd, "    multianewarray [F 1\n");
                 fprintf(fd, "    putstatic %s/%s [F\n",prog,array[i]->id);
             }
@@ -285,14 +287,14 @@ void PBEGIN_gen()
         case 2:
             if (temp->type == Array)
             {
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->end);
+                fprintf(fd, "    ldc %d\n",size_1);
+                fprintf(fd, "    ldc %d\n",size_2);
                 fprintf(fd, "    multianewarray [[Ljava/lang/String; 2\n");
                 fprintf(fd, "    putstatic %s/%s [[Ljava/lang/String;\n",prog,array[i]->id);
             }
             else
             {
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    ldc %d\n",size_1);
                 fprintf(fd, "    multianewarray [Ljava/lang/String; 1\n");
                 fprintf(fd, "    putstatic %s/%s [Ljava/lang/String;\n",prog,array[i]->id);
             }
