@@ -72,58 +72,112 @@ LAB2:
     ldc 2
     multianewarray [[I 2
     putstatic test_array/c [[I
-    a
+    getstatic test_array/a [I
     ldc 1
     ldc 1
-    putstatic test_array/a I
-    a
+    isub
+    ldc 1
+    iastore
+    getstatic test_array/a [I
     ldc 2
+    ldc 1
+    isub
     ldc 2
-    putstatic test_array/a I
-    c
+    iastore
+    getstatic test_array/c [[I
     ldc 1
     ldc 1
-    invokestatic test_array/a()I
+    isub
+    aaload
     ldc 1
+    ldc 1
+    isub
+    getstatic test_array/a [I
+    ldc 1
+    iaload
     putstatic test_array/c I
-    c
+    getstatic test_array/c [[I
     ldc 1
+    ldc 1
+    isub
+    aaload
     ldc 2
-    invokestatic test_array/a()I
+    ldc 1
+    isub
+    getstatic test_array/a [I
     ldc 2
+    iaload
     putstatic test_array/c I
-    c
+    getstatic test_array/c [[I
     ldc 2
     ldc 1
-    invokestatic test_array/a()I
-    ldc 2
-    invokestatic test_array/a()I
+    isub
+    aaload
     ldc 1
+    ldc 1
+    isub
+    getstatic test_array/a [I
+    ldc 2
+    iaload
+    getstatic test_array/a [I
+    ldc 1
+    iaload
     iadd
     putstatic test_array/c I
-    c
+    getstatic test_array/c [[I
     ldc 2
+    ldc 1
+    isub
+    aaload
     ldc 2
-    invokestatic test_array/a()I
+    ldc 1
+    isub
+    getstatic test_array/a [I
     ldc 2
-    invokestatic test_array/a()I
+    iaload
+    getstatic test_array/a [I
     ldc 2
+    iaload
     iadd
     putstatic test_array/c I
-    invokestatic test_array/c()I
+    getstatic test_array/c [[I
     ldc 1
     ldc 1
-    invokestatic test_array/c()I
+    isub
+    aaload
     ldc 1
+    ldc 1
+    isub
+    iaload
+    getstatic test_array/c [[I
+    ldc 1
+    ldc 1
+    isub
+    aaload
     ldc 2
+    ldc 1
+    isub
+    iaload
     iadd
-    invokestatic test_array/c()I
+    getstatic test_array/c [[I
     ldc 2
     ldc 1
+    isub
+    aaload
+    ldc 1
+    ldc 1
+    isub
+    iaload
     iadd
-    invokestatic test_array/c()I
+    getstatic test_array/c [[I
     ldc 2
+    ldc 1
+    isub
+    aaload
     ldc 2
+    ldc 1
+    isub
+    iaload
     iadd
     invokestatic test_array/writelnI(I)V
     return

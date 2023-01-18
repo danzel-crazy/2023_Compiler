@@ -77,9 +77,10 @@ L3:
     getstatic qsort/size I
     ldc 1
     iadd
-    arr
+    getstatic qsort/arr [I
     getstatic qsort/size I
     getstatic qsort/input I
+    iastore
     goto L1
 L4:
 .end method
@@ -92,6 +93,8 @@ L4:
 .field public static right I
 .field public static pivot I
 .field public static tmp I
+    getstatic qsort/arr [I
+    iaload
     ldc 1
     iadd
 L5:
@@ -126,7 +129,9 @@ L12:
     ldc 1
 L13:
     ifeq L14
+    getstatic qsort/arr [I
     getstatic qsort/left I
+    iaload
     getstatic qsort/pivot I
     if_icmplt L15
     ldc 0
@@ -177,7 +182,9 @@ L27:
     ldc 1
 L28:
     ifeq L29
+    getstatic qsort/arr [I
     getstatic qsort/left I
+    iaload
     getstatic qsort/pivot I
     if_icmplt L30
     ldc 0
@@ -217,7 +224,9 @@ L40:
     ldc 1
 L41:
     ifeq L42
+    getstatic qsort/arr [I
     getstatic qsort/right I
+    iaload
     getstatic qsort/pivot I
     if_icmpge L43
     ldc 0
@@ -268,7 +277,9 @@ L55:
     ldc 1
 L56:
     ifeq L57
+    getstatic qsort/arr [I
     getstatic qsort/right I
+    iaload
     getstatic qsort/pivot I
     if_icmpge L58
     ldc 0
@@ -295,23 +306,33 @@ L64:
     ldc 1
 L65:
     ifne L66
+    getstatic qsort/arr [I
     getstatic qsort/left I
-    arr
+    iaload
+    getstatic qsort/arr [I
     getstatic qsort/left I
+    getstatic qsort/arr [I
     getstatic qsort/right I
-    arr
+    iaload
+    getstatic qsort/arr [I
     getstatic qsort/right I
     getstatic qsort/tmp I
+    iastore
     goto L67
 L66:
 L67:
     goto L65
 L68:
-    arr
+    getstatic qsort/arr [I
+    iaload
+    getstatic qsort/arr [I
+    getstatic qsort/arr [I
     getstatic qsort/right I
-    arr
+    iaload
+    getstatic qsort/arr [I
     getstatic qsort/right I
     getstatic qsort/tmp I
+    iastore
     getstatic qsort/right I
     ireturn
     ireturn
@@ -389,10 +410,10 @@ L72:
     ldc 50
     multianewarray [I 1
     putstatic qsort/arr [I
-    invokestatic qsort/arr()I
-    invokestatic qsort/arr()I
-    invokestatic qsort/arr()I
-    invokestatic qsort/arr()I
+    getstatic qsort/arr [I
+    getstatic qsort/arr [I
+    getstatic qsort/arr [I
+    getstatic qsort/arr [I
     ldc 1
     putstatic qsort/i I
 L73:
@@ -405,8 +426,9 @@ L74:
     ldc 1
 L75:
     ifeq L76
-    invokestatic qsort/arr()I
+    getstatic qsort/arr [I
     getstatic qsort/i I
+    iaload
     invokestatic qsort/writelnI(I)V
     getstatic qsort/i I
     ldc 1

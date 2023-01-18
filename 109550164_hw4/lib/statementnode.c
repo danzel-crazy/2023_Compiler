@@ -44,11 +44,16 @@ int StatementNode_visit(void* node){
     // variable ASSIGNMENT expression
 
         // visit variable
+        
+        
         temp1 = (long) temp->varnode->node.visit(temp->varnode);
-
+        arr_assign_in();
         // visit expression
         temp2 = (long) temp->expnode->node.visit(temp->expnode);
+        arr_assign_out();
         variable_gen(temp->varnode->id);
+        arr_assign_gen();
+        array_out();
         // debug
         // fprintf(stderr, "Data Type: %ld\n", temp1);
         // fprintf(stderr, "Data Type: %ld\n", temp2);

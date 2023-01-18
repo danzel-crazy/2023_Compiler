@@ -69,21 +69,37 @@ LAB2:
     ldc 2
     multianewarray [[I 2
     putstatic ex09/b [[I
-    a
+    getstatic ex09/a [I
     ldc 2
     ldc 1
-    putstatic ex09/a I
-    b
+    isub
     ldc 1
+    iastore
+    getstatic ex09/b [[I
+    ldc 1
+    ldc 1
+    isub
+    aaload
     ldc 2
+    ldc 1
+    isub
     ldc 2
-    putstatic ex09/b I
-    invokestatic ex09/a()I
+    iastore
+    getstatic ex09/a [I
     ldc 2
+    ldc 1
+    isub
+    iaload
     invokestatic ex09/writelnI(I)V
-    invokestatic ex09/b()I
+    getstatic ex09/b [[I
     ldc 1
+    ldc 1
+    isub
+    aaload
     ldc 2
+    ldc 1
+    isub
+    iaload
     invokestatic ex09/writelnI(I)V
     return
 .end method

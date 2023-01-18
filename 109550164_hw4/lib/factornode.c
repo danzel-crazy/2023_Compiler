@@ -86,9 +86,11 @@ int FactorNode_visit(void* node){
 
             // debug
             // fprintf(stderr, "%d: %d has an Node\n", temp->tailnode->node.loc.first_line, temp->tailnode->node.loc.first_column);
-
+            array_in();
+            // arr_assign_gen();
             temp->tailnode->node.visit(temp->tailnode);
-            
+            func_array_end();
+            array_out();
         }
         find_func(temp->id, 0);
         return datatype;

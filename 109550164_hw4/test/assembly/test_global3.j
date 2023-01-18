@@ -65,17 +65,26 @@ LAB2:
 .limit stack 50
 .field public static a [I
 .field public static b [I
-    a
+    getstatic test_global3/a [I
     ldc 1
+    ldc 1
+    isub
     ldc 10
-    b
+    iastore
+    getstatic test_global3/b [I
     ldc 1
+    ldc 1
+    isub
     getstatic test_global3/a I
     ldc 1
+    iaload
     ldc 11
     iadd
     getstatic test_global3/b I
     ldc 1
+    ldc 1
+    isub
+    iaload
     ireturn
     ireturn
 .end method

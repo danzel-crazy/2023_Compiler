@@ -94,12 +94,12 @@ LAB2:
     putstatic test2/z I
     ldc 0
     putstatic test2/z I
-    ldc 1
-    ldc 3
+    ldc 2
+    ldc 2
     multianewarray [[I 2
     putstatic test2/g [[I
-    ldc 1
-    ldc 5
+    ldc 2
+    ldc 2
     multianewarray [[I 2
     putstatic test2/r [[I
     getstatic test2/aa I
@@ -184,14 +184,22 @@ L15:
     invokestatic test2/writelnI(I)V
     goto L13
 L16:
-    g
+    getstatic test2/g [[I
     ldc 0
+    ldc 0
+    isub
+    aaload
     ldc 3
+    ldc 2
+    isub
     ldc 4
+    ldc 0
+    isub
     getstatic test2/aa I
-    invokestatic test2/r()I
+    getstatic test2/r [[I
     ldc 1
     ldc 4
+    iaload
     iadd
     ldc 2
     ldc 3
@@ -204,10 +212,18 @@ L16:
     ldc 6.500000
     iadd
     putstatic test2/g I
-    invokestatic test2/g()I
+    getstatic test2/g [[I
     ldc 0
+    ldc 0
+    isub
+    aaload
     ldc 3
+    ldc 2
+    isub
     ldc 4
+    ldc 0
+    isub
+    iaload
     invokestatic test2/writelnI(I)V
     return
 .end method

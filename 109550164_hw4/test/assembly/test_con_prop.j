@@ -76,38 +76,70 @@ LAB2:
     multianewarray [I 1
     putstatic test_con_prop/a [I
     ldc 2
-    ldc 4
+    ldc 2
     multianewarray [[I 2
     putstatic test_con_prop/c [[I
-    a
+    getstatic test_con_prop/a [I
     ldc 3
+    ldc 1
+    isub
     ldc 4
+    ldc 1
+    isub
     iadd
     ldc 6
+    ldc 1
+    isub
     isub
     ldc 10
-    putstatic test_con_prop/a I
-    c
+    iastore
+    getstatic test_con_prop/c [[I
     ldc 1
+    ldc 1
+    isub
+    aaload
     ldc 100
+    ldc 3
+    isub
     ldc 0
+    ldc 1
+    isub
     imul
     iadd
+    aaload
     ldc 1
+    ldc 3
+    isub
     iadd
     ldc 2
+    ldc 1
+    isub
+    aaload
     ldc 4
+    ldc 3
+    isub
     ldc 2
+    ldc 1
+    isub
     idiv
     iadd
     ldc 100
-    putstatic test_con_prop/c I
-    invokestatic test_con_prop/a()I
+    iastore
+    getstatic test_con_prop/a [I
     ldc 1
+    ldc 1
+    isub
+    iaload
     invokestatic test_con_prop/writelnI(I)V
-    invokestatic test_con_prop/c()I
+    getstatic test_con_prop/c [[I
     ldc 2
+    ldc 1
+    isub
+    aaload
     ldc 4
+    ldc 3
+    isub
+    iaload
     invokestatic test_con_prop/writelnI(I)V
     return
 .end method

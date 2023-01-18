@@ -113,12 +113,12 @@ LAB2:
     ldc 10
     multianewarray [I 1
     putstatic test1/e [I
-    ldc 57
-    ldc 57
+    ldc 35
+    ldc 35
     multianewarray [[I 2
     putstatic test1/k [[I
-    ldc 57
-    ldc 57
+    ldc 35
+    ldc 35
     multianewarray [[I 2
     putstatic test1/l [[I
     ldc 8
@@ -289,7 +289,7 @@ L30:
     ldc 1
 L31:
     ifeq L32
-    d
+    getstatic test1/d [I
     getstatic test1/b I
     getstatic test1/b I
     getstatic test1/b I
@@ -298,48 +298,78 @@ L31:
     iadd
     imul
     iadd
-    putstatic test1/d I
+    iastore
     getstatic test1/b I
     ldc 1
     iadd
     putstatic test1/b I
     goto L29
 L32:
-    e
+    getstatic test1/e [I
     ldc 3
+    ldc 1
+    isub
     ldc 9.990000
-    putstatic test1/e Ljava/lang/String;
-    k
+    iastore
+    getstatic test1/k [[I
     ldc 25
+    ldc 23
+    isub
+    aaload
     ldc 26
+    ldc 23
+    isub
     ldc 3.140000
-    putstatic test1/k Ljava/lang/String;
-    l
+    iastore
+    getstatic test1/l [[I
     ldc 28
+    ldc 23
+    isub
+    aaload
     ldc 26
+    ldc 23
+    isub
     ldc 88
-    putstatic test1/l I
+    iastore
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
-    invokestatic test1/d()I
+    getstatic test1/d [I
     ldc 5
+    ldc 23
+    isub
+    iaload
     putstatic test1/u I
     getstatic test1/u I
     invokestatic test1/writelnI(I)V
-    invokestatic test1/e()I
+    getstatic test1/e [I
     ldc 3
+    ldc 23
+    isub
+    iaload
     putstatic test1/g Ljava/lang/String;
     getstatic test1/g F
     invokestatic test1/writelnR(F)V
-    invokestatic test1/k()I
+    getstatic test1/k [[I
     ldc 25
+    ldc 23
+    isub
+    aaload
     ldc 26
+    ldc 23
+    isub
+    iaload
     putstatic test1/g Ljava/lang/String;
     getstatic test1/g F
     invokestatic test1/writelnR(F)V
-    invokestatic test1/l()I
+    getstatic test1/l [[I
     ldc 28
+    ldc 23
+    isub
+    aaload
     ldc 26
+    ldc 23
+    isub
+    iaload
     putstatic test1/u I
     getstatic test1/u I
     invokestatic test1/writelnI(I)V
