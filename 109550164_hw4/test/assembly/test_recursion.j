@@ -71,12 +71,16 @@ LAB2:
 L1:
     ldc 1
 L2:
+    ifeq L3
+    goto L4
+L3:
     ldc 1
     isub
     invokestatic test_recursion/fact_0(I)I
     ldc 1
     isub
     imul
+L4:
     ireturn
     ireturn
 .end method

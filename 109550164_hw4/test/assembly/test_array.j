@@ -1,6 +1,8 @@
 .class public test_array
 .super java/lang/Object
+.field public static a [I
 .field public static b I
+.field public static c [[I
 .method public static writelnI(I)V
 .limit locals 5
 .limit stack 5
@@ -63,22 +65,34 @@ LAB2:
 .limit stack 50
     ldc 0
     putstatic test_array/b I
+    ldc 2
+    multianewarray [I 1
+    putstatic test_array/a [I
+    ldc 2
+    ldc 2
+    multianewarray [[I 2
+    putstatic test_array/c [[I
+    a
     ldc 1
     ldc 1
     putstatic test_array/a I
+    a
     ldc 2
     ldc 2
     putstatic test_array/a I
+    c
     ldc 1
     ldc 1
     invokestatic test_array/a()I
     ldc 1
     putstatic test_array/c I
+    c
     ldc 1
     ldc 2
     invokestatic test_array/a()I
     ldc 2
     putstatic test_array/c I
+    c
     ldc 2
     ldc 1
     invokestatic test_array/a()I
@@ -87,6 +101,7 @@ LAB2:
     ldc 1
     iadd
     putstatic test_array/c I
+    c
     ldc 2
     ldc 2
     invokestatic test_array/a()I

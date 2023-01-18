@@ -62,14 +62,12 @@ LAB2:
 .method public static ss_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
 .field public static d I
 .method public static tt_1(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
 .field public static e I
     ldc 3
     imul
@@ -79,20 +77,14 @@ LAB2:
     isub
     getstatic test_nested_function/b I
     iadd
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
-    invokestatic test_nested_function/rr()I
     ldc 4
     isub
-    putstatic test_nested_function/d I
-    invokestatic test_nested_function/rr()I
-    invokestatic test_nested_function/rr()I
-    putstatic test_nested_function/ss I
-    iload 0
+    invokestatic test_nested_function/tt_1(I)I
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -109,6 +101,7 @@ LAB2:
     fneg
     putstatic test_nested_function/b I
     ldc 3
+    invokestatic test_nested_function/ss_0(I)I
     ldc 3
     putstatic test_nested_function/a I
     getstatic test_nested_function/a I

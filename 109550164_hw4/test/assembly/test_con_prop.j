@@ -1,6 +1,8 @@
 .class public test_con_prop
 .super java/lang/Object
+.field public static a [I
 .field public static b I
+.field public static c [[I
 .method public static writelnI(I)V
 .limit locals 5
 .limit stack 5
@@ -70,6 +72,14 @@ LAB2:
 .limit stack 50
     ldc 0
     putstatic test_con_prop/b I
+    ldc 2
+    multianewarray [I 1
+    putstatic test_con_prop/a [I
+    ldc 2
+    ldc 4
+    multianewarray [[I 2
+    putstatic test_con_prop/c [[I
+    a
     ldc 3
     ldc 4
     iadd
@@ -77,6 +87,7 @@ LAB2:
     isub
     ldc 10
     putstatic test_con_prop/a I
+    c
     ldc 1
     ldc 100
     ldc 0

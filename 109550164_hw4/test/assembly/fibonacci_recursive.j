@@ -70,16 +70,22 @@ LAB2:
 L1:
     ldc 1
 L2:
+    ifeq L3
     ldc 1
-    getstatic fibonacci_recursive/a I
-    ldc 0
-    if_icmpeq L3
-    ldc 0
     goto L4
 L3:
-    ldc 1
-L4:
+    getstatic fibonacci_recursive/a I
     ldc 0
+    if_icmpeq L4
+    ldc 0
+    goto L5
+L4:
+    ldc 1
+L5:
+    ifeq L6
+    ldc 0
+    goto L7
+L6:
     getstatic fibonacci_recursive/a I
     ldc 1
     isub
@@ -95,6 +101,8 @@ L4:
     ldc 2
     isub
     iadd
+L7:
+L8:
     ireturn
     ireturn
 .end method

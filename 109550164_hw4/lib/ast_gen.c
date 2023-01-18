@@ -863,7 +863,7 @@ void if_gen(){
 
 void if_else_gen()
 {
-    fprintf(fd, "    goto  L%d\n",relop_index);
+    fprintf(fd, "    goto L%d\n",relop_index);
     fprintf(fd, "L%d:\n",relop_index-1);
 }
 
@@ -872,6 +872,23 @@ void if_then_gen()
     fprintf(fd, "L%d:\n",relop_index);
     relop_index += 1;
     if_check = FALSE;
+}
+
+void while_gen()
+{
+    fprintf(fd, "L%d:\n",relop_index);
+    relop_index += 1;
+}
+
+void while_jump_gen()
+{
+    fprintf(fd, "    ifeq L%d\n",relop_index);
+}
+void while_end_gen()
+{
+    fprintf(fd, "    goto L%d\n",relop_index-3);
+    fprintf(fd, "L%d:\n",relop_index);
+    relop_index += 1;
 }
 
 void func_gen_list(list* root)

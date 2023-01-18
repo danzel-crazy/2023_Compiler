@@ -71,7 +71,7 @@ L2:
     ifeq L3
     ldc 1
     invokestatic ex10/writelnI(I)V
-    goto  L4
+    goto L4
 L3:
     ldc 2
     invokestatic ex10/writelnI(I)V

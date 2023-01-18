@@ -85,50 +85,66 @@ LAB2:
 L1:
     ldc 1
 L2:
+    ifne L3
     getstatic test_nestedStmt/a I
     ldc 5
     iadd
     getstatic test_nestedStmt/b I
     ldc 2
     isub
-    if_icmpgt L3
+    if_icmpgt L4
     ldc 0
-    goto L4
-L3:
-    ldc 1
+    goto L5
 L4:
+    ldc 1
+L5:
+    ifne L6
+L7:
     getstatic test_nestedStmt/a I
     getstatic test_nestedStmt/b I
-    if_icmplt L5
+    if_icmplt L8
     ldc 0
-    goto L6
-L5:
+    goto L9
+L8:
     ldc 1
-L6:
+L9:
+    ifeq L10
+L10:
     getstatic test_nestedStmt/b I
     ldc 11
-    if_icmplt L7
+    if_icmplt L11
     ldc 0
-    goto L8
-L7:
+    goto L12
+L11:
     ldc 1
-L8:
+L12:
+    ifeq L13
     getstatic test_nestedStmt/b I
     ldc 2
     iadd
     putstatic test_nestedStmt/b I
+    goto L10
+L13:
     getstatic test_nestedStmt/a I
     ldc 10
     iadd
     putstatic test_nestedStmt/a I
+    goto L11
+L14:
+    goto L15
+L14:
     getstatic test_nestedStmt/d I
     ldc 100
     iadd
     putstatic test_nestedStmt/d I
+L15:
+    goto L16
+L15:
     getstatic test_nestedStmt/d I
     ldc 1000
     iadd
     putstatic test_nestedStmt/d I
+L16:
     getstatic test_nestedStmt/a I
     invokestatic test_nestedStmt/writelnI(I)V
     getstatic test_nestedStmt/b I

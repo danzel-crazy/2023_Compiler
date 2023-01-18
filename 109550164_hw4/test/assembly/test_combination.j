@@ -71,24 +71,20 @@ LAB2:
 L1:
     ldc 1
 L2:
+    ifne L3
     getstatic test_combination/a I
     ldc 1
-    if_icmpeq L3
+    if_icmpeq L4
     ldc 0
-    goto L4
-L3:
-    ldc 1
+    goto L5
 L4:
     ldc 1
-    getstatic test_combination/a I
-    ldc 0
-    if_icmpgt L5
-    ldc 0
-    goto L6
 L5:
+    ifeq L6
     ldc 1
+    goto L7
 L6:
-    getstatic test_combination/b I
+    getstatic test_combination/a I
     ldc 0
     if_icmpgt L7
     ldc 0
@@ -96,6 +92,16 @@ L6:
 L7:
     ldc 1
 L8:
+    ifeq L9
+    getstatic test_combination/b I
+    ldc 0
+    if_icmpgt L10
+    ldc 0
+    goto L11
+L10:
+    ldc 1
+L11:
+    ifeq L12
     getstatic test_combination/a I
     ldc 1
     isub
@@ -119,9 +125,19 @@ L8:
     isub
     getstatic test_combination/b I
     iadd
+    goto L13
+L12:
     ldc 1
+L13:
+    goto L14
+L13:
     ldc 0
+L14:
+L15:
+    goto L16
+L15:
     ldc 1
+L16:
     ireturn
     ireturn
 .end method

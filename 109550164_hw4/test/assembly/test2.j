@@ -3,6 +3,8 @@
 .field public static aa I
 .field public static bb I
 .field public static cc I
+.field public static g [[I
+.field public static r [[I
 .method public static writelnI(I)V
 .limit locals 5
 .limit stack 5
@@ -92,6 +94,14 @@ LAB2:
     putstatic test2/z I
     ldc 0
     putstatic test2/z I
+    ldc 1
+    ldc 3
+    multianewarray [[I 2
+    putstatic test2/g [[I
+    ldc 1
+    ldc 5
+    multianewarray [[I 2
+    putstatic test2/r [[I
     getstatic test2/aa I
     ldc 3
     getstatic test2/bb I
@@ -114,50 +124,67 @@ LAB2:
 L1:
     ldc 1
 L2:
+    ifne L3
     getstatic test2/aa I
     ldc 0
-    if_icmplt L3
+    if_icmplt L4
     ldc 0
-    goto L4
-L3:
-    ldc 1
+    goto L5
 L4:
+    ldc 1
+L5:
+    ifne L6
     ldc 333
     putstatic test2/aa I
+    goto L7
+L6:
     ldc 111
     putstatic test2/aa I
-    ldc 222
-    putstatic test2/aa I
-    getstatic test2/aa I
-    invokestatic test2/writelnI(I)V
-    getstatic test2/bb I
-    ldc 5
-    if_icmplt L5
-    ldc 0
-    goto L6
-L5:
-    ldc 1
-L6:
-    ldc 0
-    putstatic test2/aa I
-    getstatic test2/aa I
-    ldc 5
-    if_icmplt L7
-    ldc 0
+L7:
     goto L8
 L7:
-    ldc 1
+    ldc 222
+    putstatic test2/aa I
 L8:
+    getstatic test2/aa I
+    invokestatic test2/writelnI(I)V
+L9:
+    getstatic test2/bb I
+    ldc 5
+    if_icmplt L10
+    ldc 0
+    goto L11
+L10:
+    ldc 1
+L11:
+    ifeq L12
+    ldc 0
+    putstatic test2/aa I
+L12:
+    getstatic test2/aa I
+    ldc 5
+    if_icmplt L13
+    ldc 0
+    goto L14
+L13:
+    ldc 1
+L14:
+    ifeq L15
     getstatic test2/aa I
     ldc 1
     iadd
     putstatic test2/aa I
+    goto L12
+L15:
     getstatic test2/bb I
     ldc 1
     iadd
     putstatic test2/bb I
     getstatic test2/bb I
     invokestatic test2/writelnI(I)V
+    goto L13
+L16:
+    g
     ldc 0
     ldc 3
     ldc 4

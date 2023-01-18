@@ -1,5 +1,6 @@
 .class public test_array_slice
 .super java/lang/Object
+.field public static a [[I
 .method public static writelnI(I)V
 .limit locals 5
 .limit stack 5
@@ -72,13 +73,20 @@ LAB2:
 .limit locals 50
 .limit stack 50
     ldc 2
+    ldc 5
+    multianewarray [[I 2
+    putstatic test_array_slice/a [[I
+    a
+    ldc 2
     ldc 3
     ldc 1
     putstatic test_array_slice/a I
+    a
     ldc 2
     ldc 4
     ldc 2
     putstatic test_array_slice/a I
+    a
     ldc 2
     ldc 5
     ldc 3

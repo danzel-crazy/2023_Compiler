@@ -96,13 +96,13 @@ int StatementNode_visit(void* node){
 
     case 4:
     // WHILE expression DO statement
-        
+        while_gen();
         if (temp->expnode != 0)
             temp->expnode->node.visit(temp->expnode);
-
+        while_jump_gen();
         if (temp->statementnode1 != 0)
             temp->statementnode1->node.visit(temp->statementnode1);
-
+        while_end_gen();
         break;
     
     default:

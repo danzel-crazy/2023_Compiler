@@ -63,19 +63,23 @@ LAB2:
 .limit stack 50
     ldc 0
     putstatic ex11/a I
+L1:
     getstatic ex11/a I
     ldc 5
-    if_icmpne L1
+    if_icmpne L2
     ldc 0
-    goto L2
-L1:
-    ldc 1
+    goto L3
 L2:
+    ldc 1
+L3:
+    ifeq L4
     getstatic ex11/a I
     invokestatic ex11/writelnI(I)V
     getstatic ex11/a I
     ldc 1
     iadd
     putstatic ex11/a I
+    goto L1
+L4:
     return
 .end method

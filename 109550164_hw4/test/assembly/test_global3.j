@@ -63,8 +63,12 @@ LAB2:
 .method public static tt_0()I
 .limit locals 50
 .limit stack 50
+.field public static a [I
+.field public static b [I
+    a
     ldc 1
     ldc 10
+    b
     ldc 1
     getstatic test_global3/a I
     ldc 1
@@ -84,6 +88,12 @@ LAB2:
     putstatic test_global3/b I
     ldc 0.0
     putstatic test_global3/c F
+    ldc 2
+    multianewarray [I 1
+    putstatic test_global3/a [I
+    ldc 2
+    multianewarray [I 1
+    putstatic test_global3/b [I
     ldc 3
     putstatic test_global3/a I
     ldc 4

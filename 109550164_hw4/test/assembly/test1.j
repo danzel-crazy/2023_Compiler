@@ -4,9 +4,13 @@
 .field public static b I
 .field public static c I
 .field public static u I
+.field public static d [I
+.field public static e [F
 .field public static g F
 .field public static h F
 .field public static x F
+.field public static k [[F
+.field public static l [[I
 .method public static writelnI(I)V
 .limit locals 5
 .limit stack 5
@@ -103,6 +107,20 @@ LAB2:
     putstatic test1/x F
     ldc 0
     putstatic test1/b I
+    ldc 10
+    multianewarray [I 1
+    putstatic test1/d [I
+    ldc 10
+    multianewarray [I 1
+    putstatic test1/e [I
+    ldc 57
+    ldc 57
+    multianewarray [[I 2
+    putstatic test1/k [[I
+    ldc 57
+    ldc 57
+    multianewarray [[I 2
+    putstatic test1/l [[I
     ldc 8
     ldc 8
     invokestatic test1/addition_0(I)I
@@ -139,108 +157,139 @@ LAB2:
 L1:
     ldc 1
 L2:
+    ifne L3
     ldc 111
     putstatic test1/a I
-    ldc 222
-    putstatic test1/a I
-    getstatic test1/a I
-    invokestatic test1/writelnI(I)V
-    getstatic test1/b I
-    getstatic test1/a I
-    if_icmplt L3
-    ldc 0
     goto L4
 L3:
-    ldc 1
-L4:
-    ldc 111
-    putstatic test1/a I
     ldc 222
     putstatic test1/a I
+L4:
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
     getstatic test1/b I
     getstatic test1/a I
-    if_icmpeq L5
+    if_icmplt L5
     ldc 0
     goto L6
 L5:
     ldc 1
 L6:
+    ifne L7
     ldc 111
     putstatic test1/a I
-    ldc 222
-    putstatic test1/a I
-    getstatic test1/a I
-    invokestatic test1/writelnI(I)V
-    getstatic test1/b I
-    getstatic test1/a I
-    if_icmpge L7
-    ldc 0
     goto L8
 L7:
-    ldc 1
-L8:
-    ldc 111
-    putstatic test1/a I
     ldc 222
     putstatic test1/a I
+L8:
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
     getstatic test1/b I
     getstatic test1/a I
-    if_icmple L9
+    if_icmpeq L9
     ldc 0
     goto L10
 L9:
     ldc 1
 L10:
+    ifeq L11
     ldc 111
     putstatic test1/a I
+    goto L12
+L11:
     ldc 222
     putstatic test1/a I
+L12:
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
     getstatic test1/b I
-    ldc 0
-    if_icmpne L11
-    ldc 0
-    goto L12
-L11:
-    ldc 1
-L12:
-    ldc 111
-    putstatic test1/a I
-    ldc 222
-    putstatic test1/a I
     getstatic test1/a I
-    invokestatic test1/writelnI(I)V
-    ldc 1
-    putstatic test1/a I
-    getstatic test1/a I
-    ldc 5
-    if_icmplt L13
+    if_icmpge L13
     ldc 0
     goto L14
 L13:
     ldc 1
 L14:
+    ifne L15
+    ldc 111
+    putstatic test1/a I
+    goto L16
+L15:
+    ldc 222
+    putstatic test1/a I
+L16:
+    getstatic test1/a I
+    invokestatic test1/writelnI(I)V
+    getstatic test1/b I
+    getstatic test1/a I
+    if_icmple L17
+    ldc 0
+    goto L18
+L17:
+    ldc 1
+L18:
+    ifne L19
+    ldc 111
+    putstatic test1/a I
+    goto L20
+L19:
+    ldc 222
+    putstatic test1/a I
+L20:
+    getstatic test1/a I
+    invokestatic test1/writelnI(I)V
+    getstatic test1/b I
+    ldc 0
+    if_icmpne L21
+    ldc 0
+    goto L22
+L21:
+    ldc 1
+L22:
+    ifne L23
+    ldc 111
+    putstatic test1/a I
+    goto L24
+L23:
+    ldc 222
+    putstatic test1/a I
+L24:
+    getstatic test1/a I
+    invokestatic test1/writelnI(I)V
+    ldc 1
+    putstatic test1/a I
+L25:
+    getstatic test1/a I
+    ldc 5
+    if_icmplt L26
+    ldc 0
+    goto L27
+L26:
+    ldc 1
+L27:
+    ifeq L28
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
     getstatic test1/a I
     ldc 1
     iadd
     putstatic test1/a I
+    goto L25
+L28:
     ldc 1
     putstatic test1/b I
+L29:
     getstatic test1/b I
     ldc 11
-    if_icmplt L15
+    if_icmplt L30
     ldc 0
-    goto L16
-L15:
+    goto L31
+L30:
     ldc 1
-L16:
+L31:
+    ifeq L32
+    d
     getstatic test1/b I
     getstatic test1/b I
     getstatic test1/b I
@@ -254,13 +303,18 @@ L16:
     ldc 1
     iadd
     putstatic test1/b I
+    goto L29
+L32:
+    e
     ldc 3
     ldc 9.990000
     putstatic test1/e Ljava/lang/String;
+    k
     ldc 25
     ldc 26
     ldc 3.140000
     putstatic test1/k Ljava/lang/String;
+    l
     ldc 28
     ldc 26
     ldc 88
