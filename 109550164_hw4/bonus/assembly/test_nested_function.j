@@ -1,5 +1,7 @@
-.class public ex07
+.class public test_nested_function
 .super java/lang/Object
+.field public static a I
+.field public static b I
 .method public static writelnI(I)V
 .limit locals 5
 .limit stack 5
@@ -57,15 +59,59 @@ LAB2:
     iload 1
     ireturn
 .end method
-.method public static func_0(I)I
+.method public static ss_0(I)I
 .limit locals 50
 .limit stack 50
+    ldc 0
+    istore 1
+.field public static d I
+.method public static tt_1(I)I
+.limit locals 50
+.limit stack 50
+    ldc 0
+    istore 1
+.field public static e I
+    ldc 3
+    imul
+    getstatic test_nested_function/d I
+    iadd
+    getstatic test_nested_function/e I
+    isub
+    getstatic test_nested_function/b I
+    iadd
     iload 0
     ireturn
+    return
+.end method
+    invokestatic test_nested_function/rr()I
+    ldc 4
+    isub
+    putstatic test_nested_function/d I
+    invokestatic test_nested_function/rr()I
+    invokestatic test_nested_function/rr()I
+    putstatic test_nested_function/ss I
+    iload 0
     ireturn
+    return
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
 .limit stack 50
+    ldc 0
+    putstatic test_nested_function/a I
+    ldc 0
+    putstatic test_nested_function/b I
+    ldc 0
+    putstatic test_nested_function/d I
+    ldc 0
+    putstatic test_nested_function/e I
+    ldc 5
+    fneg
+    putstatic test_nested_function/b I
+    ldc 3
+    ldc 3
+    putstatic test_nested_function/a I
+    getstatic test_nested_function/a I
+    invokestatic test_nested_function/writelnI(I)V
     return
 .end method

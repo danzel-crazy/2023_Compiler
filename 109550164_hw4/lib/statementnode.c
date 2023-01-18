@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ast_gen.h>
 
 #include "statementnode.h"
 #include "list.h"
@@ -36,7 +37,7 @@ int StatementNode_visit(void* node){
     
     // store data type
     long int temp1, temp2;
-
+    
     switch (temp->type)
     {
     case 0:
@@ -47,7 +48,7 @@ int StatementNode_visit(void* node){
 
         // visit expression
         temp2 = (long) temp->expnode->node.visit(temp->expnode);
-
+        variable_gen(temp->varnode->id);
         // debug
         // fprintf(stderr, "Data Type: %ld\n", temp1);
         // fprintf(stderr, "Data Type: %ld\n", temp2);

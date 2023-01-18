@@ -65,71 +65,27 @@ LAB2:
     ireturn
 .end method
 .field public static b I
-.method public static main([Ljava/lang/String;)V
-.limit locals 50
-.limit stack 50
-    ldc 0
-    putstatic test1/a I
-    ldc 0
-    putstatic test1/b I
-    ldc 0
-    putstatic test1/c I
-    ldc 0
-    putstatic test1/u I
-    ldc 0.0
-    putstatic test1/g F
-    ldc 0.0
-    putstatic test1/h F
-    ldc 0.0
-    putstatic test1/x F
-    ldc 0
-    putstatic test1/b I
     getstatic test1/b I
+    putstatic test1/c I
     return
 .end method
-.method public static main([Ljava/lang/String;)V
+.method public static addition_0(I)I
 .limit locals 50
 .limit stack 50
     ldc 0
-    putstatic test1/a I
-    ldc 0
-    putstatic test1/b I
-    ldc 0
-    putstatic test1/c I
-    ldc 0
-    putstatic test1/u I
-    ldc 0.0
-    putstatic test1/g F
-    ldc 0.0
-    putstatic test1/h F
-    ldc 0.0
-    putstatic test1/x F
-    ldc 0
-    putstatic test1/b I
+    istore 1
     getstatic test1/a I
     getstatic test1/b I
     iadd
+    iload 0
+    ireturn
     return
 .end method
-.method public static main([Ljava/lang/String;)V
+.method public static ggyy_1(F)F
 .limit locals 50
 .limit stack 50
-    ldc 0
-    putstatic test1/a I
-    ldc 0
-    putstatic test1/b I
-    ldc 0
-    putstatic test1/c I
-    ldc 0
-    putstatic test1/u I
     ldc 0.0
-    putstatic test1/g F
-    ldc 0.0
-    putstatic test1/h F
-    ldc 0.0
-    putstatic test1/x F
-    ldc 0
-    putstatic test1/b I
+    fstore 1
     getstatic test1/g F
     getstatic test1/h F
     fadd
@@ -158,20 +114,27 @@ LAB2:
     ldc 8
     ldc 8
     ldc 8
+    putstatic test1/c I
     getstatic test1/c I
     invokestatic test1/writelnI(I)V
     ldc 8
+    fneg
     ldc 8
+    fneg
     ldc 8
+    fneg
+    putstatic test1/c I
     getstatic test1/c I
     invokestatic test1/writelnI(I)V
     ldc 3.300000
     ldc 5.500000
     ldc 3.300000
     ldc 5.500000
+    putstatic test1/x Ljava/lang/String;
     getstatic test1/x F
     invokestatic test1/writelnR(F)V
     ldc 0
+    putstatic test1/b I
     getstatic test1/b I
     getstatic test1/a I
     if_icmpgt L1
@@ -181,7 +144,9 @@ L1:
     ldc 1
 L2:
     ldc 111
+    putstatic test1/a I
     ldc 222
+    putstatic test1/a I
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
     getstatic test1/b I
@@ -193,7 +158,9 @@ L3:
     ldc 1
 L4:
     ldc 111
+    putstatic test1/a I
     ldc 222
+    putstatic test1/a I
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
     getstatic test1/b I
@@ -205,7 +172,9 @@ L5:
     ldc 1
 L6:
     ldc 111
+    putstatic test1/a I
     ldc 222
+    putstatic test1/a I
     getstatic test1/a I
     invokestatic test1/writelnI(I)V
     getstatic test1/b I
@@ -217,6 +186,136 @@ L7:
     ldc 1
 L8:
     ldc 111
+    putstatic test1/a I
     ldc 222
+    putstatic test1/a I
     getstatic test1/a I
-    invokestatic test1/write
+    invokestatic test1/writelnI(I)V
+    getstatic test1/b I
+    getstatic test1/a I
+    if_icmple L9
+    ldc 0
+    goto L10
+L9:
+    ldc 1
+L10:
+    ldc 111
+    putstatic test1/a I
+    ldc 222
+    putstatic test1/a I
+    getstatic test1/a I
+    invokestatic test1/writelnI(I)V
+    getstatic test1/b I
+    ldc 0
+    if_icmpne L11
+    ldc 0
+    goto L12
+L11:
+    ldc 1
+L12:
+    ldc 111
+    putstatic test1/a I
+    ldc 222
+    putstatic test1/a I
+    getstatic test1/a I
+    invokestatic test1/writelnI(I)V
+    ldc 1
+    putstatic test1/a I
+    getstatic test1/a I
+    ldc 5
+    if_icmplt L13
+    ldc 0
+    goto L14
+L13:
+    ldc 1
+L14:
+    getstatic test1/a I
+    invokestatic test1/writelnI(I)V
+    getstatic test1/a I
+    ldc 1
+    iadd
+    putstatic test1/a I
+    ldc 1
+    putstatic test1/b I
+    getstatic test1/b I
+    ldc 11
+    if_icmplt L15
+    ldc 0
+    goto L16
+L15:
+    ldc 1
+L16:
+    getstatic test1/b I
+    getstatic test1/b I
+    getstatic test1/b I
+    getstatic test1/b I
+    ldc 3
+    iadd
+    imul
+    iadd
+    putstatic test1/d I
+    getstatic test1/b I
+    ldc 1
+    iadd
+    putstatic test1/b I
+    ldc 3
+    ldc 9.990000
+    putstatic test1/e Ljava/lang/String;
+    ldc 25
+    ldc 26
+    ldc 3.140000
+    putstatic test1/k Ljava/lang/String;
+    ldc 28
+    ldc 26
+    ldc 88
+    putstatic test1/l I
+    getstatic test1/a I
+    invokestatic test1/writelnI(I)V
+    invokestatic test1/d()I
+    ldc 5
+    putstatic test1/u I
+    getstatic test1/u I
+    invokestatic test1/writelnI(I)V
+    invokestatic test1/e()I
+    ldc 3
+    putstatic test1/g Ljava/lang/String;
+    getstatic test1/g F
+    invokestatic test1/writelnR(F)V
+    invokestatic test1/k()I
+    ldc 25
+    ldc 26
+    putstatic test1/g Ljava/lang/String;
+    getstatic test1/g F
+    invokestatic test1/writelnR(F)V
+    invokestatic test1/l()I
+    ldc 28
+    ldc 26
+    putstatic test1/u I
+    getstatic test1/u I
+    invokestatic test1/writelnI(I)V
+    ldc 9
+    ldc 9
+    iadd
+    ldc 10
+    isub
+    putstatic test1/u I
+    getstatic test1/u I
+    invokestatic test1/writelnI(I)V
+    ldc 9
+    ldc 9
+    iadd
+    ldc 3
+    idiv
+    ldc 5
+    ldc 2
+    imul
+    iadd
+    ldc 1
+    isub
+    getstatic test1/u I
+    iadd
+    putstatic test1/u I
+    getstatic test1/u I
+    invokestatic test1/writelnI(I)V
+    return
+.end method

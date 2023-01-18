@@ -70,8 +70,11 @@ LAB2:
     ldc 0
     putstatic test_nestedStmt/d I
     ldc 1
+    putstatic test_nestedStmt/a I
     ldc 7
+    putstatic test_nestedStmt/b I
     ldc 9
+    putstatic test_nestedStmt/d I
     getstatic test_nestedStmt/a I
     getstatic test_nestedStmt/b I
     ldc 3
@@ -82,15 +85,6 @@ LAB2:
 L1:
     ldc 1
 L2:
-.method public static main([Ljava/lang/String;)V
-.limit locals 50
-.limit stack 50
-    ldc 0
-    putstatic test_nestedStmt/a I
-    ldc 0
-    putstatic test_nestedStmt/b I
-    ldc 0
-    putstatic test_nestedStmt/d I
     getstatic test_nestedStmt/a I
     ldc 5
     iadd
@@ -103,15 +97,6 @@ L2:
 L3:
     ldc 1
 L4:
-.method public static main([Ljava/lang/String;)V
-.limit locals 50
-.limit stack 50
-    ldc 0
-    putstatic test_nestedStmt/a I
-    ldc 0
-    putstatic test_nestedStmt/b I
-    ldc 0
-    putstatic test_nestedStmt/d I
     getstatic test_nestedStmt/a I
     getstatic test_nestedStmt/b I
     if_icmplt L5
@@ -120,15 +105,6 @@ L4:
 L5:
     ldc 1
 L6:
-.method public static main([Ljava/lang/String;)V
-.limit locals 50
-.limit stack 50
-    ldc 0
-    putstatic test_nestedStmt/a I
-    ldc 0
-    putstatic test_nestedStmt/b I
-    ldc 0
-    putstatic test_nestedStmt/d I
     getstatic test_nestedStmt/b I
     ldc 11
     if_icmplt L7
@@ -137,35 +113,22 @@ L6:
 L7:
     ldc 1
 L8:
-.method public static main([Ljava/lang/String;)V
-.limit locals 50
-.limit stack 50
-    ldc 0
-    putstatic test_nestedStmt/a I
-    ldc 0
-    putstatic test_nestedStmt/b I
-    ldc 0
-    putstatic test_nestedStmt/d I
     getstatic test_nestedStmt/b I
     ldc 2
     iadd
-    return
-.end method
+    putstatic test_nestedStmt/b I
     getstatic test_nestedStmt/a I
     ldc 10
     iadd
-    return
-.end method
-    return
-.end method
+    putstatic test_nestedStmt/a I
     getstatic test_nestedStmt/d I
     ldc 100
     iadd
-    return
-.end method
+    putstatic test_nestedStmt/d I
     getstatic test_nestedStmt/d I
     ldc 1000
     iadd
+    putstatic test_nestedStmt/d I
     getstatic test_nestedStmt/a I
     invokestatic test_nestedStmt/writelnI(I)V
     getstatic test_nestedStmt/b I

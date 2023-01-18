@@ -1,5 +1,5 @@
 #include <stdlib.h>
-
+#include <ast_gen.h>
 #include "subdeclarnode.h"
 
 SubDeclarSNode* newSubDeclarSNode( int firstLine, int firstColumn, SubDeclarSNode* prevnode, SubDeclarNode* nextnode, int lastLine, int lastColumn ){
@@ -19,11 +19,13 @@ SubDeclarSNode* newSubDeclarSNode( int firstLine, int firstColumn, SubDeclarSNod
 int SubDeclarSNode_visit(void* node){
     SubDeclarSNode* temp = (SubDeclarSNode*) node;
     
+    func_in();
     if(temp->PrevNode != NULL){
         temp->PrevNode->node.visit(temp->PrevNode);
+        
     }
     
     temp->NextNode->node.visit(temp->NextNode);
-
+    func_end();
     return 0;
 }

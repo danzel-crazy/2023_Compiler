@@ -1,6 +1,6 @@
 obj/addnode.o: lib/addnode.c include/addnode.h include/ast.h \
- include/loc.h include/ast_gen.h include/addnode.h \
- include/argumentsnode.h include/parameterlistnode.h \
+ include/loc.h include/ast_gen.h include/list.h include/info.h \
+ include/addnode.h include/argumentsnode.h include/parameterlistnode.h \
  include/optionalvarnode.h include/identlistnode.h include/typenode.h \
  include/standtypenode.h include/boolexpnode.h include/simpleexpnode.h \
  include/termnode.h include/factornode.h include/tailnode.h \

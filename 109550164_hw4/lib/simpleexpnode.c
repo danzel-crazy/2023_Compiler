@@ -28,6 +28,7 @@ int SimpleExpNode_visit(void* node){
     int datatype = -1;
 
     if ( temp->addnode != 0 ){
+        addnode_check();
         temp1 = (int)temp->simpleexpnode->node.visit(temp->simpleexpnode);
         int positive = temp->addnode->node.visit(temp->addnode);
         temp2 = (int)temp->termnode->node.visit(temp->termnode);

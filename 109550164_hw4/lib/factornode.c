@@ -66,7 +66,8 @@ int FactorNode_visit(void* node){
         }else{
             fprintf(stderr, UNDEC_VAR, temp->node.loc.first_line, temp->node.loc.first_column, temp->id );
         }
-        factor_num_gen_id(temp->id);
+        // factor_tail_gen(temp->id);
+        factor_gen_global(temp->id);
         TailNode* curr = temp->tailnode;
         if (listTemp != 0)
             while (curr != 0){
@@ -93,7 +94,7 @@ int FactorNode_visit(void* node){
 
     case 1:
         // IDENTIFIER LPAREN expression_list RPAREN
-
+        find_func(temp->id);
         if ( GetList( listRoot, &listTemp, temp->id ) ){
             currTemp = listTemp->data;
             while (currTemp->type == Array){
@@ -114,7 +115,7 @@ int FactorNode_visit(void* node){
                 fprintf(stderr, WRONG_ARGS, temp->node.loc.first_line, temp->node.loc.first_column, temp->id);
             
         }
-
+        
         return datatype;
         break; 
 
@@ -129,7 +130,9 @@ int FactorNode_visit(void* node){
     
     case 3:
         // LITERALSTR
+        // factor_gen_id(temp->id);
         factor_num_gen_string(temp->id);
+        factor_num_gen_id(temp->id);
         return 3;
         break;
 
@@ -145,6 +148,7 @@ int FactorNode_visit(void* node){
 
         if (temp->factornode != 0)
             temp->factornode->node.visit(temp->factornode);
+        factor_not_gen();
         break;
 
     case 6:
@@ -152,6 +156,7 @@ int FactorNode_visit(void* node){
 
         if (temp->factornode != 0)
             temp->factornode->node.visit(temp->factornode);
+        factor_neg_gen();
         break;
     
     default:

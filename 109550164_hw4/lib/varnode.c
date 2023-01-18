@@ -1,6 +1,6 @@
 #include "varnode.h"
 #include "list.h"
-
+#include <ast_gen.h>
 extern list* listRoot;
 extern int scope;
 
@@ -54,7 +54,7 @@ int VarNode_visit(void* node){
         temp->tailnode->node.visit(temp->tailnode);
     }
 
-
+    variable_gen_add(temp->id, datatype);
 
     return datatype;
 }

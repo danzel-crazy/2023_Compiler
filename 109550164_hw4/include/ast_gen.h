@@ -8,6 +8,7 @@
 // #include <unistd.h>
 #include "loc.h"
 #include "ast.h"
+#include <list.h>
 // #include "error.h"
 #include "addnode.h"
 #include "argumentsnode.h"
@@ -43,6 +44,8 @@
 
 void CodeGen(ProgNode* root);
 void Genclose();
+void find_func(char* str);
+void func_gen_init(list* root, int index);
 void prognode_gen(char* id);
 void declar_gen_real(char* id);
 void declar_gen_int(char* id);
@@ -53,11 +56,32 @@ void END_gen();
 void procdeure_id_gen(char* id);
 void num_gen_int(int num);
 void num_gen_real(double num);
+void factor_gen_global(char *str);
+void factor_gen_id(char *str);
+// void factor_tail_gen(char *str);
 void factor_num_gen_string(char* str);
+// void factor_num_gen_id(char* str, int type);
 void factor_gen_string();
 void factor_num_gen_id(char* str);
+
+void factor_not_gen();
+void factor_neg_gen();
+void addnode_check();
 void addnode_gen(int pos, int type);
 void mulnode_gen(int pos, int type);
 void relopnode_gen(int pos, int type);
+void variable_gen(char* str);
+void cur_gen_real(char* id);
+void cur_gen_int(char* id);
+void cur_gen_string(char* id);
+void func_gen_int(char* str);
+void func_gen_real(char* str);
+void func_gen_string(char* str);
+
+void func_gen_list(list* root);
+void func_gen();
+void func_end();
+void func_in();
+void func_out();
 
 #endif

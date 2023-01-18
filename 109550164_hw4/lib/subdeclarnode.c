@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-
+#include <ast_gen.h>
 #include "subdeclarnode.h"
 #include "list.h"
 
@@ -64,21 +64,27 @@ int SubDeclarNode_visit(void* node){
             }
 
         }else{
-            
+            func_in();
             // FUNCTION
             switch (temp->head->standard_type->type)
             {
             case 0:
                 /* code */
                 tempList = newfunclist( temp->head->id, scope, Int, Function );
+                func_gen_int(temp->head->id);
+                // func_gen_list(tempList);
                 break;
 
             case 1:
                 tempList = newfunclist( temp->head->id, scope, Real, Function );
+                func_gen_real(temp->head->id);
+                // func_gen_list(tempList);
                 break;
 
             case 2:
                 tempList = newfunclist( temp->head->id, scope, String, Function );
+                func_gen_string(temp->head->id);
+                // func_gen_list(tempList);
                 break;
             
             default:
@@ -112,7 +118,7 @@ int SubDeclarNode_visit(void* node){
                 if (!check)
                 fprintf(stderr, RETURN_VAL, temp->node.loc.first_line, temp->node.loc.first_column, temp->head->id);
             }
-
+            func_gen_list(tempList);
         }
         
         // create a scope
@@ -176,7 +182,6 @@ int SubDeclarNode_visit(void* node){
                         list_push_back( listRoot, newdatalist(idList->id, scope, typeTemp, Data) );
                     }
                 }
-
             }else{
                 // array
                 
@@ -409,8 +414,10 @@ int SubDeclarNode_visit(void* node){
 
             }
 
+            
+
         }
-        
+        func_gen();
     }
     
     if (temp->declarnode != NULL){
@@ -424,7 +431,9 @@ int SubDeclarNode_visit(void* node){
     if (temp->compoundstatementnode != NULL){
         temp->compoundstatementnode->node.visit(temp->compoundstatementnode);
     }
-
+    
+    
+    
     list* listTemp;
     if ( GetList(listRoot, &listTemp, temp->head->id) )
         ((funcsymbolobj*)listTemp->data)->check = 1;

@@ -59,13 +59,11 @@ LAB2:
     iload 1
     ireturn
 .end method
-.method public static main([Ljava/lang/String;)V
+.method public static comb_0(I)I
 .limit locals 50
 .limit stack 50
     ldc 0
-    putstatic test_combination/a I
-    ldc 0
-    putstatic test_combination/b I
+    istore 1
     getstatic test_combination/a I
     getstatic test_combination/b I
     if_icmpgt L1
@@ -123,6 +121,8 @@ L8:
     ldc 1
     ldc 0
     ldc 1
+    iload 0
+    ireturn
     return
 .end method
 .method public static main([Ljava/lang/String;)V
@@ -133,7 +133,9 @@ L8:
     ldc 0
     putstatic test_combination/b I
     ldc 3
+    putstatic test_combination/a I
     ldc 4
+    putstatic test_combination/b I
     getstatic test_combination/a I
     ldc 3
     iadd

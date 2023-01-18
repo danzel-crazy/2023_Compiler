@@ -38,6 +38,7 @@ int ProgNode_visit(void* node){
     listRoot = newdatalist(temp->id, scope, Void, Data);
     CodeGen(temp);
     prognode_gen(temp->id);
+    // get_list(listRoot);
     // Visit inside
     if (temp->identlist != NULL)
         temp->identlist->node.visit(temp->identlist);
@@ -46,8 +47,11 @@ int ProgNode_visit(void* node){
     genBuiltins();
     if (temp->subdeclar != NULL)
         temp->subdeclar->node.visit(temp->subdeclar);
+    PBEGIN_gen();
+    func_out();
     if (temp->compoundstatement != NULL)
         temp->compoundstatement->node.visit(temp->compoundstatement);
+    END_gen();
 
     SHOW_CLSSCP();
     SHOW_SYMTAB_HEAD();

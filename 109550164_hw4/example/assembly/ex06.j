@@ -64,7 +64,9 @@ LAB2:
     ldc 0
     putstatic ex06/a I
     ldc 1
+    putstatic ex06/a I
     getstatic ex06/a I
+    putstatic ex06/a I
     getstatic ex06/a I
     invokestatic ex06/writelnI(I)V
     return

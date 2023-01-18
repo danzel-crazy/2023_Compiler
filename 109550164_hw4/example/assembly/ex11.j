@@ -71,17 +71,11 @@ LAB2:
 L1:
     ldc 1
 L2:
-.method public static main([Ljava/lang/String;)V
-.limit locals 50
-.limit stack 50
-    ldc 0
-    putstatic ex11/a I
     getstatic ex11/a I
     invokestatic ex11/writelnI(I)V
     getstatic ex11/a I
     ldc 1
     iadd
-    return
-.end method
+    putstatic ex11/a I
     return
 .end method
