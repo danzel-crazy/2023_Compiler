@@ -63,11 +63,9 @@ LAB2:
 .method public static ss_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
     iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -79,20 +77,35 @@ LAB2:
     ldc 0.0
     putstatic test_function/c F
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
+    invokestatic test_function/ss_0(I)I
     ldc 3
     putstatic test_function/a I
     getstatic test_function/a I

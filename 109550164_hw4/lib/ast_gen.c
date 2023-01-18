@@ -216,61 +216,66 @@ void END_gen()
 }
 
 //procdeure_id
-void find_func(char* str)
+void find_func(char* str, int type)
 {
+    // fprintf(fd, "    %d\n",type);
     for(int i = 0; i < func_index; i++){
         int ch = strcmp(func[i]->id, str);
         if (ch == 0) {
             func_gen_init(func[i],i); 
+            return;
         }
     }
 }
+
 void func_gen_init(list* root, int index)
 {
     symbolobj* temp = root->data;
         char* pass;
         passinobj* tempPassInType = (passinobj*)((funcsymbolobj*)temp)->passInType;
-        switch (tempPassInType->data->type)
+        if(tempPassInType == NULL)
         {
-        case Void:
-            //int
-            pass = " ";
-            break;
+             pass = "";
+        }
+        else{
+            switch (tempPassInType->data->type)
+                {
+                    case Int:
+                        //int
+                        pass = "I";
+                        break;
+                    case Real:
+                        //real
+                        pass = "F";
+                        break;
+                    case String:
+                        //str
+                        pass = "Ljava/lang/String;";
+                        break;
+                    default:
+                        break;
+                }
+        }
+        
+        switch (temp->type)
+        {
         case Int:
             //int
-            pass = "I";
+            fprintf(fd, "    invokestatic %s/%s_%d(%s)I\n",prog,root->id,index,pass);
             break;
         case Real:
             //real
-            pass = "F";
+            fprintf(fd, "    invokestatic %s/%s_%d(%s)F\n",prog,root->id,index,pass);
+            /* code */
             break;
         case String:
             //str
-            pass = "Ljava/lang/String;";
+            fprintf(fd, "    invokestatic %s/%s_%d(%s)Ljava/lang/String;\n",prog,root->id,index,pass);
+            /* code */
             break;
         default:
             break;
         }
-        
-        // switch (temp->type)
-        // {
-        // case Int:
-        //     //int
-        //     fprintf(fd, "    invokestatic %s/%s_%d(%s)I\n",prog,root->id,index,pass);
-        //     break;
-        // case Real:
-        //     //real
-        //     fprintf(fd, "    invokestatic %s/%s_%d(%s)F\n",prog,root->id,index,pass);
-        //     /* code */
-        //     break;
-        // case String:
-        //     //str
-        //     fprintf(fd, "    invokestatic %s/%s_%d(%s)Ljava/lang/String;\n",prog,root->id,index,pass);
-        //     /* code */
-        //     break;
-        // default:
-        //     break;
-        // }
 }
 
 void procdeure_id_gen(char* id)
@@ -331,18 +336,19 @@ void factor_gen_global(char *str)
     }
     if (!func_check)
     {
+        if(func_index != 0)
+        {
+            for(int i = 0; i < func_index; i++){
+                int ch = strcmp(func[i]->id, str);
+                if (ch == 0) {
+                    // func_gen_init(func[i],i); 
+                    return;
+                }
+        }
+        }
         fprintf(fd, "    invokestatic %s/%s()I\n",prog,str);
     }
-    if(func_index != 0)
-    {
-        // for(int i = 0; i < func_index; i++){
-        //     int ch = strcmp(func[i]->id, str);
-        //     if (ch == 0) {
-        //         func_gen_init(func[i],i); 
-        //         return;
-        //     }
-        // }
-    }
+    
 }
 
 void factor_num_gen_id(char* str)
@@ -661,7 +667,8 @@ void func_gen_list(list* root)
 {
     func[func_index] = root;
     func_index += 1;
-    // fprintf(fd, ".func_index %s\n",func[func_index-1]->id);
+    // passinobj* tempPassInType = (passinobj*)((funcsymbolobj*)root->data)->passInType;
+    // fprintf(fd, ".func_index %d\n",tempPassInType->data->type);
 }
 
 void func_gen_int(char* str)
@@ -699,26 +706,28 @@ void func_gen()
         symbolobj* temp = func[func_index-1]->data;
         char* pass;
         passinobj* tempPassInType = (passinobj*)((funcsymbolobj*)temp)->passInType;
-        switch (tempPassInType->data->type)
+        if(tempPassInType == NULL)
         {
-        case Void:
-            //int
-            pass = " ";
-            break;
-        case Int:
-            //int
-            pass = "I";
-            break;
-        case Real:
-            //real
-            pass = "F";
-            break;
-        case String:
-            //str
-            pass = "Ljava/lang/String;";
-            break;
-        default:
-            break;
+             pass = "";
+        }
+        else{
+            switch (tempPassInType->data->type)
+                {
+                    case Int:
+                        //int
+                        pass = "I";
+                        break;
+                    case Real:
+                        //real
+                        pass = "F";
+                        break;
+                    case String:
+                        //str
+                        pass = "Ljava/lang/String;";
+                        break;
+                    default:
+                        break;
+                }
         }
         
         switch (temp->type)
@@ -743,22 +752,22 @@ void func_gen()
         fprintf(fd, ".limit locals 50\n");
         fprintf(fd, ".limit stack 50\n");
     
-        switch (tempPassInType->data->type)
+        if(tempPassInType != NULL)
         {
-            case Void:
-                // fprintf(fd, ".method public static %s_%d(F)F\n",func[func_index-1]->id,func_index-1);
-                break;
-            case Int:
-                // fprintf(fd, "    ldc 0\n    istore 1\n");
-                break;
-            case Real:
-                // fprintf(fd, "    ldc 0.0\n    fstore 1\n");                
-                break;
-            // case String:
-            //     fprintf(fd, "    ldc ""\n    istore 1\n");                
-            //     break;
-            default:
-                break;
+            switch (tempPassInType->data->type)
+            {
+                case Int:
+                    fprintf(fd, "    iload 0\n");
+                    break;
+                case Real:
+                    // fprintf(fd, "    ldc 0.0\n    fstore 1\n");                
+                    break;
+                case String:
+                    // fprintf(fd, "    ldc ""\n    istore 1\n");                
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
@@ -771,9 +780,11 @@ void func_end()
         symbolobj* temp = func[t]->data;
         switch (temp->type)
         {
+        case Void:
+            break;
         case Int:
             //int
-            fprintf(fd, "    iload 0\n");
+            
             fprintf(fd, "    ireturn\n");
             fprintf(fd, "    ireturn\n");
             break;

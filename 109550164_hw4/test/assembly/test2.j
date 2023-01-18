@@ -61,13 +61,11 @@ LAB2:
     ireturn
 .end method
 .field public static z I
-    return
 .end method
 .method public static tt_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
 .field public static z I
     ldc 3
     ldc 4
@@ -78,9 +76,8 @@ LAB2:
     invokestatic test2/writelnI(I)V
     ldc 5
     iadd
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -173,6 +170,7 @@ L8:
     ldc 3
     ldc 4.000000
     ldc 6.500000
+    invokestatic test2/tt_0(I)I
     ldc 2
     ldc 3
     ldc 4.000000

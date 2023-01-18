@@ -44,7 +44,7 @@
 
 void CodeGen(ProgNode* root);
 void Genclose();
-void find_func(char* str);
+void find_func(char* str, int type);
 void func_gen_init(list* root, int index);
 void prognode_gen(char* id);
 void declar_gen_real(char* id);

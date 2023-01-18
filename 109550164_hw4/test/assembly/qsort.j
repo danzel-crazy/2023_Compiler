@@ -63,9 +63,6 @@ LAB2:
 .end method
 .field public static input I
     ldc 0
-    putstatic qsort/size I
-    invokestatic qsort/readlnI()I
-    putstatic qsort/input I
     getstatic qsort/input I
     ldc 0
     if_icmpne L1
@@ -77,19 +74,13 @@ L2:
     getstatic qsort/size I
     ldc 1
     iadd
-    putstatic qsort/size I
     getstatic qsort/size I
     getstatic qsort/input I
-    putstatic qsort/arr I
-    invokestatic qsort/readlnI()I
-    putstatic qsort/input I
-    return
 .end method
 .method public static split_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
 .field public static test I
 .field public static left I
 .field public static right I
@@ -248,62 +239,47 @@ L34:
     getstatic qsort/right I
     getstatic qsort/tmp I
     getstatic qsort/right I
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static split_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
 .field public static m I
 .field public static splitpt I
-    invokestatic qsort/start()I
-    invokestatic qsort/stop()I
     if_icmplt L35
     ldc 0
     goto L36
 L35:
     ldc 1
 L36:
-    invokestatic qsort/start()I
-    invokestatic qsort/stop()I
-    invokestatic qsort/start()I
-    invokestatic qsort/stop()I
-    putstatic qsort/splitpt I
-    invokestatic qsort/start()I
+    invokestatic qsort/split_0(I)I
     getstatic qsort/splitpt I
     ldc 1
     isub
-    invokestatic qsort/start()I
     getstatic qsort/splitpt I
     ldc 1
     isub
     getstatic qsort/splitpt I
     ldc 1
     iadd
-    invokestatic qsort/stop()I
     getstatic qsort/splitpt I
     ldc 1
     iadd
-    invokestatic qsort/stop()I
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static split_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
-    ldc 1
-    getstatic qsort/size I
-    ldc 1
-    getstatic qsort/size I
     iload 0
+    ldc 1
+    getstatic qsort/size I
+    ldc 1
+    getstatic qsort/size I
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50

@@ -60,6 +60,7 @@ int FactorNode_visit(void* node){
     {
     case 0:
         // IDENTIFIER tail
+        
         if ( GetList( listRoot, &listTemp, temp->id ) ){
             currTemp = listTemp->data;
             datatype = currTemp->type;
@@ -87,14 +88,15 @@ int FactorNode_visit(void* node){
             // fprintf(stderr, "%d: %d has an Node\n", temp->tailnode->node.loc.first_line, temp->tailnode->node.loc.first_column);
 
             temp->tailnode->node.visit(temp->tailnode);
+            
         }
-
+        find_func(temp->id, 0);
         return datatype;
         break;
 
     case 1:
         // IDENTIFIER LPAREN expression_list RPAREN
-        find_func(temp->id);
+        
         if ( GetList( listRoot, &listTemp, temp->id ) ){
             currTemp = listTemp->data;
             while (currTemp->type == Array){
@@ -106,8 +108,10 @@ int FactorNode_visit(void* node){
         }
 
         if (temp->explistnode != 0)
+        {
             temp->explistnode->node.visit(temp->explistnode);
-
+        }
+        find_func(temp->id, 1);
         if (listTemp != 0){
             // check arguments
             symbolobj* tempnode = ((funcsymbolobj*)listTemp->data)->passInType;

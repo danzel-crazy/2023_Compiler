@@ -61,8 +61,7 @@ LAB2:
 .method public static fa_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
     getstatic fibonacci_recursive/a I
     ldc 1
     if_icmpeq L1
@@ -84,19 +83,20 @@ L4:
     getstatic fibonacci_recursive/a I
     ldc 1
     isub
+    invokestatic fibonacci_recursive/fa_0(I)I
     getstatic fibonacci_recursive/a I
     ldc 1
     isub
     getstatic fibonacci_recursive/a I
     ldc 2
     isub
+    invokestatic fibonacci_recursive/fa_0(I)I
     getstatic fibonacci_recursive/a I
     ldc 2
     isub
     iadd
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -106,6 +106,7 @@ L4:
     invokestatic fibonacci_recursive/readlnI()I
     putstatic fibonacci_recursive/a I
     getstatic fibonacci_recursive/a I
+    invokestatic fibonacci_recursive/fa_0(I)I
     getstatic fibonacci_recursive/a I
     invokestatic fibonacci_recursive/writelnI(I)V
     return

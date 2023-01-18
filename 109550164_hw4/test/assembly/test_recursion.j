@@ -63,8 +63,7 @@ LAB2:
 .method public static fact_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
     ldc 1
     if_icmpeq L1
     ldc 0
@@ -74,12 +73,12 @@ L1:
 L2:
     ldc 1
     isub
+    invokestatic test_recursion/fact_0(I)I
     ldc 1
     isub
     imul
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -91,6 +90,7 @@ L2:
     ldc 0.0
     putstatic test_recursion/c F
     ldc 4
+    invokestatic test_recursion/fact_0(I)I
     ldc 4
     putstatic test_recursion/a I
     getstatic test_recursion/a I

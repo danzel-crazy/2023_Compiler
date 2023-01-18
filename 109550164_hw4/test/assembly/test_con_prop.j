@@ -61,11 +61,9 @@ LAB2:
 .method public static ss_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
     iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50

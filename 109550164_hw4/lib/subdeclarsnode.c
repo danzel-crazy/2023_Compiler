@@ -22,7 +22,6 @@ int SubDeclarSNode_visit(void* node){
     func_in();
     if(temp->PrevNode != NULL){
         temp->PrevNode->node.visit(temp->PrevNode);
-        
     }
     
     temp->NextNode->node.visit(temp->NextNode);

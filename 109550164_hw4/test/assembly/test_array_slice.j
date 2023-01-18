@@ -57,7 +57,7 @@ LAB2:
     iload 1
     ireturn
 .end method
-.method public static slice_0(I)I
+.method public static slice_0(I‰ÀH…À„À)I
 .limit locals 50
 .limit stack 50
     ldc 3
@@ -65,9 +65,8 @@ LAB2:
     iadd
     ldc 5
     iadd
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -86,6 +85,7 @@ LAB2:
     putstatic test_array_slice/a I
     invokestatic test_array_slice/a()I
     ldc 2
+    invokestatic test_array_slice/slice_0()I
     invokestatic test_array_slice/a()I
     ldc 2
     invokestatic test_array_slice/writelnI(I)V

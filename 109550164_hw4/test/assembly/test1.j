@@ -66,30 +66,23 @@ LAB2:
 .end method
 .field public static b I
     getstatic test1/b I
-    putstatic test1/c I
-    return
 .end method
 .method public static addition_0(I)I
 .limit locals 50
 .limit stack 50
-    ldc 0
-    istore 1
+    iload 0
     getstatic test1/a I
     getstatic test1/b I
     iadd
-    iload 0
     ireturn
-    return
+    ireturn
 .end method
 .method public static ggyy_1(F)F
 .limit locals 50
 .limit stack 50
-    ldc 0.0
-    fstore 1
     getstatic test1/g F
     getstatic test1/h F
     fadd
-    return
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -112,6 +105,7 @@ LAB2:
     putstatic test1/b I
     ldc 8
     ldc 8
+    invokestatic test1/addition_0(I)I
     ldc 8
     ldc 8
     putstatic test1/c I
@@ -121,6 +115,7 @@ LAB2:
     fneg
     ldc 8
     fneg
+    invokestatic test1/addition_0(I)I
     ldc 8
     fneg
     putstatic test1/c I
@@ -128,6 +123,7 @@ LAB2:
     invokestatic test1/writelnI(I)V
     ldc 3.300000
     ldc 5.500000
+    invokestatic test1/ggyy_1(F)F
     ldc 3.300000
     ldc 5.500000
     putstatic test1/x Ljava/lang/String;

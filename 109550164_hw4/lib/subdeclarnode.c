@@ -432,7 +432,7 @@ int SubDeclarNode_visit(void* node){
         temp->compoundstatementnode->node.visit(temp->compoundstatementnode);
     }
     
-    
+    // func_end();
     
     list* listTemp;
     if ( GetList(listRoot, &listTemp, temp->head->id) )
