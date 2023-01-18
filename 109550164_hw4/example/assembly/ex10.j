@@ -68,9 +68,13 @@ LAB2:
 L1:
     ldc 1
 L2:
+    ifeq L3
     ldc 1
     invokestatic ex10/writelnI(I)V
+    goto  L4
+L3:
     ldc 2
     invokestatic ex10/writelnI(I)V
+L4:
     return
 .end method

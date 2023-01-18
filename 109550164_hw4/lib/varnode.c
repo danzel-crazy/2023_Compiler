@@ -51,10 +51,13 @@ int VarNode_visit(void* node){
         }
     // check id tail
     if (temp->tailnode != 0){
+        array_gen_add(temp->id);
         temp->tailnode->node.visit(temp->tailnode);
     }
-
+    
     variable_gen_add(temp->id, datatype);
+    
+    
 
     return datatype;
 }

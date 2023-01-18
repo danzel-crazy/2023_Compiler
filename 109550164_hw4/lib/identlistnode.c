@@ -19,6 +19,5 @@ IdentListNode* newIdentListNode( int firstLine, int firstColumn, char* id, Ident
 
 
 int IdentListNode_visit(void* node){
-
     return 0;
 }

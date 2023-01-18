@@ -83,13 +83,15 @@ int StatementNode_visit(void* node){
         
         if (temp->expnode != 0)
             temp->expnode->node.visit(temp->expnode);
-
+        if_gen();
+        
         if (temp->statementnode1 != 0)
             temp->statementnode1->node.visit(temp->statementnode1);
+        if_else_gen();
 
         if (temp->statementnode2 != 0)
             temp->statementnode2->node.visit(temp->statementnode2);
-
+        if_then_gen();
         break;
 
     case 4:

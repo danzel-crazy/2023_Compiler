@@ -65,10 +65,17 @@ list* func[100];
 int func_index = 0;
 BOOL func_check = FALSE;
 
-// list* listRoot;
+// array
+list* array[100];
+int array_label[100];
+int array_index = 0;
+BOOL array_check = FALSE;
 
 //add
 BOOL add_check = FALSE;
+
+//if
+BOOL if_check = FALSE;
 
 void CodeGen(ProgNode* root){
     
@@ -183,6 +190,37 @@ void declar_gen_string(char* id)
     fprintf(fd, ".field public static %s Ljava/lang/String;\n",id);
 }
 
+void declar_gen_array(list* arr, int type)
+{
+    array[array_index] = arr;
+    array_label[arr_index] = type;
+    array_index += 1;
+    symbolobj* temp = arr->data;
+    temp = ((arraysymbolobj*)temp)->data;
+    // fprintf(fd, "%d\n",temp->type);
+    switch (type)
+    {
+    case 0:
+        if (temp->type == Array)
+            fprintf(fd, ".field public static %s [[I\n",arr->id);
+        else 
+            fprintf(fd, ".field public static %s [I\n",arr->id);
+        break;
+    case 1:
+        if (temp->type == Array)
+            fprintf(fd, ".field public static %s [[F\n",arr->id);
+        else 
+            fprintf(fd, ".field public static %s [F\n",arr->id);
+        break;
+    case 2:
+        if (temp->type == Array)
+            fprintf(fd, ".field public static %s [[Ljava/lang/String;\n",arr->id);
+        else 
+            fprintf(fd, ".field public static %s [Ljava/lang/String;\n",arr->id);
+        break;
+    }
+}
+
 //PBEGIN
 void PBEGIN_gen()
 {
@@ -203,6 +241,61 @@ void PBEGIN_gen()
         case 'S':
             fprintf(fd, "    ldc \"\"\n");
             fprintf(fd, "    putstatic %s/%s Ljava/lang/String;\n",prog,arr[i]);
+            break;
+        }
+    }
+
+    for (int i = 0; i < array_index; i++){
+        symbolobj* temp = array[i]->data;
+        symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+        
+        // fprintf(fd, "%d\n",temp->type);
+        switch (array_label[i])
+        {
+        case 0:
+            if (temp_sceond->type == Array)
+            {
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->end);
+                fprintf(fd, "    multianewarray [[I 2\n");
+                fprintf(fd, "    putstatic %s/%s [[I\n",prog,array[i]->id);
+            }
+            else
+            {
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    multianewarray [I 1\n");
+                fprintf(fd, "    putstatic %s/%s [I\n",prog,array[i]->id);
+            }
+            break;
+        case 1:
+            if (temp->type == Array)
+            {
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->end);
+                fprintf(fd, "    multianewarray [[F 2\n");
+                fprintf(fd, "    putstatic %s/%s [[F\n",prog,array[i]->id);
+            }
+            else
+            {
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    multianewarray [F 1\n");
+                fprintf(fd, "    putstatic %s/%s [F\n",prog,array[i]->id);
+            }
+            break;
+        case 2:
+            if (temp->type == Array)
+            {
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->end);
+                fprintf(fd, "    multianewarray [[Ljava/lang/String; 2\n");
+                fprintf(fd, "    putstatic %s/%s [[Ljava/lang/String;\n",prog,array[i]->id);
+            }
+            else
+            {
+                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->end);
+                fprintf(fd, "    multianewarray [Ljava/lang/String; 1\n");
+                fprintf(fd, "    putstatic %s/%s [Ljava/lang/String;\n",prog,array[i]->id);
+            }
             break;
         }
     }
@@ -334,6 +427,53 @@ void factor_gen_global(char *str)
             }
         }
     }
+
+    // if(array_index != 0){
+    //     for (int i = 0; i < array_index; i++){
+    //         int ch = strcmp(array[i]->id, str);
+    //         if (ch == 0) {
+    //             symbolobj* temp = array[i]->data;
+    //             symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                
+    //             // fprintf(fd, "%d\n",temp->type);
+    //             switch (array_label[i])
+    //             {
+    //                 case 0:
+    //                     if (temp_sceond->type == Array)
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [[I\n",prog,array[i]->id);
+    //                     }
+    //                     else
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [I\n",prog,array[i]->id);
+    //                     }
+    //                     break;
+    //                 case 1:
+    //                     if (temp->type == Array)
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [[F\n",prog,array[i]->id);
+    //                     }
+    //                     else
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [F\n",prog,array[i]->id);
+    //                     }
+    //                     break;
+    //                 case 2:
+    //                     if (temp->type == Array)
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [[Ljava/lang/String;\n",prog,array[i]->id);
+    //                     }
+    //                     else
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [Ljava/lang/String;\n",prog,array[i]->id);
+    //                     }
+    //                     break;
+    //                 }    
+    //                 return;
+    //         }
+    //     }
+    // }
+
     if (!func_check)
     {
         if(func_index != 0)
@@ -598,20 +738,66 @@ void relopnode_gen(int pos, int type)
 }
 
 //variabale
+void array_gen_add(char* str){
+    fprintf(fd, "    %s\n",str);
+    // if(array_index != 0){
+    //     for (int i = 0; i < array_index; i++){
+    //         int ch = strcmp(array[i]->id, str);
+    //         if (ch == 0) {
+    //             symbolobj* temp = array[i]->data;
+    //             symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+    //             switch (array_label[i])
+    //             {
+    //                 case 0:
+    //                     if (temp_sceond->type == Array)
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [[I\n",prog,array[i]->id);
+    //                     }
+    //                     else
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [I\n",prog,array[i]->id);
+    //                     }
+    //                     break;
+    //                 case 1:
+    //                     if (temp->type == Array)
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [[F\n",prog,array[i]->id);
+    //                     }
+    //                     else
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [F\n",prog,array[i]->id);
+    //                     }
+    //                     break;
+    //                 case 2:
+    //                     if (temp->type == Array)
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [[Ljava/lang/String;\n",prog,array[i]->id);
+    //                     }
+    //                     else
+    //                     {
+    //                         fprintf(fd, "    getstatic %s/%s [Ljava/lang/String;\n",prog,array[i]->id);
+    //                     }
+    //                     break;
+    //                 }    
+    //             return;
+    //         }
+    //     }
+    // }
+}
 void variable_gen_add(char* str, int type)
-{
+{   
     switch (type)
     {
-    case 0:
-        cur_gen_int(str);
-        break;
-    case 1:
-        cur_gen_real(str);
-        break;
-    case 2:
-        cur_gen_string(str);
-        break;
-    }
+        case 0:
+            cur_gen_int(str);
+            break;
+        case 1:
+            cur_gen_real(str);
+            break;
+        case 2:
+            cur_gen_string(str);
+            break;
+        }
 }
 
 void cur_gen_real(char* id)
@@ -663,30 +849,35 @@ void variable_gen(char* str)
     }
 }
 
+void if_c(int type)
+{
+    if(type == 2) if_check = TRUE;
+}
+void if_gen(){
+    if (if_check)
+        fprintf(fd, "    ifeq L%d\n",relop_index);
+    else 
+        fprintf(fd, "    ifne L%d\n",relop_index);
+    relop_index += 1;
+}
+
+void if_else_gen()
+{
+    fprintf(fd, "    goto  L%d\n",relop_index);
+    fprintf(fd, "L%d:\n",relop_index-1);
+}
+
+void if_then_gen()
+{
+    fprintf(fd, "L%d:\n",relop_index);
+    relop_index += 1;
+    if_check = FALSE;
+}
+
 void func_gen_list(list* root)
 {
     func[func_index] = root;
     func_index += 1;
-    // passinobj* tempPassInType = (passinobj*)((funcsymbolobj*)root->data)->passInType;
-    // fprintf(fd, ".func_index %d\n",tempPassInType->data->type);
-}
-
-void func_gen_int(char* str)
-{
-    // fprintf(fd, ".method public static %s(I)I\n",str);
-    // fprintf(fd, ".limit locals 50\n.limit stack 50\n");
-}
-
-void func_gen_real(char* str)
-{
-    // fprintf(fd, ".method public static %s(F)F\n",str);
-    // fprintf(fd, ".limit locals 50\n.limit stack 50\n");
-}
-
-void func_gen_string(char* str)
-{
-    // fprintf(fd, ".method public static %s Ljava/lang/String;\n",str);
-    // fprintf(fd, ".limit locals 50\n.limit stack 50\n");
 }
 
 //componenet

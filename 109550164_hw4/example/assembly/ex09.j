@@ -1,5 +1,7 @@
 .class public ex09
 .super java/lang/Object
+.field public static a [I
+.field public static b [[I
 .method public static writelnI(I)V
 .limit locals 5
 .limit stack 5
@@ -61,8 +63,17 @@ LAB2:
 .limit locals 50
 .limit stack 50
     ldc 2
+    multianewarray [I 1
+    putstatic ex09/a [I
+    ldc 2
+    ldc 2
+    multianewarray [[I 2
+    putstatic ex09/b [[I
+    a
+    ldc 2
     ldc 1
     putstatic ex09/a I
+    b
     ldc 1
     ldc 2
     ldc 2

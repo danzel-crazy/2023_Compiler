@@ -90,6 +90,7 @@ int DeclarNode_visit(void* node){
                 case 0:
                     /* code */
                     curr_array->type = Int;
+
                     break;
 
                 case 1:
@@ -103,7 +104,7 @@ int DeclarNode_visit(void* node){
                 default:
                     break;
                 }
-
+                declar_gen_array(listTemp, curr_type->standtypenode->type);
             }
             
         }

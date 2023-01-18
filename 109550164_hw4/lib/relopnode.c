@@ -1,5 +1,6 @@
 #include "relopnode.h"
 #include <stdlib.h>
+#include <ast_gen.h>
 
 RelopNode* newRelopNode( int firstLine, int firstColumn, int type, int lastLine, int lastColumn ){
     RelopNode* temp = (RelopNode*) malloc ( sizeof(RelopNode) );
@@ -16,6 +17,6 @@ RelopNode* newRelopNode( int firstLine, int firstColumn, int type, int lastLine,
 
 int RelopNode_visit(void* node){
     RelopNode* temp = (RelopNode*) node;
-
+    if_c(temp->type);
     return temp->type;
 }

@@ -71,19 +71,16 @@ int SubDeclarNode_visit(void* node){
             case 0:
                 /* code */
                 tempList = newfunclist( temp->head->id, scope, Int, Function );
-                func_gen_int(temp->head->id);
                 // func_gen_list(tempList);
                 break;
 
             case 1:
                 tempList = newfunclist( temp->head->id, scope, Real, Function );
-                func_gen_real(temp->head->id);
                 // func_gen_list(tempList);
                 break;
 
             case 2:
                 tempList = newfunclist( temp->head->id, scope, String, Function );
-                func_gen_string(temp->head->id);
                 // func_gen_list(tempList);
                 break;
             
