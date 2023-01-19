@@ -76,7 +76,6 @@ LAB2:
 .limit stack 50
     invokestatic ex08/g_1()I
     invokestatic ex08/f_0(I)I
-    invokestatic ex08/g_1()I
     invokestatic ex08/writelnI(I)V
     return
 .end method

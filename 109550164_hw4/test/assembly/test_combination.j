@@ -119,7 +119,6 @@ L11:
     ldc 1
     isub
     getstatic test_combination/b I
-    invokestatic test_combination/comb_0(I)I
     getstatic test_combination/a I
     ldc 1
     isub
@@ -158,7 +157,6 @@ L16:
     getstatic test_combination/b I
     ldc 2
     isub
-    invokestatic test_combination/comb_0(I)I
     getstatic test_combination/a I
     ldc 3
     iadd

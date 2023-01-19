@@ -62,10 +62,11 @@ LAB2:
     iload 1
     ireturn
 .end method
-.field public static input I
+.var 0 is input I
     ldc 0
+    istore 0
 L1:
-    getstatic qsort/input I
+    iload 0
     ldc 0
     if_icmpne L2
     ldc 0
@@ -79,8 +80,9 @@ L3:
     iadd
     getstatic qsort/arr [I
     getstatic qsort/size I
-    getstatic qsort/input I
+    iload 0
     iastore
+    istore 0
     goto L1
 L4:
 .end method
@@ -88,18 +90,21 @@ L4:
 .limit locals 50
 .limit stack 50
     iload 0
-.field public static test I
-.field public static left I
-.field public static right I
-.field public static pivot I
-.field public static tmp I
+.var 1 is test I
+.var 2 is left I
+.var 3 is right I
+.var 4 is pivot I
+.var 5 is tmp I
     getstatic qsort/arr [I
     iaload
+    istore 4
     ldc 1
     iadd
+    istore 2
+    istore 3
 L5:
-    getstatic qsort/left I
-    getstatic qsort/right I
+    iload 2
+    iload 3
     if_icmple L6
     ldc 0
     goto L7
@@ -108,7 +113,8 @@ L6:
 L7:
     ifeq L8
     ldc 1
-    getstatic qsort/left I
+    istore 1
+    iload 2
     if_icmple L8
     ldc 0
     goto L9
@@ -119,8 +125,9 @@ L9:
     goto L11
 L10:
     ldc 0
+    istore 1
 L11:
-    getstatic qsort/test I
+    iload 1
     ldc 1
     if_icmpeq L12
     ldc 0
@@ -130,9 +137,9 @@ L12:
 L13:
     ifeq L14
     getstatic qsort/arr [I
-    getstatic qsort/left I
+    iload 2
     iaload
-    getstatic qsort/pivot I
+    iload 4
     if_icmplt L15
     ldc 0
     goto L16
@@ -143,12 +150,13 @@ L16:
     goto L18
 L17:
     ldc 0
+    istore 1
 L18:
     goto L19
 L18:
 L19:
 L20:
-    getstatic qsort/test I
+    iload 1
     ldc 1
     if_icmpeq L21
     ldc 0
@@ -157,11 +165,13 @@ L21:
     ldc 1
 L22:
     ifeq L23
-    getstatic qsort/left I
+    iload 2
     ldc 1
     iadd
+    istore 2
     ldc 1
-    getstatic qsort/left I
+    istore 1
+    iload 2
     if_icmple L23
     ldc 0
     goto L24
@@ -172,8 +182,9 @@ L24:
     goto L26
 L25:
     ldc 0
+    istore 1
 L26:
-    getstatic qsort/test I
+    iload 1
     ldc 1
     if_icmpeq L27
     ldc 0
@@ -183,9 +194,9 @@ L27:
 L28:
     ifeq L29
     getstatic qsort/arr [I
-    getstatic qsort/left I
+    iload 2
     iaload
-    getstatic qsort/pivot I
+    iload 4
     if_icmplt L30
     ldc 0
     goto L31
@@ -196,6 +207,7 @@ L31:
     goto L33
 L32:
     ldc 0
+    istore 1
 L33:
     goto L34
 L33:
@@ -203,7 +215,8 @@ L34:
     goto L32
 L35:
     ldc 1
-    getstatic qsort/right I
+    istore 1
+    iload 3
     if_icmpgt L36
     ldc 0
     goto L37
@@ -214,8 +227,9 @@ L37:
     goto L39
 L38:
     ldc 0
+    istore 1
 L39:
-    getstatic qsort/test I
+    iload 1
     ldc 1
     if_icmpeq L40
     ldc 0
@@ -225,9 +239,9 @@ L40:
 L41:
     ifeq L42
     getstatic qsort/arr [I
-    getstatic qsort/right I
+    iload 3
     iaload
-    getstatic qsort/pivot I
+    iload 4
     if_icmpge L43
     ldc 0
     goto L44
@@ -238,12 +252,13 @@ L44:
     goto L46
 L45:
     ldc 0
+    istore 1
 L46:
     goto L47
 L46:
 L47:
 L48:
-    getstatic qsort/test I
+    iload 1
     ldc 1
     if_icmpeq L49
     ldc 0
@@ -252,11 +267,13 @@ L49:
     ldc 1
 L50:
     ifeq L51
-    getstatic qsort/right I
+    iload 3
     ldc 1
     isub
+    istore 3
     ldc 1
-    getstatic qsort/right I
+    istore 1
+    iload 3
     if_icmpgt L51
     ldc 0
     goto L52
@@ -267,8 +284,9 @@ L52:
     goto L54
 L53:
     ldc 0
+    istore 1
 L54:
-    getstatic qsort/test I
+    iload 1
     ldc 1
     if_icmpeq L55
     ldc 0
@@ -278,9 +296,9 @@ L55:
 L56:
     ifeq L57
     getstatic qsort/arr [I
-    getstatic qsort/right I
+    iload 3
     iaload
-    getstatic qsort/pivot I
+    iload 4
     if_icmpge L58
     ldc 0
     goto L59
@@ -291,14 +309,15 @@ L59:
     goto L61
 L60:
     ldc 0
+    istore 1
 L61:
     goto L62
 L61:
 L62:
     goto L60
 L63:
-    getstatic qsort/left I
-    getstatic qsort/right I
+    iload 2
+    iload 3
     if_icmplt L64
     ldc 0
     goto L65
@@ -307,16 +326,17 @@ L64:
 L65:
     ifne L66
     getstatic qsort/arr [I
-    getstatic qsort/left I
+    iload 2
+    iaload
+    istore 5
+    getstatic qsort/arr [I
+    iload 2
+    getstatic qsort/arr [I
+    iload 3
     iaload
     getstatic qsort/arr [I
-    getstatic qsort/left I
-    getstatic qsort/arr [I
-    getstatic qsort/right I
-    iaload
-    getstatic qsort/arr [I
-    getstatic qsort/right I
-    getstatic qsort/tmp I
+    iload 3
+    iload 5
     iastore
     goto L67
 L66:
@@ -325,15 +345,16 @@ L67:
 L68:
     getstatic qsort/arr [I
     iaload
+    istore 5
     getstatic qsort/arr [I
     getstatic qsort/arr [I
-    getstatic qsort/right I
+    iload 3
     iaload
     getstatic qsort/arr [I
-    getstatic qsort/right I
-    getstatic qsort/tmp I
+    iload 3
+    iload 5
     iastore
-    getstatic qsort/right I
+    iload 3
     ireturn
     ireturn
 .end method
@@ -341,8 +362,8 @@ L68:
 .limit locals 50
 .limit stack 50
     iload 0
-.field public static m I
-.field public static splitpt I
+.var 6 is m I
+.var 7 is splitpt I
     if_icmplt L69
     ldc 0
     goto L70
@@ -351,16 +372,17 @@ L69:
 L70:
     ifne L71
     invokestatic qsort/split_0(I)I
-    getstatic qsort/splitpt I
+    istore 7
+    iload 7
     ldc 1
     isub
-    getstatic qsort/splitpt I
+    iload 7
     ldc 1
     isub
-    getstatic qsort/splitpt I
+    iload 7
     ldc 1
     iadd
-    getstatic qsort/splitpt I
+    iload 7
     ldc 1
     iadd
     goto L72
@@ -391,22 +413,6 @@ L72:
     putstatic qsort/tmp I
     ldc 0
     putstatic qsort/size I
-    ldc 0
-    putstatic qsort/input I
-    ldc 0
-    putstatic qsort/test I
-    ldc 0
-    putstatic qsort/left I
-    ldc 0
-    putstatic qsort/right I
-    ldc 0
-    putstatic qsort/pivot I
-    ldc 0
-    putstatic qsort/tmp I
-    ldc 0
-    putstatic qsort/m I
-    ldc 0
-    putstatic qsort/splitpt I
     ldc 50
     multianewarray [I 1
     putstatic qsort/arr [I

@@ -76,6 +76,7 @@ void array_out();
 void func_array_end();
 void array_gen_add(char* str);
 void variable_gen(char* str);
+void variable_gen_add(char* str, int type);
 void if_c(int type);
 void if_gen();
 void if_else_gen();

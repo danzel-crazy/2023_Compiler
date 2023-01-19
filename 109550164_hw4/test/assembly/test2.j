@@ -62,19 +62,20 @@ LAB2:
     iload 1
     ireturn
 .end method
-.field public static z I
+.var 0 is z I
 .end method
 .method public static tt_0(I)I
 .limit locals 50
 .limit stack 50
     iload 0
-.field public static z I
+.var 1 is z I
     ldc 3
     ldc 4
     ldc 5
     imul
     iadd
-    getstatic test2/z I
+    istore 0
+    iload 0
     invokestatic test2/writelnI(I)V
     ldc 5
     iadd
@@ -90,10 +91,6 @@ LAB2:
     putstatic test2/bb I
     ldc 0
     putstatic test2/cc I
-    ldc 0
-    putstatic test2/z I
-    ldc 0
-    putstatic test2/z I
     ldc 2
     ldc 2
     multianewarray [[I 2

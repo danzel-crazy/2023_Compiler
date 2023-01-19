@@ -68,15 +68,15 @@ LAB2:
     iload 1
     ireturn
 .end method
-.field public static b I
-    getstatic test1/b I
+.var 0 is b I
+    iload 0
 .end method
 .method public static addition_0(I)I
 .limit locals 50
 .limit stack 50
     iload 0
     getstatic test1/a I
-    getstatic test1/b I
+    iload 0
     iadd
     ireturn
     ireturn
@@ -105,8 +105,6 @@ LAB2:
     putstatic test1/h F
     ldc 0.0
     putstatic test1/x F
-    ldc 0
-    putstatic test1/b I
     ldc 10
     multianewarray [I 1
     putstatic test1/d [I
@@ -133,7 +131,6 @@ LAB2:
     fneg
     ldc 8
     fneg
-    invokestatic test1/addition_0(I)I
     ldc 8
     fneg
     putstatic test1/c I

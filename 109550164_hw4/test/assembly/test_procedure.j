@@ -74,9 +74,7 @@ LAB2:
 .method public static ss_0()I
 .limit locals 50
 .limit stack 50
-    invokestatic test_procedure/ss_0()I
     ldc 33
-    invokestatic test_procedure/ss_0()I
     imul
     iadd
     getstatic test_procedure/a I
@@ -95,9 +93,7 @@ LAB2:
     ldc 0.0
     putstatic test_procedure/c F
     invokestatic test_procedure/ss_0()I
-    invokestatic test_procedure/ss_0()I
     imul
-    invokestatic test_procedure/ss_0()I
     iadd
     putstatic test_procedure/a I
     getstatic test_procedure/a I

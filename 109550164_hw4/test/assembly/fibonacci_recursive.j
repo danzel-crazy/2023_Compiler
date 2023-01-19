@@ -96,7 +96,6 @@ L6:
     getstatic fibonacci_recursive/a I
     ldc 2
     isub
-    invokestatic fibonacci_recursive/fa_0(I)I
     getstatic fibonacci_recursive/a I
     ldc 2
     isub
@@ -114,7 +113,6 @@ L8:
     invokestatic fibonacci_recursive/readlnI()I
     putstatic fibonacci_recursive/a I
     getstatic fibonacci_recursive/a I
-    invokestatic fibonacci_recursive/fa_0(I)I
     getstatic fibonacci_recursive/a I
     invokestatic fibonacci_recursive/writelnI(I)V
     return

@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <stdint.h>
 #include <list.h>
+#include <string.h>
 // #include <unistd.h>
 #include "loc.h"
 #include "ast.h"
@@ -63,7 +64,13 @@ int cur_index = 0;
 //list
 list* func[100];
 int func_index = 0;
+int func_invoke_label[100] = {0};
 BOOL func_check = FALSE;
+
+//func variable
+char* func_arr[100];
+char func_label[100];
+int func_arr_index = 0;
 
 // array
 list* array[100];
@@ -170,26 +177,50 @@ void prognode_gen(char* id)
 //declarnode
 void declar_gen_real(char* id)
 {
-    arr[arr_index] = id;
-    label[arr_index] = 'F';
-    arr_index+=1;
-    fprintf(fd, ".field public static %s F\n",id);
+    if(!func_check){
+        arr[arr_index] = id;
+        label[arr_index] = 'F';
+        arr_index+=1;
+        fprintf(fd, ".field public static %s F\n",id);
+    }
+    else if(func_check){
+        fprintf(fd, ".field public static %s F\n",id);
+        func_arr[func_arr_index] = id;
+        func_label[func_arr_index] = 'F';
+        func_arr_index += 1;
+    }
 }
 
 void declar_gen_int(char* id)
 {
-    arr[arr_index] = id;
-    label[arr_index] = 'I';
-    arr_index+=1;
-    fprintf(fd, ".field public static %s I\n",id);
+    if(!func_check){
+        arr[arr_index] = id;
+        label[arr_index] = 'I';
+        arr_index+=1;
+        fprintf(fd, ".field public static %s I\n",id);
+    }
+    else if(func_check){
+        fprintf(fd, ".var %d is %s I\n",func_arr_index, id);
+        func_arr[func_arr_index] = id;
+        func_label[func_arr_index] = 'I';
+        func_arr_index += 1;
+    }
 }
 
 void declar_gen_string(char* id)
 {
-    arr[arr_index] = id;
-    label[arr_index] = 'S';
-    arr_index+=1;
-    fprintf(fd, ".field public static %s Ljava/lang/String;\n",id);
+    if(!func_check){
+        arr[arr_index] = id;
+        label[arr_index] = 'S';
+        arr_index+=1;
+        fprintf(fd, ".field public static %s Ljava/lang/String;\n",id);
+    }
+    else if(func_check){
+        fprintf(fd, ".field public static %s Ljava/lang/String;\n",id);
+        func_arr[func_arr_index] = id;
+        func_label[func_arr_index] = 'S';
+        func_arr_index += 1;
+    }
 }
 
 void declar_gen_array(list* arr, int type)
@@ -305,6 +336,10 @@ void PBEGIN_gen()
             break;
         }
     }
+
+    // for(int i = 0; i < func_index; i++){
+    //         func_gen_init(func[i],i); 
+    // }
 }
 
 //END
@@ -317,10 +352,10 @@ void END_gen()
 //procdeure_id
 void find_func(char* str, int type)
 {
-    // fprintf(fd, "    %d\n",type);
     for(int i = 0; i < func_index; i++){
         int ch = strcmp(func[i]->id, str);
         if (ch == 0) {
+            // fprintf(fd, "    %s\n",str);
             func_gen_init(func[i],i); 
             return;
         }
@@ -329,7 +364,9 @@ void find_func(char* str, int type)
 
 void func_gen_init(list* root, int index)
 {
-    symbolobj* temp = root->data;
+    if (func_invoke_label[index] == 0)
+    {
+        symbolobj* temp = root->data;
         char* pass;
         passinobj* tempPassInType = (passinobj*)((funcsymbolobj*)temp)->passInType;
         if(tempPassInType == NULL)
@@ -375,6 +412,9 @@ void func_gen_init(list* root, int index)
         default:
             break;
         }
+
+        func_invoke_label[index] = 1;
+    }
 }
 
 void procdeure_id_gen(char* id)
@@ -467,6 +507,30 @@ void func_array_end()
 
 void factor_gen_global(char *str)
 {
+    if(func_check)
+    {
+        for (int i = 0; i < func_arr_index; i++){
+            int ch = strcmp(func_arr[i], str);
+            if (ch == 0) {
+                switch (func_label[i])
+                {
+                case 'F':
+                    // fprintf(fd, "    getstatic %s_%d/%s F\n",func[func_index-1]->id,func_index-1,func_arr[i]);
+                    fprintf(fd, "    fload %d\n",i);
+                    break;
+                case 'I':
+                    // fprintf(fd, "    getstatic %s_%d/%s I\n",func[func_index-1]->id,func_index-1,func_arr[i]);
+                    fprintf(fd, "    iload %d\n",i);
+                    break;
+                case 'S':
+                    //fprintf(fd, "    getstatic %s_%d/%s Ljava/lang/String;\n",func[func_index-1]->id,func_index-1,func_arr[i]);
+                    break;
+                }
+                
+                return;
+            }
+        }
+    }
     if(arr_index != 0){
         for (int i = 0; i < arr_index; i++){
             int ch = strcmp(arr[i], str);
@@ -542,7 +606,7 @@ void factor_gen_global(char *str)
             for(int i = 0; i < func_index; i++){
                 int ch = strcmp(func[i]->id, str);
                 if (ch == 0) {
-                    // func_gen_init(func[i],i); 
+                    func_gen_init(func[i],i); 
                     return;
                 }
         }
@@ -936,6 +1000,7 @@ void arr_assign_gen()
         }
     }
 }
+
 void variable_gen(char* str)
 {
     if (!func_check && !array_check)
@@ -952,6 +1017,29 @@ void variable_gen(char* str)
                     break;
                 case 'S':
                     fprintf(fd, "    putstatic %s/%s Ljava/lang/String;\n",prog,cur[i]);
+                    break;
+                }
+                return;
+            }
+        }
+    }
+    else if(func_check)
+    {
+        // fprintf(fd, "    putstatic %s\n",str);
+        for (int i = 0; i < func_arr_index; i++){
+            if (!(strcmp(func_arr[i], str))) {
+                switch (func_label[i])
+                {
+                case 'F':
+                    // fprintf(fd, "    putstatic %s F\n",func_arr[i]);
+                    fprintf(fd, "    fstore %d\n",i);
+                    break;
+                case 'I':
+                    // fprintf(fd, "    putstatic %s I\n",func_arr[i]);
+                    fprintf(fd, "    istore %d\n",i);
+                    break;
+                case 'S':
+                    // fprintf(fd, "    putstatic %s Ljava/lang/String;\n",func_arr[i]);
                     break;
                 }
                 return;

@@ -79,33 +79,19 @@ LAB2:
     ldc 3
     invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
-    invokestatic test_function/ss_0(I)I
     ldc 3
     putstatic test_function/a I
     getstatic test_function/a I

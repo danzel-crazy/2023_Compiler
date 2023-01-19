@@ -94,7 +94,6 @@ L4:
     ldc 0.0
     putstatic test_recursion/c F
     ldc 4
-    invokestatic test_recursion/fact_0(I)I
     ldc 4
     putstatic test_recursion/a I
     getstatic test_recursion/a I

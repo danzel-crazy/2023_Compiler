@@ -63,13 +63,15 @@ LAB2:
 .method public static tt_0()I
 .limit locals 50
 .limit stack 50
-.field public static a I
-.field public static b I
+.var 0 is a I
+.var 1 is b I
     ldc 3
-    getstatic test_global2/a I
+    istore 0
+    iload 0
     ldc 5
     iadd
-    getstatic test_global2/b I
+    istore 1
+    iload 1
     ireturn
     ireturn
 .end method
@@ -82,10 +84,6 @@ LAB2:
     putstatic test_global2/b I
     ldc 0.0
     putstatic test_global2/c F
-    ldc 0
-    putstatic test_global2/a I
-    ldc 0
-    putstatic test_global2/b I
     ldc 3
     putstatic test_global2/a I
     ldc 4
