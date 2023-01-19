@@ -73,7 +73,15 @@ LAB2:
     iconst_0
     ldc 10
     iastore
+    aload_2
+    iconst_0
     aload_1
+    iconst_0
+    aaload
+    ldc 11
+    iadd
+    iastore
+    aload_2
     iconst_0
     ireturn
     ireturn

@@ -6,9 +6,8 @@ FUNCTION tt : INTEGER;
 VAR a, b : ARRAY[1..2] of INTEGER;
 BEGIN
   a[1] := 10;    // No error since this reference is to local variable
-  //b[1] := a[1]+11;
-  //tt := b[1]
-  tt := a[1]
+  b[1] := a[1]+11;
+  tt := b[1]
 END;
 
 BEGIN
