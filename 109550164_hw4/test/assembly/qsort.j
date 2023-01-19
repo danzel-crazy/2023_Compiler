@@ -96,7 +96,6 @@ L4:
 .var 4 is pivot I
 .var 5 is tmp I
     getstatic qsort/arr [I
-    iaload
     istore 4
     ldc 1
     iadd
@@ -138,7 +137,6 @@ L13:
     ifeq L14
     getstatic qsort/arr [I
     iload 2
-    iaload
     iload 4
     if_icmplt L15
     ldc 0
@@ -195,7 +193,6 @@ L28:
     ifeq L29
     getstatic qsort/arr [I
     iload 2
-    iaload
     iload 4
     if_icmplt L30
     ldc 0
@@ -240,7 +237,6 @@ L41:
     ifeq L42
     getstatic qsort/arr [I
     iload 3
-    iaload
     iload 4
     if_icmpge L43
     ldc 0
@@ -297,7 +293,6 @@ L56:
     ifeq L57
     getstatic qsort/arr [I
     iload 3
-    iaload
     iload 4
     if_icmpge L58
     ldc 0
@@ -327,13 +322,11 @@ L65:
     ifne L66
     getstatic qsort/arr [I
     iload 2
-    iaload
     istore 5
     getstatic qsort/arr [I
     iload 2
     getstatic qsort/arr [I
     iload 3
-    iaload
     getstatic qsort/arr [I
     iload 3
     iload 5
@@ -344,12 +337,10 @@ L67:
     goto L65
 L68:
     getstatic qsort/arr [I
-    iaload
     istore 5
     getstatic qsort/arr [I
     getstatic qsort/arr [I
     iload 3
-    iaload
     getstatic qsort/arr [I
     iload 3
     iload 5

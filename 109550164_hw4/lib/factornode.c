@@ -86,9 +86,13 @@ int FactorNode_visit(void* node){
 
             // debug
             // fprintf(stderr, "%d: %d has an Node\n", temp->tailnode->node.loc.first_line, temp->tailnode->node.loc.first_column);
+            
             array_in();
             // arr_assign_gen();
+            array_in_assign_in();
+            factor_gen_func(temp->id);
             temp->tailnode->node.visit(temp->tailnode);
+            array_in_assign_out();
             func_array_end();
             array_out();
         }

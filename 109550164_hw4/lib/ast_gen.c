@@ -72,6 +72,11 @@ char* func_arr[100];
 char func_label[100];
 int func_arr_index = 0;
 
+//func array
+list* func_array[100];
+int func_array_label[100];
+int func_array_index = 1;
+list* cur_array = NULL;
 // array
 list* array[100];
 int array_label[100];
@@ -80,6 +85,7 @@ BOOL array_check = FALSE;
 list* cur_arr;
 BOOL array2d_check = FALSE;
 BOOL array_assign_check = FALSE;
+BOOL array_in_assign = FALSE;
 //add
 BOOL add_check = FALSE;
 
@@ -225,32 +231,92 @@ void declar_gen_string(char* id)
 
 void declar_gen_array(list* arr, int type)
 {
-    array[array_index] = arr;
-    array_label[arr_index] = type;
-    array_index += 1;
-    symbolobj* temp = arr->data;
-    temp = ((arraysymbolobj*)temp)->data;
+    
     // fprintf(fd, "%d\n",temp->type);
-    switch (type)
+    if(!func_check)
     {
-    case 0:
-        if (temp->type == Array)
-            fprintf(fd, ".field public static %s [[I\n",arr->id);
-        else 
-            fprintf(fd, ".field public static %s [I\n",arr->id);
-        break;
-    case 1:
-        if (temp->type == Array)
-            fprintf(fd, ".field public static %s [[F\n",arr->id);
-        else 
-            fprintf(fd, ".field public static %s [F\n",arr->id);
-        break;
-    case 2:
-        if (temp->type == Array)
-            fprintf(fd, ".field public static %s [[Ljava/lang/String;\n",arr->id);
-        else 
-            fprintf(fd, ".field public static %s [Ljava/lang/String;\n",arr->id);
-        break;
+        array[array_index] = arr;
+        array_label[arr_index] = type;
+        array_index += 1;
+        symbolobj* temp = arr->data;
+        temp = ((arraysymbolobj*)temp)->data;
+        switch (type)
+        {
+        case 0:
+            if (temp->type == Array)
+                fprintf(fd, ".field public static %s [[I\n",arr->id);
+            else 
+                fprintf(fd, ".field public static %s [I\n",arr->id);
+            break;
+        case 1:
+            if (temp->type == Array)
+                fprintf(fd, ".field public static %s [[F\n",arr->id);
+            else 
+                fprintf(fd, ".field public static %s [F\n",arr->id);
+            break;
+        case 2:
+            if (temp->type == Array)
+                fprintf(fd, ".field public static %s [[Ljava/lang/String;\n",arr->id);
+            else 
+                fprintf(fd, ".field public static %s [Ljava/lang/String;\n",arr->id);
+            break;
+        }
+    }
+    else if(func_check){
+        // fprintf(fd, " %s \n",arr->id);
+        symbolobj* temp = arr->data;
+        symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+        int size_1 = ((arraysymbolobj*)temp)->end - ((arraysymbolobj*)temp)->start + 1;
+        // fprintf(fd, " %d \n",((arraysymbolobj*)temp)->end);
+        switch (type)
+        {
+        case 0:
+            if (temp_sceond->type == Array)
+            {
+                int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
+                // fprintf(fd, ".field public static %s [[I\n",arr->id);
+                fprintf(fd, "    iconst_%d\n",size_1);
+                fprintf(fd, "iconst_%d\n",size_2);
+                fprintf(fd, "multianewarray %d I 2\n",func_array_index);
+                fprintf(fd, "astore_%d\n",func_array_index);
+            }
+            else
+            {
+                // fprintf(fd, ".field public static %s [I\n",arr->id);
+                fprintf(fd, "    iconst_%d\n",size_1);
+                fprintf(fd, "    anewarray I\n");
+                fprintf(fd, "    astore_%d\n",func_array_index);
+            }
+            break;
+        case 1:
+            if (temp->type == Array)
+            {
+                // symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
+                // fprintf(fd, ".field public static %s [[F\n",arr->id);
+                fprintf(fd, "iconst_%d\n",size_1);
+                fprintf(fd, "iconst_%d\n",size_2);
+                fprintf(fd, "multianewarray %d F 2\n",func_array_index);
+                fprintf(fd, "astore_%d\n",func_array_index);
+            }
+            else
+            {
+                // fprintf(fd, ".field public static %s [F\n",arr->id);
+                fprintf(fd, "iconst_%d\n",size_1);
+                fprintf(fd, "multianewarray %d F 1\n",func_array_index);
+                fprintf(fd, "astore_%d\n",func_array_index);
+            }
+            break;
+        case 2:
+            // if (temp->type == Array)
+            //     fprintf(fd, ".field public static %s [[Ljava/lang/String;\n",arr->id);
+            // else 
+            //     fprintf(fd, ".field public static %s [Ljava/lang/String;\n",arr->id);
+            break;
+        }
+        func_array[func_array_index] = arr;
+        func_array_label[func_array_index] = type;
+        func_array_index += 1;
     }
 }
 
@@ -303,7 +369,7 @@ void PBEGIN_gen()
             }
             break;
         case 1:
-            if (temp->type == Array)
+            if (temp_sceond->type == Array)
             {
                 int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
                 fprintf(fd, "    ldc %d\n",size_1);
@@ -319,7 +385,7 @@ void PBEGIN_gen()
             }
             break;
         case 2:
-            if (temp->type == Array)
+            if (temp_sceond->type == Array)
             {
                 int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
                 fprintf(fd, "    ldc %d\n",size_1);
@@ -431,42 +497,78 @@ void procdeure_id_gen(char* id)
 //numnode
 void num_gen_int(int num)
 {
-    if(!array_check || array_assign_check)
-        fprintf(fd, "    ldc %d\n",num);
-    else if(!array_assign_check){
-        symbolobj* temp = cur_arr->data;
-        symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
-        int size_1 = ((arraysymbolobj*)temp)->end - ((arraysymbolobj*)temp)->start + 1;
-        if (temp_sceond->type == Array)
-        {
-            int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
-            if(array2d_check)
-            {
-                fprintf(fd, "    aaload\n");
-                fprintf(fd, "    ldc %d\n",num);
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->start);
-                fprintf(fd, "    isub\n");
-                array2d_check = FALSE;
-            }
-            else{
-                fprintf(fd, "    ldc %d\n",num);
-                fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->start);
-                fprintf(fd, "    isub\n");
-                array2d_check = TRUE;
-            }
-        }
-        else
-        {
+        if(!array_check || (array_assign_check && !array_in_assign))
             fprintf(fd, "    ldc %d\n",num);
-            fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->start);
-            fprintf(fd, "    isub\n");
+        else if(!array_assign_check || array_in_assign){
+            if(!func_check)
+            {
+                symbolobj* temp = cur_arr->data;
+                symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                int size_1 = ((arraysymbolobj*)temp)->end - ((arraysymbolobj*)temp)->start + 1;
+                if (temp_sceond->type == Array)
+                {
+                    int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
+                    if(array2d_check)
+                    {
+                        fprintf(fd, "    aaload\n");
+                        fprintf(fd, "    ldc %d\n",num);
+                        fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp_sceond)->start);
+                        fprintf(fd, "    isub\n");
+                        array2d_check = FALSE;
+                    }
+                    else{
+                        fprintf(fd, "    ldc %d\n",num);
+                        fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->start);
+                        fprintf(fd, "    isub\n");
+                        array2d_check = TRUE;
+                    }
+                }
+                else
+                {
+                    fprintf(fd, "    ldc %d\n",num);
+                    fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->start);
+                    fprintf(fd, "    isub\n");
+                }
+            }
+            else if(func_check)
+            {
+                symbolobj* temp = cur_array->data;
+                symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                int size_1 = ((arraysymbolobj*)temp)->end - ((arraysymbolobj*)temp)->start + 1;
+                if (temp_sceond->type == Array)
+                {
+                    int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
+                    if(array2d_check)
+                    {
+                        fprintf(fd, "    iconst_%d\n",num-((arraysymbolobj*)temp_sceond)->start);
+                        if(array_in_assign){
+                            fprintf(fd, "    aaload\n");
+                        }
+                        array2d_check = FALSE;
+                    }
+                    else{
+                        fprintf(fd, "    iconst_%d\n",num-((arraysymbolobj*)temp)->start);
+                        array2d_check = TRUE;
+                    }
+                }
+                else
+                {
+                    fprintf(fd, "    iconst_%d\n",(num-((arraysymbolobj*)temp)->start));
+                    // fprintf(fd, "    %d\n",array_in_assign);
+                    if(array_in_assign){
+                        fprintf(fd, "    aaload\n");
+                    }
+                }
+            }
         }
-    }
 }
 
 void num_gen_real(double num)
 {
-    if(!array_check || array_assign_check) fprintf(fd, "    ldc %f\n",num);
+    if(!array_check || array_assign_check) 
+    {
+        fprintf(fd, "    ldc %f\n",num);
+    }
 }
 
 void factor_gen_id(char *str)
@@ -480,35 +582,126 @@ void factor_gen_id(char *str)
 // }
 
 // factor node
-void func_array_end()
+void array_in_assign_in()
 {
-    for (int i = 0; i < array_index; i++){
-        int ch = strcmp(array[i]->id, cur_arr->id);
-        if (ch == 0) {
-            cur_arr = array[i];
-            symbolobj* temp = array[i]->data;
-            symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
-            switch (array_label[i])
-            {
-                case 0:
-                    fprintf(fd, "    iaload\n");
-                    break;
-                case 1:
-                    fprintf(fd, "    faload\n");
-                    break;
-                case 2:
-                    fprintf(fd, "    caload\n");
-                    break;
-                }    
-            return;
-        }
-    }
+    if(array_assign_check == TRUE) array_in_assign = TRUE;
 }
 
+void array_in_assign_out()
+{
+    array_in_assign = FALSE;
+}
+
+void func_array_end()
+{
+    if(!func_check)
+    {
+        for (int i = 0; i < array_index; i++){
+            int ch = strcmp(array[i]->id, cur_arr->id);
+            if (ch == 0) {
+                cur_arr = array[i];
+                symbolobj* temp = array[i]->data;
+                symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                switch (array_label[i])
+                {
+                    case 0:
+                        fprintf(fd, "    iaload\n");
+                        break;
+                    case 1:
+                        fprintf(fd, "    faload\n");
+                        break;
+                    case 2:
+                        fprintf(fd, "    caload\n");
+                        break;
+                    }    
+                return;
+            }
+        }
+    }
+    // else if(func_check)
+    // {
+    //     // fprintf(fd, "%s\n",cur_arr->id);
+    //     for (int i = 0; i < func_array_index; i++){
+    //         int ch = strcmp(func_array[i]->id, cur_array->id);
+    //         if (ch == 0) {
+    //             // cur_array = func_array[i];
+    //             symbolobj* temp = func_array[i]->data;
+    //             symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+    //             switch (func_array_label[i])
+    //             {
+    //                 case 0:
+    //                     fprintf(fd, "    iastore\n");
+    //                     break;
+    //                 case 1:
+    //                     // fprintf(fd, "    fastore\n");
+    //                     break;
+    //                 case 2:
+    //                     fprintf(fd, "    astore\n");
+    //                     break;
+    //                 }    
+    //             return;
+    //         }
+    //     }
+    // }
+}
+void factor_gen_func(char *str)
+{
+    // fprintf(fd, "    %s\n",str);
+    for (int i = 1; i < func_array_index; i++){
+            int ch = strcmp(func_array[i]->id, str);
+            if (ch == 0) {
+                symbolobj* temp = func_array[i]->data;
+                symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                switch (func_array_label[i])
+                {
+                case 0:
+                        if (temp_sceond->type == Array)
+                        {
+                            // fprintf(fd, "    getstatic %s/%s [[I\n",prog,array[i]->id);
+                            fprintf(fd, "    aaload_%d\n",i);
+                        }
+                        else
+                        {
+                            fprintf(fd, "    aload_%d\n",i);
+                        }
+                        break;
+                    case 1:
+                        if (temp_sceond->type == Array)
+                        {
+                            fprintf(fd, "    aaload_%d\n",i);
+                        }
+                        else
+                        {
+                            fprintf(fd, "    aload_%d\n",i);
+                        }
+                        break;
+                    case 2:
+                        if (temp_sceond->type == Array)
+                        {
+                            fprintf(fd, "    aaload_%d\n",i);
+                        }
+                        else
+                        {
+                            fprintf(fd, "    aload_%d\n",i);
+                        }
+                        break;
+                }    
+                return;
+            }
+        }
+}
 void factor_gen_global(char *str)
 {
     if(func_check)
     {
+        for (int i = 1; i < func_array_index; i++){
+            int ch = strcmp(func_array[i]->id, str);
+            if (ch == 0) {
+                // fprintf(fd, "    iload %d\n",i);
+                return;
+            }
+        }
+
         for (int i = 0; i < func_arr_index; i++){
             int ch = strcmp(func_arr[i], str);
             if (ch == 0) {
@@ -531,6 +724,7 @@ void factor_gen_global(char *str)
             }
         }
     }
+
     if(arr_index != 0){
         for (int i = 0; i < arr_index; i++){
             int ch = strcmp(arr[i], str);
@@ -574,7 +768,7 @@ void factor_gen_global(char *str)
                         }
                         break;
                     case 1:
-                        if (temp->type == Array)
+                        if (temp_sceond->type == Array)
                         {
                             fprintf(fd, "    getstatic %s/%s [[F\n",prog,array[i]->id);
                         }
@@ -584,7 +778,7 @@ void factor_gen_global(char *str)
                         }
                         break;
                     case 2:
-                        if (temp->type == Array)
+                        if (temp_sceond->type == Array)
                         {
                             fprintf(fd, "    getstatic %s/%s [[Ljava/lang/String;\n",prog,array[i]->id);
                         }
@@ -871,6 +1065,8 @@ void array_in()
 
 void array_out()
 {
+    // cur_arr = NULL;
+    // cur_array = NULL;
     array2d_check = FALSE;
     array_check = FALSE;
 }
@@ -897,7 +1093,7 @@ void array_gen_add(char* str){
                         }
                         break;
                     case 1:
-                        if (temp->type == Array)
+                        if (temp_sceond->type == Array)
                         {
                             fprintf(fd, "    getstatic %s/%s [[F\n",prog,array[i]->id);
                         }
@@ -907,7 +1103,7 @@ void array_gen_add(char* str){
                         }
                         break;
                     case 2:
-                        if (temp->type == Array)
+                        if (temp_sceond->type == Array)
                         {
                             fprintf(fd, "    getstatic %s/%s [[Ljava/lang/String;\n",prog,array[i]->id);
                         }
@@ -918,6 +1114,14 @@ void array_gen_add(char* str){
                         break;
                     }    
                 return;
+            }
+        }
+    }
+    if(func_check){
+        for (int i = 1; i < func_array_index; i++){
+            int ch = strcmp(func_array[i]->id, str);
+            if (ch == 0) {
+                cur_array = func_array[i];
             }
         }
     }
@@ -963,6 +1167,48 @@ void cur_gen_string(char* id)
 }
 
 //statement
+void func_local_array_end(char *id)
+{
+    // fprintf(fd, "%s\n",cur_arr->id);
+    if(func_check)
+    {
+        for(int i = 0; i < func_index; i++)
+        {
+            int ch = strcmp(func[i]->id, id);
+            if (ch == 0)
+            {
+                // fprintf(fd, "    iload 1\n");
+                // fprintf(fd, "    iastore\n");
+                // fprintf(fd, "    iload %d\n",i);
+                return;
+            }
+        }
+
+        // fprintf(fd, "%s\n",cur_arr->id);
+        for (int i = 1; i < func_array_index; i++){
+            int ch = strcmp(func_array[i]->id, cur_array->id);
+            if (ch == 0) {
+                // cur_array = func_array[i];
+                // fprintf(fd, "    %s\n",cur_array->id);
+                symbolobj* temp = func_array[i]->data;
+                symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                switch (func_array_label[i])
+                {
+                    case 0:
+                        fprintf(fd, "    iastore\n");
+                        break;
+                    case 1:
+                        // fprintf(fd, "    fastore\n");
+                        break;
+                    case 2:
+                        fprintf(fd, "    astore\n");
+                        break;
+                    }    
+                return;
+            }
+        }
+    }
+}
 void arr_assign_in()
 {
     if(array_check) array_assign_check = TRUE;
@@ -998,7 +1244,30 @@ void arr_assign_gen()
                 return;
             }
         }
+
+        // for (int i = 0; i < func_array_index; i++){
+        //     int ch = strcmp(func_array[i]->id, cur_array->id);
+        //     if (ch == 0) {
+        //         cur_array = func_array[i];
+        //         symbolobj* temp = func_array[i]->data;
+        //         symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+        //         switch (func_array_label[i])
+        //         {
+        //             case 0:
+        //                 fprintf(fd, "    iastore\n");
+        //                 break;
+        //             case 1:
+        //                 fprintf(fd, "    fastore\n");
+        //                 break;
+        //             case 2:
+        //                 fprintf(fd, "    castore\n");
+        //                 break;
+        //             }    
+        //         return;
+        //     }
+        // }
     }
+
 }
 
 void variable_gen(char* str)
@@ -1191,7 +1460,6 @@ void func_end()
             break;
         case Int:
             //int
-            
             fprintf(fd, "    ireturn\n");
             fprintf(fd, "    ireturn\n");
             break;

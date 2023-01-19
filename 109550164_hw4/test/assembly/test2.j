@@ -195,7 +195,12 @@ L16:
     getstatic test2/aa I
     getstatic test2/r [[I
     ldc 1
+    ldc 0
+    isub
+    aaload
     ldc 4
+    ldc 2
+    isub
     iaload
     iadd
     ldc 2

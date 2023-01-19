@@ -53,6 +53,7 @@ int VarNode_visit(void* node){
     if (temp->tailnode != 0){
         array_in();
         array_gen_add(temp->id);
+        factor_gen_func(temp->id);
         temp->tailnode->node.visit(temp->tailnode);
         
     }
