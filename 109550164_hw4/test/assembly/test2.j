@@ -62,8 +62,15 @@ LAB2:
     iload 1
     ireturn
 .end method
+.method public static ss_0()V
+.limit locals 50
+.limit stack 50
 .var 0 is z I
+    return
 .end method
+.method public static ss_0()V
+.limit locals 50
+.limit stack 50
 .method public static tt_0(I)I
 .limit locals 50
 .limit stack 50
@@ -79,7 +86,6 @@ LAB2:
     invokestatic test2/writelnI(I)V
     ldc 5
     iadd
-    ireturn
     ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
@@ -207,13 +213,12 @@ L16:
     ldc 3
     ldc 4.000000
     ldc 6.500000
-    invokestatic test2/tt_0(I)I
     ldc 2
     ldc 3
     ldc 4.000000
     ldc 6.500000
     iadd
-    putstatic test2/g I
+    iastore
     getstatic test2/g [[I
     ldc 0
     ldc 0

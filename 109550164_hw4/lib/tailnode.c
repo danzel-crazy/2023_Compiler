@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "tailnode.h"
 #include "info.h"
+#include <ast_gen.h>
 
 TailNode* newTailNode( int firstLine, int firstColumn, ExpNode* expnode, TailNode* tailnode, int lastLine, int lastColumn ){
     TailNode* temp = (TailNode*) malloc ( sizeof(TailNode) );
@@ -37,6 +38,8 @@ int TailNode_visit(void* node){
         int temp2 = temp->tailnode->node.visit(temp->tailnode);
         if ( (temp2 != -1) && (temp2 != 0)  )
             datatype = 1;
+        multi_array_in();
+        
     }
     
     return datatype;

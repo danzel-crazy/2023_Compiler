@@ -108,17 +108,17 @@ L11:
     getstatic test_combination/b I
     ldc 1
     isub
+    getstatic test_combination/a I
+    ldc 1
+    isub
+    getstatic test_combination/b I
+    ldc 1
+    isub
+    getstatic test_combination/a I
+    ldc 1
+    isub
+    getstatic test_combination/b I
     invokestatic test_combination/comb_0(I)I
-    getstatic test_combination/a I
-    ldc 1
-    isub
-    getstatic test_combination/b I
-    ldc 1
-    isub
-    getstatic test_combination/a I
-    ldc 1
-    isub
-    getstatic test_combination/b I
     getstatic test_combination/a I
     ldc 1
     isub
@@ -137,7 +137,6 @@ L15:
 L15:
     ldc 1
 L16:
-    ireturn
     ireturn
 .end method
 .method public static main([Ljava/lang/String;)V

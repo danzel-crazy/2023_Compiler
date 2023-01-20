@@ -96,7 +96,7 @@ int FactorNode_visit(void* node){
             func_array_end();
             array_out();
         }
-        // find_func(temp->id, 0);
+        find_func(temp->id, 0);
         return datatype;
         break;
 

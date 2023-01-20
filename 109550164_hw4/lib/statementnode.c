@@ -45,7 +45,7 @@ int StatementNode_visit(void* node){
 
         // visit variable
         
-        
+        // arr_assign_in();
         temp1 = (long) temp->varnode->node.visit(temp->varnode);
         arr_assign_in();
         // visit expression
@@ -54,8 +54,9 @@ int StatementNode_visit(void* node){
         array_in_assign_out();
         arr_assign_out();
         variable_gen(temp->varnode->id);
-        
+        //arr_assign_out();
         arr_assign_gen();
+        multi_array_out();
         array_out();
         // debug
         // fprintf(stderr, "Data Type: %ld\n", temp1);

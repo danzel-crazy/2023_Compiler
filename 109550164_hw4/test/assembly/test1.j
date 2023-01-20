@@ -68,9 +68,17 @@ LAB2:
     iload 1
     ireturn
 .end method
+.method public static sort_0()V
+.limit locals 50
+.limit stack 50
 .var 0 is b I
     iload 0
+    putstatic test1/c I
+    return
 .end method
+.method public static sort_0()V
+.limit locals 50
+.limit stack 50
 .method public static addition_0(I)I
 .limit locals 50
 .limit stack 50
@@ -79,8 +87,10 @@ LAB2:
     iload 0
     iadd
     ireturn
-    ireturn
 .end method
+.method public static sort_0()V
+.limit locals 50
+.limit stack 50
 .method public static ggyy_1(F)F
 .limit locals 50
 .limit stack 50
@@ -121,7 +131,6 @@ LAB2:
     putstatic test1/l [[I
     ldc 8
     ldc 8
-    invokestatic test1/addition_0(I)I
     ldc 8
     ldc 8
     putstatic test1/c I
@@ -131,6 +140,7 @@ LAB2:
     fneg
     ldc 8
     fneg
+    invokestatic test1/addition_0(I)I
     ldc 8
     fneg
     putstatic test1/c I
@@ -138,7 +148,6 @@ LAB2:
     invokestatic test1/writelnI(I)V
     ldc 3.300000
     ldc 5.500000
-    invokestatic test1/ggyy_1(F)F
     ldc 3.300000
     ldc 5.500000
     putstatic test1/x Ljava/lang/String;
@@ -355,7 +364,7 @@ L32:
     ldc 23
     isub
     iaload
-    putstatic test1/g Ljava/lang/String;
+    iastore
     getstatic test1/g F
     invokestatic test1/writelnR(F)V
     getstatic test1/l [[I
@@ -367,7 +376,7 @@ L32:
     ldc 23
     isub
     iaload
-    putstatic test1/u I
+    iastore
     getstatic test1/u I
     invokestatic test1/writelnI(I)V
     ldc 9

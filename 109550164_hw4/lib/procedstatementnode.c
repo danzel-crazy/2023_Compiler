@@ -63,8 +63,11 @@ int ProcedStatementNode_visit(void* node){
     }
 
     if (temp->explistnode != 0)
+    {
         temp->explistnode->node.visit(temp->explistnode);
-    
-    procdeure_id_gen(temp->id);
+        procdeure_id_gen(temp->id);
+        return -1;
+    }
+    prog_pro_gen(temp->id);
     return -1;
 }

@@ -73,7 +73,6 @@ LAB2:
     istore 1
     iload 1
     ireturn
-    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50

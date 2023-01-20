@@ -69,19 +69,21 @@ LAB2:
     imul
     iadd
     ireturn
-    ireturn
 .end method
-.method public static ss_0()I
+.method public static tt_0()V
 .limit locals 50
 .limit stack 50
+    invokestatic test_procedure/ss_0()I
     ldc 33
+    invokestatic test_procedure/ss_0()I
     imul
     iadd
     getstatic test_procedure/a I
     iadd
+    putstatic test_procedure/a I
     ldc 0.500000
-    ireturn
-    ireturn
+    putstatic test_procedure/c F
+    return
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -93,9 +95,14 @@ LAB2:
     ldc 0.0
     putstatic test_procedure/c F
     invokestatic test_procedure/ss_0()I
+    invokestatic test_procedure/ss_0()I
     imul
+    invokestatic test_procedure/ss_0()I
     iadd
     putstatic test_procedure/a I
+    invokestatic test_procedure/tt_0()V
+    invokestatic test_procedure/tt_0()V
+    invokestatic test_procedure/tt_0()V
     getstatic test_procedure/a I
     invokestatic test_procedure/writelnI(I)V
     return

@@ -41,7 +41,8 @@
 #include "typenode.h"
 #include "varnode.h"
 #include "numnode.h"
-
+void multi_array_in();
+void multi_array_out();
 void CodeGen(ProgNode* root);
 void Genclose();
 void find_func(char* str, int type);
@@ -94,10 +95,15 @@ void func_local_array_end(char* id);
 void arr_assign_in();
 void arr_assign_out();
 void arr_assign_gen();
+void pro_gen_list(list* root);
 void func_gen_list(list* root);
+void pro_gen();
 void func_gen();
+void pro_end();
 void func_end();
+void pro_in();
+void pro_out();
 void func_in();
 void func_out();
-
+void prog_pro_gen(char* str);
 #endif

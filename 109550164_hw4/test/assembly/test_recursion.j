@@ -76,12 +76,10 @@ L2:
 L3:
     ldc 1
     isub
-    invokestatic test_recursion/fact_0(I)I
     ldc 1
     isub
     imul
 L4:
-    ireturn
     ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
@@ -94,6 +92,7 @@ L4:
     ldc 0.0
     putstatic test_recursion/c F
     ldc 4
+    invokestatic test_recursion/fact_0(I)I
     ldc 4
     putstatic test_recursion/a I
     getstatic test_recursion/a I

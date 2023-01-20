@@ -97,7 +97,7 @@ LAB2:
     ldc 1
     isub
     iaload
-    putstatic test_array/c I
+    iastore
     getstatic test_array/c [[I
     ldc 1
     ldc 1
@@ -111,7 +111,7 @@ LAB2:
     ldc 1
     isub
     iaload
-    putstatic test_array/c I
+    iastore
     getstatic test_array/c [[I
     ldc 2
     ldc 1
@@ -131,7 +131,7 @@ LAB2:
     isub
     iaload
     iadd
-    putstatic test_array/c I
+    iastore
     getstatic test_array/c [[I
     ldc 2
     ldc 1
@@ -151,7 +151,7 @@ LAB2:
     isub
     iaload
     iadd
-    putstatic test_array/c I
+    iastore
     getstatic test_array/c [[I
     ldc 1
     ldc 1

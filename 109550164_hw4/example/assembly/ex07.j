@@ -62,7 +62,6 @@ LAB2:
 .limit stack 50
     iload 0
     ireturn
-    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50

@@ -67,7 +67,6 @@ LAB2:
     getstatic test_global1/b I
     iadd
     ireturn
-    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50

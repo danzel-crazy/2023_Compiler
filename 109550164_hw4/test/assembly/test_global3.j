@@ -93,7 +93,6 @@ LAB2:
     isub
     iaload
     ireturn
-    ireturn
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50

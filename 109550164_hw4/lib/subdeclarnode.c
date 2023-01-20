@@ -52,6 +52,7 @@ int SubDeclarNode_visit(void* node){
         list* tempList;
         int check = 0;
         if (temp->head->type){
+            pro_in();
             // PROCEDURE
             
             tempList = newfunclist( temp->head->id, scope, Void, Function );
@@ -62,7 +63,7 @@ int SubDeclarNode_visit(void* node){
                 SHOW_NEWSYM(temp->head->id);
                 list_push_back( listRoot, tempList );
             }
-
+            pro_gen_list(tempList);
         }else{
             func_in();
             // FUNCTION
@@ -71,17 +72,14 @@ int SubDeclarNode_visit(void* node){
             case 0:
                 /* code */
                 tempList = newfunclist( temp->head->id, scope, Int, Function );
-                // func_gen_list(tempList);
                 break;
 
             case 1:
                 tempList = newfunclist( temp->head->id, scope, Real, Function );
-                // func_gen_list(tempList);
                 break;
 
             case 2:
                 tempList = newfunclist( temp->head->id, scope, String, Function );
-                // func_gen_list(tempList);
                 break;
             
             default:
@@ -414,6 +412,7 @@ int SubDeclarNode_visit(void* node){
             
 
         }
+        pro_gen();
         func_gen();
     }
     

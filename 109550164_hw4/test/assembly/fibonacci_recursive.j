@@ -89,20 +89,19 @@ L6:
     getstatic fibonacci_recursive/a I
     ldc 1
     isub
-    invokestatic fibonacci_recursive/fa_0(I)I
     getstatic fibonacci_recursive/a I
     ldc 1
     isub
     getstatic fibonacci_recursive/a I
     ldc 2
     isub
+    invokestatic fibonacci_recursive/fa_0(I)I
     getstatic fibonacci_recursive/a I
     ldc 2
     isub
     iadd
 L7:
 L8:
-    ireturn
     ireturn
 .end method
 .method public static main([Ljava/lang/String;)V

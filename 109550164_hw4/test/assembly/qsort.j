@@ -62,8 +62,12 @@ LAB2:
     iload 1
     ireturn
 .end method
+.method public static readArr_0()V
+.limit locals 50
+.limit stack 50
 .var 0 is input I
     ldc 0
+    putstatic qsort/size I
     istore 0
 L1:
     iload 0
@@ -78,6 +82,7 @@ L3:
     getstatic qsort/size I
     ldc 1
     iadd
+    putstatic qsort/size I
     getstatic qsort/arr [I
     getstatic qsort/size I
     iload 0
@@ -85,7 +90,11 @@ L3:
     istore 0
     goto L1
 L4:
+    return
 .end method
+.method public static readArr_0()V
+.limit locals 50
+.limit stack 50
 .method public static split_0(I)I
 .limit locals 50
 .limit stack 50
@@ -347,14 +356,14 @@ L68:
     iastore
     iload 3
     ireturn
-    ireturn
 .end method
-.method public static split_0(I)I
+.method public static quicksortRecur_1()V
 .limit locals 50
 .limit stack 50
-    iload 0
-.var 6 is m I
-.var 7 is splitpt I
+.field public static m I
+.field public static splitpt I
+    invokestatic qsort/start()I
+    invokestatic qsort/stop()I
     if_icmplt L69
     ldc 0
     goto L70
@@ -362,36 +371,40 @@ L69:
     ldc 1
 L70:
     ifne L71
-    invokestatic qsort/split_0(I)I
-    istore 7
-    iload 7
+    invokestatic qsort/start()I
+    invokestatic qsort/stop()I
+    invokestatic qsort/start()I
+    invokestatic qsort/stop()I
+    putstatic qsort/splitpt I
+    invokestatic qsort/start()I
+    getstatic qsort/splitpt I
     ldc 1
     isub
-    iload 7
+    invokestatic qsort/start()I
+    getstatic qsort/splitpt I
     ldc 1
     isub
-    iload 7
+    getstatic qsort/splitpt I
     ldc 1
     iadd
-    iload 7
+    invokestatic qsort/stop()I
+    getstatic qsort/splitpt I
     ldc 1
     iadd
+    invokestatic qsort/stop()I
     goto L72
 L71:
 L72:
-    ireturn
-    ireturn
+    return
 .end method
-.method public static split_0(I)I
+.method public static quicksort_2()V
 .limit locals 50
 .limit stack 50
-    iload 0
     ldc 1
     getstatic qsort/size I
     ldc 1
     getstatic qsort/size I
-    ireturn
-    ireturn
+    return
 .end method
 .method public static main([Ljava/lang/String;)V
 .limit locals 50
@@ -404,6 +417,10 @@ L72:
     putstatic qsort/tmp I
     ldc 0
     putstatic qsort/size I
+    ldc 0
+    putstatic qsort/m I
+    ldc 0
+    putstatic qsort/splitpt I
     ldc 50
     multianewarray [I 1
     putstatic qsort/arr [I

@@ -48,7 +48,7 @@ int ProgNode_visit(void* node){
     if (temp->subdeclar != NULL)
         temp->subdeclar->node.visit(temp->subdeclar);
     PBEGIN_gen();
-    func_out();
+    // func_out();
     if (temp->compoundstatement != NULL)
         temp->compoundstatement->node.visit(temp->compoundstatement);
     END_gen();

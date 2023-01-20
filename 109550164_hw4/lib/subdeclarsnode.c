@@ -26,5 +26,8 @@ int SubDeclarSNode_visit(void* node){
     
     temp->NextNode->node.visit(temp->NextNode);
     func_end();
+    func_out();
+    pro_end();
+    pro_out();
     return 0;
 }

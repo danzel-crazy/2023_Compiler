@@ -3,6 +3,7 @@
         "stdio.h": "c",
         "numnode.h": "c",
         "ast_gen.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "mulnode.h": "c"
     }
 }

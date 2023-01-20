@@ -67,6 +67,12 @@ int func_index = 0;
 int func_invoke_label[100] = {0};
 BOOL func_check = FALSE;
 
+//procedure
+list* pro[100];
+int pro_index = 0;
+int pro_invoke_label[100] = {0};
+BOOL pro_check = FALSE;
+
 //func variable
 char* func_arr[100];
 char func_label[100];
@@ -86,11 +92,23 @@ list* cur_arr;
 BOOL array2d_check = FALSE;
 BOOL array_assign_check = FALSE;
 BOOL array_in_assign = FALSE;
+BOOL multi_array_check = FALSE;
+
 //add
 BOOL add_check = FALSE;
 
 //if
 BOOL if_check = FALSE;
+
+void multi_array_in()
+{
+    if(array_check) multi_array_check = TRUE;
+}
+
+void multi_array_out()
+{
+    multi_array_check = FALSE;
+}
 
 void CodeGen(ProgNode* root){
     
@@ -418,6 +436,7 @@ void END_gen()
 //procdeure_id
 void find_func(char* str, int type)
 {
+    // fprintf(fd, "    %s\n",str);
     for(int i = 0; i < func_index; i++){
         int ch = strcmp(func[i]->id, str);
         if (ch == 0) {
@@ -430,7 +449,7 @@ void find_func(char* str, int type)
 
 void func_gen_init(list* root, int index)
 {
-    if (func_invoke_label[index] == 0)
+    if((func_invoke_label[index]%2) !=0)
     {
         symbolobj* temp = root->data;
         char* pass;
@@ -478,14 +497,15 @@ void func_gen_init(list* root, int index)
         default:
             break;
         }
-
-        func_invoke_label[index] = 1;
     }
+    func_invoke_label[index] += 1;
+    
 }
 
 void procdeure_id_gen(char* id)
 {
     // fprintf(fd, "invokestatic %s/%sV\n",prog,id);
+
     if (!(strcmp(id, "writelnI")))
         fprintf(fd, "    invokestatic %s/writelnI(I)V\n",prog);
     else if(!(strcmp(id, "writelnR")))
@@ -498,7 +518,10 @@ void procdeure_id_gen(char* id)
 void num_gen_int(int num)
 {
         if(!array_check || (array_assign_check && !array_in_assign))
+        {
+            // fprintf(fd, "    %d\n",num);
             fprintf(fd, "    ldc %d\n",num);
+        }
         else if(!array_assign_check || array_in_assign){
             if(!func_check)
             {
@@ -694,6 +717,7 @@ void factor_gen_func(char *str)
 }
 void factor_gen_global(char *str)
 {
+    // fprintf(fd, "    %s\n",str);
     if(func_check)
     {
         for (int i = 1; i < func_array_index; i++){
@@ -815,7 +839,10 @@ void factor_gen_global(char *str)
 void factor_num_gen_id(char* str)
 {
     if (!add_check)
+    {
+        // fprintf(fd, "    %s\n",str);
         fprintf(fd, "    ldc %s\n",str);
+    } 
     // fprintf(fd, "    invokestatic %s/%s()I\n",prog,str);
 }
 
@@ -1130,6 +1157,7 @@ void array_gen_add(char* str){
 }
 void variable_gen_add(char* str, int type)
 {   
+    // fprintf(fd, "%s\n",str);
     switch (type)
     {
         case 0:
@@ -1149,7 +1177,7 @@ void cur_gen_real(char* id)
     cur[cur_index] = id;
     cur_label[cur_index] = 'F';
     cur_index+=1;
-    // fprintf(fd, ".field public static %s F\n",id);
+    // fprintf(fd, "%s\n",id);
 }
 
 void cur_gen_int(char* id)
@@ -1157,7 +1185,7 @@ void cur_gen_int(char* id)
     cur[cur_index] = id;
     cur_label[cur_index] = 'I';
     cur_index+=1;
-    // fprintf(fd, ".field public static %s I\n",id);
+    // fprintf(fd, "%s\n",id);
 }
 
 void cur_gen_string(char* id)
@@ -1165,10 +1193,21 @@ void cur_gen_string(char* id)
     cur[cur_index] = id;
     cur_label[cur_index] = 'S';
     cur_index+=1;
+    // fprintf(fd, "%s\n",id);
     // fprintf(fd, ".field public static %s Ljava/lang/String;\n",id);
 }
 
 //statement
+void prog_pro_gen(char* str)
+{
+    // fprintf(fd, "    %s;\n",str);
+    for (int i = 0; i < pro_index; i++){
+            if (!(strcmp(pro[i]->id, str))) {
+                fprintf(fd, "    invokestatic %s/%s_%d()V\n",prog,pro[i]->id,i);
+                return;
+            }
+        }
+}
 void func_local_array_end(char *id)
 {
     // fprintf(fd, "%s\n",id);
@@ -1248,6 +1287,7 @@ void arr_assign_gen()
                 return;
             }
         }
+        
 
         // for (int i = 0; i < func_array_index; i++){
         //     int ch = strcmp(func_array[i]->id, cur_array->id);
@@ -1271,13 +1311,61 @@ void arr_assign_gen()
         //     }
         // }
     }
-
+    else if(multi_array_check)
+    {
+        for (int i = 0; i < array_index; i++){
+            int ch = strcmp(array[i]->id, cur_arr->id);
+            if (ch == 0) {
+                cur_arr = array[i];
+                symbolobj* temp = array[i]->data;
+                symbolobj* temp_sceond = ((arraysymbolobj*)temp)->data;
+                switch (array_label[i])
+                {
+                    case 0:
+                        fprintf(fd, "    iastore\n");
+                        break;
+                    case 1:
+                        fprintf(fd, "    fastore\n");
+                        break;
+                    case 2:
+                        fprintf(fd, "    castore\n");
+                        break;
+                    }    
+                return;
+            }
+        }
+    }
 }
 
 void variable_gen(char* str)
 {
-    if (!func_check && !array_check)
+    // fprintf(fd, "    %s\n",str);
+    if(pro_check)
     {
+        // fprintf(fd," %s\n",str);
+        for (int i = 0; i < arr_index; i++){
+            // fprintf(fd," %s\n",arr[i]);
+            if (!(strcmp(arr[i], str))) {
+                switch (label[i])
+                {
+                case 'F':
+                    fprintf(fd, "    putstatic %s/%s F\n",prog,arr[i]);
+                    break;
+                case 'I':
+                    fprintf(fd, "    putstatic %s/%s I\n",prog,arr[i]);
+                    break;
+                case 'S':
+                    fprintf(fd, "    putstatic %s/%s Ljava/lang/String;\n",prog,arr[i]);
+                    break;
+                }
+                return;
+            }
+        }
+    }
+
+    if (!func_check && !array_check && !multi_array_check)
+    {
+        // fprintf(fd, "    %s\n",str);
         for (int i = 0; i <= cur_index; i++){
             if (!(strcmp(cur[i], str))) {
                 switch (cur_label[i])
@@ -1286,6 +1374,7 @@ void variable_gen(char* str)
                     fprintf(fd, "    putstatic %s/%s F\n",prog,cur[i]);
                     break;
                 case 'I':
+                    // fprintf(fd, "    %sI\n",cur[i]);
                     fprintf(fd, "    putstatic %s/%s I\n",prog,cur[i]);
                     break;
                 case 'S':
@@ -1319,6 +1408,7 @@ void variable_gen(char* str)
             }
         }
     }
+    // fprintf(fd, "    %s\n",str);
 }
 
 void if_c(int type)
@@ -1363,6 +1453,15 @@ void while_end_gen()
     relop_index += 1;
 }
 
+//subdeclarnode
+void pro_gen_list(list* root)
+{
+    // fprintf(fd, "    %s\n",root->id);
+    pro[pro_index] = root;
+    pro_index += 1;
+    // fprintf(fd, "    %d\n",pro_index);
+}
+
 void func_gen_list(list* root)
 {
     func[func_index] = root;
@@ -1370,6 +1469,16 @@ void func_gen_list(list* root)
 }
 
 //componenet
+void pro_in()
+{
+    pro_check = TRUE;
+}
+
+void pro_out()
+{
+    pro_check = FALSE;
+}
+
 void func_in()
 {
     func_check = TRUE;
@@ -1379,9 +1488,41 @@ void func_out()
 {
     func_check = FALSE;
 }
+
+void pro_gen()
+{   
+    if (pro_index != 0)
+    {
+        symbolobj* temp = pro[pro_index-1]->data;
+        char* pass;
+        fprintf(fd, ".method public static %s_%d()V\n",pro[pro_index-1]->id,pro_index-1);
+        // switch (temp->type)
+        // {
+        // case Int:
+        //     //int
+        //     fprintf(fd, ".method public static %s_%d()I\n",pro[pro_index-1]->id,pro_index-1);
+        //     break;
+        // case Real:
+        //     //real
+        //     fprintf(fd, ".method public static %s_%d()F\n",pro[pro_index-1]->id,pro_index-1);
+        //     /* code */
+        //     break;
+        // case String:
+        //     //str
+        //     fprintf(fd, ".method public static %s_%d()Ljava/lang/String;\n",pro[pro_index-1]->id,pro_index-1);
+        //     /* code */
+        //     break;
+        // default:
+        //     break;
+        // }
+        fprintf(fd, ".limit locals 50\n");
+        fprintf(fd, ".limit stack 50\n");
+    }
+}
+
 void func_gen()
 {   
-    if (func_index != 0)
+    if (func_index != 0 && !pro_check)
     {
         symbolobj* temp = func[func_index-1]->data;
         char* pass;
@@ -1452,9 +1593,19 @@ void func_gen()
     }
 }
 
+void pro_end()
+{
+    if(pro_check)
+    {
+        fprintf(fd, "    return\n");
+        fprintf(fd, ".end method\n");
+    }
+}
+
 void func_end()
 {
-    if (func_index != 0)
+    
+    if (func_index != 0 && !pro_check)
     {
         int t = func_index-1;
         symbolobj* temp = func[t]->data;
@@ -1464,7 +1615,7 @@ void func_end()
             break;
         case Int:
             //int
-            fprintf(fd, "    ireturn\n");
+            // fprintf(fd, "    ireturn\n");
             fprintf(fd, "    ireturn\n");
             break;
         case Real:
@@ -1480,8 +1631,9 @@ void func_end()
         default:
             break;
         }
+        fprintf(fd, ".end method\n");
     }
-    fprintf(fd, ".end method\n");
 }
+    
 
 
