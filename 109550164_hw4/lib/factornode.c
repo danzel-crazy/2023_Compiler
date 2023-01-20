@@ -92,7 +92,7 @@ int FactorNode_visit(void* node){
             array_in_assign_in();
             factor_gen_func(temp->id);
             temp->tailnode->node.visit(temp->tailnode);
-            array_in_assign_out();
+            // array_in_assign_out();
             func_array_end();
             array_out();
         }

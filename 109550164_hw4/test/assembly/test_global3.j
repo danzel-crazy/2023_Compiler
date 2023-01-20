@@ -63,26 +63,35 @@ LAB2:
 .method public static tt_0()I
 .limit locals 50
 .limit stack 50
-    iconst_2
-    anewarray I
+    ldc 2
+    multianewarray [I 1
     astore_1
-    iconst_2
-    anewarray I
+    ldc 2
+    multianewarray [I 1
     astore_2
     aload_1
-    iconst_0
+    ldc 1
+    ldc 1
+    isub
     ldc 10
     iastore
     aload_2
-    iconst_0
+    ldc 1
+    ldc 1
+    isub
     aload_1
-    iconst_0
-    aaload
+    ldc 1
+    ldc 1
+    isub
+    iaload
     ldc 11
     iadd
     iastore
     aload_2
-    iconst_0
+    ldc 1
+    ldc 1
+    isub
+    iaload
     ireturn
     ireturn
 .end method

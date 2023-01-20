@@ -275,16 +275,16 @@ void declar_gen_array(list* arr, int type)
             {
                 int size_2 = ((arraysymbolobj*)temp_sceond)->end - ((arraysymbolobj*)temp_sceond)->start + 1;
                 // fprintf(fd, ".field public static %s [[I\n",arr->id);
-                fprintf(fd, "    iconst_%d\n",size_1);
-                fprintf(fd, "iconst_%d\n",size_2);
+                fprintf(fd, "    ldc %d\n",size_1);
+                fprintf(fd, "ldc %d\n",size_2);
                 fprintf(fd, "multianewarray %d I 2\n",func_array_index);
                 fprintf(fd, "astore_%d\n",func_array_index);
             }
             else
             {
                 // fprintf(fd, ".field public static %s [I\n",arr->id);
-                fprintf(fd, "    iconst_%d\n",size_1);
-                fprintf(fd, "    anewarray I\n");
+                fprintf(fd, "    ldc %d\n",size_1);
+                fprintf(fd, "    multianewarray [I 1\n");
                 fprintf(fd, "    astore_%d\n",func_array_index);
             }
             break;
@@ -542,7 +542,7 @@ void num_gen_int(int num)
                     {
                         fprintf(fd, "    iconst_%d\n",num-((arraysymbolobj*)temp_sceond)->start);
                         if(array_in_assign){
-                            fprintf(fd, "    aaload\n");
+                            fprintf(fd, "    iaload\n");
                         }
                         array2d_check = FALSE;
                     }
@@ -553,10 +553,12 @@ void num_gen_int(int num)
                 }
                 else
                 {
-                    fprintf(fd, "    iconst_%d\n",(num-((arraysymbolobj*)temp)->start));
+                    fprintf(fd, "    ldc %d\n",num);
+                    fprintf(fd, "    ldc %d\n",((arraysymbolobj*)temp)->start);
+                    fprintf(fd, "    isub\n");
                     // fprintf(fd, "    %d\n",array_in_assign);
                     if(array_in_assign){
-                        fprintf(fd, "    aaload\n");
+                        fprintf(fd, "    iaload\n");
                     }
                 }
             }
@@ -584,7 +586,7 @@ void factor_gen_id(char *str)
 // factor node
 void array_in_assign_in()
 {
-    if(array_assign_check == TRUE) array_in_assign = TRUE;
+    array_in_assign = TRUE;
 }
 
 void array_in_assign_out()
@@ -1169,18 +1171,20 @@ void cur_gen_string(char* id)
 //statement
 void func_local_array_end(char *id)
 {
-    // fprintf(fd, "%s\n",cur_arr->id);
+    // fprintf(fd, "%s\n",id);
     if(func_check)
     {
-        for(int i = 0; i < func_index; i++)
+        if(array_in_assign)
         {
-            int ch = strcmp(func[i]->id, id);
-            if (ch == 0)
+            // fprintf(fd, "%s\n",id);
+            for(int i = 0; i < func_index; i++)
             {
-                // fprintf(fd, "    iload 1\n");
-                // fprintf(fd, "    iastore\n");
-                // fprintf(fd, "    iload %d\n",i);
-                return;
+                int ch = strcmp(func[i]->id, id);
+                if (ch == 0)
+                {
+                    // fprintf(fd, "    iaload\n");
+                    return;
+                }
             }
         }
 

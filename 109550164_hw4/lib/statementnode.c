@@ -51,6 +51,7 @@ int StatementNode_visit(void* node){
         // visit expression
         temp2 = (long) temp->expnode->node.visit(temp->expnode);
         func_local_array_end(temp->varnode->id);
+        array_in_assign_out();
         arr_assign_out();
         variable_gen(temp->varnode->id);
         
